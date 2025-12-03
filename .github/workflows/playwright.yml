@@ -73,7 +73,8 @@ jobs:
         MINI_DATETIME: ${{ steps.set-datetime.outputs.MINI_DATETIME }}
       run: |
         echo "Uploading all reports for: $SCRIPT_NAME"
-        aws s3 cp my-report/ "s3://automation-reports-test1/AllyReports/AllyUIReports/$MINI_DATETIME/"
+        echo "Destination: s3://automation-reports-test1/AllyReports/AllyUIReports/$MINI_DATETIME/"
+        aws s3 cp my-report/ "s3://automation-reports-test1/AllyReports/AllyUIReports/$MINI_DATETIME/" --recursive
 
     # -----------------------------------------
     # REQUIRED IF base64Image = false
