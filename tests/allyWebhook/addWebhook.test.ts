@@ -1,4 +1,4 @@
-import { test } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 import { WebhookPage } from '../../pages/webhook/webhookPage';
 import { CURRENT_ENV } from '../../tests/config/env';
 import { CommonUtils } from '../../utils/commonUtils';
@@ -35,10 +35,6 @@ test.describe("Add ally webhook tests", () => {
     await webhookPage.versionDropdown.click();
     await page.waitForTimeout(1000); // Wait for options to load
     await webhookPage.versionDropdown.selectOption("1");
-
-
-
-    
 
     // Save
     await webhookPage.saveButton.click();
@@ -100,6 +96,40 @@ test('Add webhook with multiple modules selected', async ({ page }) => {
 
 });
 
+  test("Verify that clicking on actions ellipsis opens menu on Webhooks page", async ({
+    page,
+  }) => {
+    const webhookPage = new WebhookPage(page);
 
+    await webhookPage.webhooksHeader.waitFor({
+      state: "visible",
+      timeout: 15000,
+    });
+    await expect(webhookPage.webhooksHeader).toBeVisible({
+      timeout: 15000,
+    });
+    await webhookPage.ellipsisButton.click({ delay: 1000 });
+    await expect(webhookPage.actionsMenu).toBeVisible({ timeout: 15000 });
+    await expect(webhookPage.deleteOption).toBeVisible({ timeout: 15000 });
+    await expect(webhookPage.viewLogsOption).toBeVisible({ timeout: 15000 });
+  });
 
+  test("Verify that clicking on delete option on Webhooks page", async ({
+    page,
+  }) => {
+    const webhookPage = new WebhookPage(page);
+
+    await webhookPage.webhooksHeader.waitFor({
+      state: "visible",
+      timeout: 15000,
+    });
+    await expect(webhookPage.webhooksHeader).toBeVisible({
+      timeout: 15000,
+    });
+    await webhookPage.ellipsisButton.click({ delay: 1000 });
+    await expect(webhookPage.actionsMenu).toBeVisible({ timeout: 15000 });
+    await expect(webhookPage.deleteOption).toBeVisible({ timeout: 20000 });
+    await webhookPage.deleteOption.click({ delay: 1000 });
+    await expect(webhookPage.deleteMessage).toBeVisible({ timeout: 15000 });
+  });
 });
