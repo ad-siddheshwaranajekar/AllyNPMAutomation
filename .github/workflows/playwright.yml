@@ -3,8 +3,8 @@ name: Playwright Tests
 on:
   push:
     branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
+  # pull_request:
+  #   branches: [ main, master ]
 
 jobs:
   test:
@@ -59,36 +59,21 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1
 
+    - name: Upload Ortoni Report
+      uses: actions/upload-artifact@v4
+      if: ${{ always() }}
+      with:
+        name: ortoni-report
+        path: my-report/
+        retention-days: 30
+
     - name: Upload all matching reports to S3
       env:
         DATETIME: ${{ steps.set-datetime.outputs.DATETIME }}
         MINI_DATETIME: ${{ steps.set-datetime.outputs.MINI_DATETIME }}
       run: |
         echo "Uploading all reports for: $SCRIPT_NAME"
-        ls ./reports/$DATETIME/ || { echo "No reports found."; exit 1; }
-
-        found_files=false
-        for file in ./reports/$DATETIME/${SCRIPT_NAME}_*.html; do
-          if [ -f "$file" ]; then
-            found_files=true
-            filename=$(basename "$file")
-            echo "Uploading: $filename"
-            aws s3 cp "$file" "s3://automation-reports-test1/AllyReports/AllyUIReports/$MINI_DATETIME/$filename"
-          fi
-        done
-
-        if [ "$found_files" = false ]; then
-          echo "❌ No matching reports found for pattern: ${SCRIPT_NAME}_*.html"
-          exit 1
-        fi
-
-    # - name: Upload Ortoni Report
-    #   uses: actions/upload-artifact@v4
-    #   if: ${{ always() }}
-    #   with:
-    #     name: ortoni-report
-    #     path: my-report/
-    #     retention-days: 30
+        aws s3 cp my-report/ "s3://automation-reports-test1/AllyReports/AllyUIReports/$MINI_DATETIME/"
 
     # -----------------------------------------
     # REQUIRED IF base64Image = false
