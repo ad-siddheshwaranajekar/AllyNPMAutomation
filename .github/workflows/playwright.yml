@@ -39,13 +39,56 @@ jobs:
     #     path: playwright-report/
     #     retention-days: 30
 
-    - name: Upload Ortoni Report
-      uses: actions/upload-artifact@v4
-      if: ${{ always() }}
+    - name: Set timestamp
+      id: set-datetime
+      run: |
+        # Force IST timezone
+        export TZ="Asia/Kolkata"
+        DATETIME=$(date +"%A_%d_%B_%Y_v%H")
+        MINI_DATETIME=$(date +"%A_%d_%B_%Y")
+        echo "DATETIME=$DATETIME" >> $GITHUB_ENV
+        echo "MINI_DATETIME=$MINI_DATETIME" >> $GITHUB_ENV
+        echo "DATETIME=$DATETIME" >> $GITHUB_OUTPUT
+        echo "MINI_DATETIME=$MINI_DATETIME" >> $GITHUB_OUTPUT
+
+  # 6. Configure AWS CLI
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v4
       with:
-        name: ortoni-report
-        path: my-report/
-        retention-days: 30
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1
+
+    - name: Upload all matching reports to S3
+      env:
+        DATETIME: ${{ steps.set-datetime.outputs.DATETIME }}
+        MINI_DATETIME: ${{ steps.set-datetime.outputs.MINI_DATETIME }}
+      run: |
+        echo "Uploading all reports for: $SCRIPT_NAME"
+        ls ./reports/$DATETIME/ || { echo "No reports found."; exit 1; }
+
+        found_files=false
+        for file in ./reports/$DATETIME/${SCRIPT_NAME}_*.html; do
+          if [ -f "$file" ]; then
+            found_files=true
+            filename=$(basename "$file")
+            echo "Uploading: $filename"
+            aws s3 cp "$file" "s3://automation-reports-test1/AllyReports/AllyUIReports/$MINI_DATETIME/$filename"
+          fi
+        done
+
+        if [ "$found_files" = false ]; then
+          echo "❌ No matching reports found for pattern: ${SCRIPT_NAME}_*.html"
+          exit 1
+        fi
+
+    # - name: Upload Ortoni Report
+    #   uses: actions/upload-artifact@v4
+    #   if: ${{ always() }}
+    #   with:
+    #     name: ortoni-report
+    #     path: my-report/
+    #     retention-days: 30
 
     # -----------------------------------------
     # REQUIRED IF base64Image = false
