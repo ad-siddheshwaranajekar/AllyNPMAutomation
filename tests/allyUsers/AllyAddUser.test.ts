@@ -93,7 +93,7 @@ test.describe("Add ally users tests", () => {
     //await expect(addUserPage.successAlert).toBeVisible({ timeout: 15000 });
      await page.waitForTimeout(1000);
   });
-   test("Verify that an Ally can create a Basic Auth + API Key Ally user. @smoke @regression", async ({ page }) => {
+   test.only("Verify that an Ally can create a Basic Auth + API Key Ally user. @smoke @regression", async ({ page }) => {
     await addUserPage.AddUserBtn.click();
     await expect(addUserPage.AddUserTxt).toBeVisible({ timeout: 15000 });
     await addUserPage.userNameTxt.fill(user.username);
