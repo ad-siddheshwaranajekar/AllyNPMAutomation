@@ -16,6 +16,14 @@ export class WebhookPage extends BasePage {
     readonly successMessage: Locator;
     readonly duplicateErrorMessage: Locator;    
 
+    //Actions
+    readonly ellipsisButton: Locator;
+    readonly actionsMenu: Locator;
+    readonly deleteOption: Locator;
+    readonly viewLogsOption: Locator;
+    readonly webhooksHeader: Locator;
+    readonly deleteMessage: Locator;
+
     constructor(page: Page) {
         super(page);
 
@@ -32,6 +40,19 @@ export class WebhookPage extends BasePage {
             name: 'Webhook added successfully.',
         });
         this.duplicateErrorMessage =page.getByText('Already  Subscribed  For  This  Module  With URL', { exact: true });
+
+        this.webhooksHeader = page.locator(`//h3[normalize-space()='Webhooks']`);
+        this.ellipsisButton = page.locator(`span:has-text("")`).first();
+        this.actionsMenu = page.locator(
+        `//ul[contains(@class,'dropdown-menu') and contains(@class,'show')]`
+        );
+        this.deleteOption = page.locator(
+        `//li[contains(normalize-space(), 'Delete')]`
+        ).first();
+        this.viewLogsOption = page.locator(
+        `//li[contains(normalize-space(), 'View Logs')]`
+        ).first();
+        this.deleteMessage = page.locator(`//div[normalize-space()='Webhook deleted successfully.']`);
     }
 
     // Generate dynamic webhook URL (no navigation)
