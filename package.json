@@ -1,16 +1,19 @@
 {
-  "name": "allyportal",
+  "name": "Ally_UI",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {},
-  "keywords": [],
+  "lockfileVersion": 3,
+  "requires": true,
   "author": "",
+  "description": "",
+  "keywords": [],
   "license": "ISC",
+  "main": "index.js",
+  "packages": {},
   "devDependencies": {
     "@faker-js/faker": "^10.1.0",
     "@playwright/test": "^1.56.1",
     "@types/node": "^24.10.1",
     "ortoni-report": "^4.0.1"
-  }
+  },
+  "scripts": {}
 }
