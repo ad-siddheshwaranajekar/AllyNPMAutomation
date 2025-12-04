@@ -1,5 +1,5 @@
 import { test, expect, request } from '@playwright/test';
-import paymentTestData from '../../testData/Payments/paymentTestdate.json';
+import paymentTestData from '../../testData/Payments/paymentTestdata.json';
 import { PaymentWidgetPage } from '../../pages/payments/PaymentWidgetPage';
 import { de } from '@faker-js/faker';
 
@@ -85,6 +85,7 @@ test('Verify Create Payment Token → Open Payment Widget for CC', async ({ page
 
   const paymentWidgetPage = new PaymentWidgetPage(page);
   await paymentWidgetPage.verifyPageLoaded();
+   await page.waitForTimeout(2000);
 
   // 🔽🔽 UI FLOW STARTS HERE 🔽🔽
 
@@ -113,7 +114,7 @@ test('Verify Create Payment Token → Open Payment Widget for CC', async ({ page
   console.log('Widget URL:', finalURL);
 });
 
-test('Verify Create Payment Token → Open Payment Widget for debit card', async ({ page }) => {
+test.only('Verify Create Payment Token → Open Payment Widget for debit card', async ({ page }) => {
   // Test logic for PayPal
 
   // Test logic for CC
@@ -145,6 +146,7 @@ test('Verify Create Payment Token → Open Payment Widget for debit card', async
 
   const paymentWidgetPage = new PaymentWidgetPage(page);
   await paymentWidgetPage.verifyPageLoaded();
+   await page.waitForTimeout(2000);
 
   // 🔽🔽 UI FLOW STARTS HERE 🔽🔽
 
@@ -166,7 +168,7 @@ test('Verify Create Payment Token → Open Payment Widget for debit card', async
   })
   await page.waitForTimeout(1000);
   await paymentWidgetPage.submitPayment();
-   await page.waitForTimeout(5000);
+   await page.waitForTimeout(3000);
   await expect(paymentWidgetPage.sueccessMessage).toHaveText('Thank you for your payment!');    
   console.log('Payment Token:', paymentToken);
   console.log('Amount:', randomAmount);

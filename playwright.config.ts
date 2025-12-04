@@ -9,6 +9,7 @@ const reportConfig: OrtoniReportConfig = {
   showProject: false,
   projectName: "Ally Portal",
   testType: "E2E-Functional",
+  
   authorName: os.userInfo().username,
   base64Image: false,
 
@@ -25,6 +26,7 @@ logo: "./assets/AllyLogoDark.svg",
   meta: {
     "Test Cycle": "AN_ALMGMT_V12",
     Environment: process.env.NODE_ENV || "Local",
+    "Executed On": new Date().toLocaleString(), 
     version: "1",
     release: "V12",
     platform: os.type(),
