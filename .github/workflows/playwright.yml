@@ -146,23 +146,16 @@ jobs:
 # --------------------------------------
   notify:
     name: Slack Notification
-    needs: [publish]
-    runs-on: ubuntu-latest
+    needs: [setup, publish]
     if: always()
+    uses: ./.github/workflows/slack.yml
 
-    steps:
-      - name: Send Slack Notification
-        uses: ./.github/workflows/slack.yml
-        with:
-          status: ${{ job.status }}
-          text: |
-            *Playwright Pipeline Status:* ${{ job.status }}
-            *Repository:* ${{ github.repository }}
-            *Branch:* ${{ github.ref_name }}
-            *Triggered by:* ${{ github.actor }}
-            *Workflow:* ${{ github.workflow }}
-            *Job:* ${{ github.job }}
-            *Report Path:* https://$${{ env.REPORT_BUCKET }}.s3.amazonaws
-          # fields: repo,branch,actor,workflow,job,took
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+    with:
+      bucket_name: ${ env.REPORT_BUCKET }
+      # report_path: ${ env.REPORT_PATH }
+      folder_name: ${{ needs.setup.outputs.MINI_DATETIME }}
+      repository_name: ${{ github.repository }}
+      # status: ${{ needs.publish.result }}
+
+    secrets:
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}v
