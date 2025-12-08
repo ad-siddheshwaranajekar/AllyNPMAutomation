@@ -137,6 +137,7 @@ jobs:
       - name: Upload reports to S3
         run: |
           echo "Reports for: ${{ needs.setup.outputs.MINI_DATETIME }}"
+          ls -la && echo "--------------------" && file * && echo "--------------------" && ls -R
           aws s3 cp my-report/ \
             s3://${{ env.REPORT_BUCKET }}/${{ env.REPORT_PATH }}/${{ needs.setup.outputs.MINI_DATETIME }}/ \
             --recursive
