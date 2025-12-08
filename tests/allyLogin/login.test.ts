@@ -41,8 +41,45 @@ test.describe('Login Module', () => {
     await expect(errorAlert).toHaveText(
       'We could not log you in. Please check your credentials and try again.'
     );
- 
-  });
-  
 
+    test("Verify that logo is present on login page @smoke", async ({
+      page,
+    }) => {
+      const loginPage = new LoginPage(page);
+      await loginPage.navigate();
+      await expect(loginPage.logo).toBeVisible({ timeout: 15000 });
+    });
+
+    test("Verify that clicking on forgot password navigates to recover password pop up @smoke", async ({
+      page,
+    }) => {
+      const loginPage = new LoginPage(page);
+      await loginPage.navigateToForgotPassword();
+      await expect(loginPage.recoverPasswordText).toBeVisible({
+        timeout: 15000,
+      });
+    });
+
+    test("Verify that user is able to reset password successfully", async ({
+      page,
+    }) => {
+      const loginPage = new LoginPage(page);
+      await loginPage.navigateToForgotPassword();
+      await loginPage.usernameForResetPasswordInput.fill(loginData[0].username);
+      await loginPage.submitButton.click();
+      await expect(loginPage.successMessage).toBeVisible({ timeout: 15000 });
+    });
+
+    test("Verify that entering invalid username gives alert message on forgot password page @regression", async ({
+      page,
+    }) => {
+      const loginPage = new LoginPage(page);
+      await loginPage.navigateToForgotPassword();
+      await loginPage.usernameForResetPasswordInput.fill(loginData[1].username);
+      await loginPage.submitButton.click();
+      await page.waitForTimeout(500);
+      await expect(loginPage.alertMessage).toBeVisible({ timeout: 30000 });
+      await expect(loginPage.alertMessage).toHaveText("User Name is invalid");
+    });
+  });
 });
