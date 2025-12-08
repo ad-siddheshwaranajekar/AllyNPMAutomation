@@ -140,3 +140,30 @@ jobs:
           aws s3 cp my-report/ \
             s3://${{ env.REPORT_BUCKET }}/${{ env.REPORT_PATH }}/${{ needs.setup.outputs.MINI_DATETIME }}/ \
             --recursive
+
+  # --------------------------------------
+# 4. SLACK NOTIFICATION
+# --------------------------------------
+  notify:
+    name: Slack Notification
+    needs: [publish]
+    runs-on: ubuntu-latest
+    if: always()
+
+    steps:
+      - name: Send Slack Notification
+        uses: ./.github/workflows/slack.yml
+        with:
+          # status: ${{ job.status }}
+          text: |
+            *Playwright Pipeline Status:* ${{ job.status }}
+            *Repository:* ${{ github.repository }}
+            *Branch:* ${{ github.ref_name }}
+            *Triggered by:* ${{ github.actor }}
+            *Workflow:* ${{ github.workflow }}
+            *Job:* ${{ github.job }}
+            *Report Path:* https://$${{ env.REPORT_BUCKET }}.s3.amazonaws
+            
+          # fields: repo,branch,actor,workflow,job,took
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
