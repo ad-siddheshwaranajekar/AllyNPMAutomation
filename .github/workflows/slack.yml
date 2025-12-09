@@ -27,7 +27,7 @@ jobs:
           echo "Sending Slack notification..."
 
           if [ -n "$folder_name" ]; then
-            REPORT_URL="https://$bucket_name.s3.amazonaws.com/AllyAPIReports/$folder_name/ALLY_Smoke_Suite_Report_QAT_$folder_name.html"
+            REPORT_URL="https://$bucket_name.s3.amazonaws.com/AllyReports/$folder_name/ALLY_Smoke_Suite_Report_QAT_$folder_name.html"
           else
             REPORT_URL="Report URL not available"
           fi

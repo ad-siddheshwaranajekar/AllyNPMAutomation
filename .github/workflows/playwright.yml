@@ -138,6 +138,10 @@ jobs:
         with:
           name: ortoni-report
           path: my-report/
+      
+      - name: Move image file into report folder
+        run: |
+          cp my-report/assets/AllyLogoDark.svg my-report/
 
       - name: Upload reports to S3
         run: |
@@ -147,7 +151,7 @@ jobs:
             s3://${{ env.REPORT_BUCKET }}/${{ env.REPORT_PATH }}/${{ needs.setup.outputs.MINI_DATETIME }}/ \
             --recursive
 
-  # --------------------------------------
+# --------------------------------------
 # 4. SLACK NOTIFICATION
 # --------------------------------------
   notify:
