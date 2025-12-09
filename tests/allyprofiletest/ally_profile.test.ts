@@ -60,4 +60,14 @@ test.describe("Profile Page Tests", () => {
     console.log('Logout successful and navigated to login page.');
   });
 
+
+  test.only('Validate Ally can successfully navigate to Change Password Page Functionality. @regression @smoke', async ({ page }) => {
+    await profilePage.clickProfile();
+    await profilePage.clickChangePassword();
+    await page.waitForTimeout(2000);
+    await expect(page.getByRole("heading", { name: "Change Password" })).toBeVisible();
+    await expect(page).toHaveURL(/change-password/i);
+    console.log("Change Password page displayed successfully");
+  });
+
 });
