@@ -76,7 +76,7 @@ test.describe("Profile Page Tests", () => {
     console.log("Change Password page displayed successfully");
   });
 
-test.only("Verify the Ally can successfully update email and phone number @regression @smoke", async ({ page }) => {
+test("Verify the Ally can successfully update email and phone number @regression @smoke", async ({ page }) => {
   const profilePage = new ProfilePage(page);
   const testUser = generateUser();
 
@@ -93,6 +93,18 @@ await page.waitForTimeout(800);
   await expect(profilePage.successAlert).toBeVisible();
 });
 
+test('Verify validation for invalid email ID', async ({ page }) => {
+  const profilePage = new ProfilePage(page);
+
+  await profilePage.clickProfile();
+  await profilePage.clickEditUser();
+ await page.waitForTimeout(1000);
+ await profilePage.updateEmail("invalidEmail@123");
+ await page.waitForTimeout(1000);
+ await profilePage.saveChanges();
+  // Assertion
+  await profilePage.verifyInvalidEmailError();
+});
 
 
 

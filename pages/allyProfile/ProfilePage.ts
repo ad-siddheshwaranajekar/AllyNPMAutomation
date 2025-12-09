@@ -25,6 +25,7 @@ readonly phoneTxt : Locator;
 readonly cancelBtn: Locator;
 readonly saveBtn :Locator;
 readonly successAlert : Locator;
+readonly emailValdation :Locator
 
 readonly url: string;
 
@@ -45,6 +46,7 @@ this.phoneTxt = page.getByRole('textbox', { name: 'Phone Number' });
 this.cancelBtn = page.getByRole('button', { name: 'Close' }); 
 this.saveBtn = page.locator(`.button.button-pink`);
 this.successAlert= page.getByRole('alert', { name: 'User edited successfully.' });
+this.emailValdation=page.getByText('Email is not valid.', { exact: true });
 
 }   
 async openProfile() {
@@ -98,5 +100,9 @@ async saveChanges() {
   await this.saveBtn.click();
 }
 
+
+async verifyInvalidEmailError() {
+  await expect(this.emailValdation).toBeVisible();
+}
 
 }
