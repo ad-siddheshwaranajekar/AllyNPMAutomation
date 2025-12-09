@@ -17,6 +17,7 @@ jobs:
   setup:
     runs-on: ubuntu-latest
     outputs:
+      REPORT_BUCKET: ${{ steps.export.outputs.REPORT_BUCKET }}
       DATETIME: ${{ steps.set-datetime.outputs.DATETIME }}
       MINI_DATETIME: ${{ steps.set-datetime.outputs.MINI_DATETIME }}
     steps:
@@ -60,7 +61,11 @@ jobs:
 
           echo "DATETIME=$DATETIME" >> $GITHUB_OUTPUT
           echo "MINI_DATETIME=$MINI_DATETIME" >> $GITHUB_OUTPUT
-
+      - name: Export REPORT_BUCKET for downstream jobs
+        id: export
+        run: echo "REPORT_BUCKET=${REPORT_BUCKET}" >> $GITHUB_OUTPUT
+        env:
+          REPORT_BUCKET: ${{ env.REPORT_BUCKET }}
 # --------------------------------------
 # 2. TEST EXECUTION
 # --------------------------------------
@@ -152,7 +157,7 @@ jobs:
     uses: ./.github/workflows/slack.yml
 
     with:
-      bucket_name: ${ env.REPORT_BUCKET }
+      bucket_name: ${{ needs.setup.outputs.REPORT_BUCKET }}
       # report_path: ${ env.REPORT_PATH }
       folder_name: ${{ needs.setup.outputs.MINI_DATETIME }}
       repository_name: ${{ github.repository }}
