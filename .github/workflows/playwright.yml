@@ -1,10 +1,14 @@
-name: Playwright Tests
+name: Playwright Tests (Enterprise)
 
 on:
   push:
     branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
+  workflow_dispatch:
+
+env:
+  AWS_REGION: us-east-1
+  REPORT_BUCKET: automation-reports-test1
+  REPORT_PATH: AllyReports/AllyUIReports
 
 jobs:
 # --------------------------------------
@@ -13,6 +17,7 @@ jobs:
   setup:
     runs-on: ubuntu-latest
     outputs:
+      REPORT_BUCKET: ${{ steps.export.outputs.REPORT_BUCKET }}
       DATETIME: ${{ steps.set-datetime.outputs.DATETIME }}
       MINI_DATETIME: ${{ steps.set-datetime.outputs.MINI_DATETIME }}
     steps:
@@ -56,60 +61,111 @@ jobs:
 
           echo "DATETIME=$DATETIME" >> $GITHUB_OUTPUT
           echo "MINI_DATETIME=$MINI_DATETIME" >> $GITHUB_OUTPUT
-
+      - name: Export REPORT_BUCKET for downstream jobs
+        id: export
+        run: echo "REPORT_BUCKET=${REPORT_BUCKET}" >> $GITHUB_OUTPUT
+        env:
+          REPORT_BUCKET: ${{ env.REPORT_BUCKET }}
 # --------------------------------------
 # 2. TEST EXECUTION
 # --------------------------------------
   test:
+    needs: setup
     timeout-minutes: 60
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - uses: actions/setup-node@v4
-      with:
-        node-version: lts/*
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
 
-    - name: Restore Node cache
-      uses: actions/cache@v3
-      with:
-        path: node_modules
-        key: npm-${{ hashFiles('package-lock.json') }}
+      - name: Restore Node cache
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: npm-${{ hashFiles('package-lock.json') }}
 
-    - name: Restore Playwright cache
-      uses: actions/cache@v3
-      with:
-        path: ~/.cache/ms-playwright
-        key: playwright-${{ hashFiles('package-lock.json') }}
+      - name: Restore Playwright cache
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ hashFiles('package-lock.json') }}
 
-    - name: Install dependencies
-      run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
-    - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
+      - name: Run Playwright tests
+        run: npx playwright test
 
-    - name: Run Playwright tests
-      run: npx playwright test
+      - name: Upload Ortoni Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ortoni-report
+          path: my-report/
+          retention-days: 30
 
-    # ----------------------------------------------------
-    # Upload Ortoni report
-    # ----------------------------------------------------
-    - name: Upload Ortoni Report
-      uses: actions/upload-artifact@v4
-      if: ${{ always() }}
-      with:
-        name: ortoni-report
-        path: my-report/
-        retention-days: 30
+      - name: Upload Playwright Artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-artifacts
+          path: test-results/
+          retention-days: 30
 
-    # ----------------------------------------------------
-    # Upload Playwright test artifacts (screenshots, videos, traces)
-    # ----------------------------------------------------
-    - name: Upload Playwright Test Results
-      uses: actions/upload-artifact@v4
-      if: ${{ always() }}
-      with:
-        name: playwright-artifacts
-        path: test-results/
-        retention-days: 30
+# --------------------------------------
+# 3. REPORT PUBLISH TO S3
+# --------------------------------------
+  publish:
+    name: Publish Reports to S3
+    needs: [setup, test]
+    runs-on: ubuntu-latest
+    if: always()
+
+    steps:
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Download report artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: ortoni-report
+          path: my-report/
+      
+      # - name: Move image file into report folder
+      #   run: |
+      #     cp my-report/assets/AllyLogoDark.svg my-report/
+
+      - name: Upload reports to S3
+        run: |
+          echo "Reports for: ${{ needs.setup.outputs.MINI_DATETIME }}"
+          ls -la && echo "--------------------" && file * && echo "--------------------" && ls -R
+          aws s3 cp my-report/ \
+            s3://${{ env.REPORT_BUCKET }}/${{ env.REPORT_PATH }}/${{ needs.setup.outputs.MINI_DATETIME }}/ \
+            --recursive
+
+# --------------------------------------
+# 4. SLACK NOTIFICATION
+# --------------------------------------
+  notify:
+    name: Slack Notification
+    needs: [setup, publish]
+    if: always()
+    uses: ./.github/workflows/slack.yml
+
+    with:
+      bucket_name: ${{ needs.setup.outputs.REPORT_BUCKET }}
+      # report_path: ${ env.REPORT_PATH }
+      folder_name: ${{ needs.setup.outputs.MINI_DATETIME }}
+      repository_name: ${{ github.repository }}
+      # status: ${{ needs.publish.result }}
+
+    secrets:
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}

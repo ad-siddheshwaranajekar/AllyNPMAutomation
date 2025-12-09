@@ -1,0 +1,76 @@
+name: Notify Slack
+
+on:
+  workflow_call:
+    inputs:
+      bucket_name:
+        required: false
+        type: string
+      repository_name:
+        required: false
+        type: string
+      folder_name:
+        required: false
+        type: string
+    secrets:
+      SLACK_WEBHOOK_URL:  
+        required: true  
+
+jobs:
+  
+  notify-slack:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Slack notification
+        shell: bash
+        run: |
+          echo "Sending Slack notification..."
+
+          if [ -n "$folder_name" ]; then
+            REPORT_URL="https://$bucket_name.s3.amazonaws.com/AllyReports/$folder_name/ALLY_Smoke_Suite_Report_QAT_$folder_name.html"
+          else
+            REPORT_URL="Report URL not available"
+          fi
+
+          # Use here-doc directly to assign variable
+          PAYLOAD=$(cat <<EOM
+          {
+            "blocks": [
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "*AllyAPI Automation Report* :tada:"
+                }
+              },
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "The automated tests have completed. Click the link below to view the detailed report:\n<${REPORT_URL}|View Report>"
+                }
+              },
+              {
+                "type": "context",
+                "elements": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "Repository: ${repository_name}"
+                  }
+                ]
+              }
+            ]
+          }
+          EOM
+          )
+
+          # Send Slack message
+          curl -X POST -H 'Content-type: application/json' --data "$PAYLOAD" "$SLACK_WEBHOOK_URL"
+
+          echo "Slack notification sent."
+
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          bucket_name: ${{ inputs.bucket_name }}
+          repository_name: ${{ inputs.repository_name }}
+          folder_name: ${{ inputs.folder_name }}
