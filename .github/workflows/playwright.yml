@@ -139,9 +139,9 @@ jobs:
           name: ortoni-report
           path: my-report/
       
-      - name: Move image file into report folder
-        run: |
-          cp my-report/assets/AllyLogoDark.svg my-report/
+      # - name: Move image file into report folder
+      #   run: |
+      #     cp my-report/assets/AllyLogoDark.svg my-report/
 
       - name: Upload reports to S3
         run: |
