@@ -41,4 +41,7 @@ export class LoginPage extends BasePage {
    await this.login(loginData[0].username, loginData[0].password); //both QAt and UAT
    
 }
+
+
+
 }

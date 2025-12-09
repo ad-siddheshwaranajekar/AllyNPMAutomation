@@ -43,7 +43,7 @@ this.editUserTxt = page.getByRole('heading', { name: 'Edit User' });
 this.emailTxt = page.getByRole('textbox', { name: 'Email' }); 
 this.phoneTxt = page.getByRole('textbox', { name: 'Phone Number' }); 
 this.cancelBtn = page.getByRole('button', { name: 'Close' }); 
-this.saveBtn = page.locator(':text-is("SAVE")');
+this.saveBtn = page.locator(`.button.button-pink`);
 this.successAlert= page.getByRole('alert', { name: 'User edited successfully.' });
 
 }   
@@ -51,7 +51,7 @@ async openProfile() {
  await this.utils.click(this.profileMenu);
  }
 
- 
+
  async clickProfile() { await this.openProfile();
      await this.profileButton.click(); }
  async clickLogout() { await this.openProfile();
@@ -82,5 +82,21 @@ async openProfile() {
                   await expect(actionsSection.getByText('Edit User')).toBeVisible();
                    await expect(actionsSection.getByText('Change Password')).toBeVisible();
                  }  
+
+
+    
+
+async updateEmail(email: string) {
+  await this.emailTxt.fill(email);
+}
+
+async updatePhone(phone: string) {
+  await this.phoneTxt.fill(phone);
+}
+
+async saveChanges() {
+  await this.saveBtn.click();
+}
+
 
 }

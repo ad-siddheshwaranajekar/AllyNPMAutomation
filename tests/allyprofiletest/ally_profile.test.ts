@@ -2,14 +2,20 @@ import { test, expect } from '@playwright/test';
 import { CURRENT_ENV } from '../config/env';
 import { ProfilePage } from '../../pages/allyProfile/ProfilePage';
 import { LoginPage } from '../../pages/login/loginPage';
-
+import { CommonUtils } from '../../utils/commonUtils';
+import { generateUser } from '../../utils/testDataGenerator';
+const user = generateUser();
 test.describe("Profile Page Tests", () => {
   let loginPage: LoginPage;
   let profilePage: ProfilePage;
+  let commonUtils: CommonUtils;
+
 
   test.beforeEach(async ({ page }) => {
     loginPage = new LoginPage(page);
     profilePage = new ProfilePage(page);
+    commonUtils = new CommonUtils(page);
+  
 
     await loginPage.navigateTo(CURRENT_ENV);
     await loginPage.loginAsAlly();
@@ -61,7 +67,7 @@ test.describe("Profile Page Tests", () => {
   });
 
 
-  test.only('Validate Ally can successfully navigate to Change Password Page Functionality. @regression @smoke', async ({ page }) => {
+  test('Validate Ally can successfully navigate to Change Password Page Functionality. @regression @smoke', async ({ page }) => {
     await profilePage.clickProfile();
     await profilePage.clickChangePassword();
     await page.waitForTimeout(2000);
@@ -69,5 +75,26 @@ test.describe("Profile Page Tests", () => {
     await expect(page).toHaveURL(/change-password/i);
     console.log("Change Password page displayed successfully");
   });
+
+test.only("Verify the Ally can successfully update email and phone number @regression @smoke", async ({ page }) => {
+  const profilePage = new ProfilePage(page);
+  const testUser = generateUser();
+
+  await profilePage.clickProfile();
+  await page.waitForTimeout(800);
+  await profilePage.clickEditUser();
+await page.waitForTimeout(800);
+  await profilePage.updateEmail(testUser.email);
+   await page.waitForTimeout(1000);
+//  await profilePage.updatePhone(testUser.phone);
+// await page.waitForTimeout(2000);
+  await profilePage.saveChanges();
+
+  await expect(profilePage.successAlert).toBeVisible();
+});
+
+
+
+
 
 });
