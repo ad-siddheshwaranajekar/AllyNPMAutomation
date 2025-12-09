@@ -1,0 +1,908 @@
+SQLite format 3   @     2                                                               2 .r¢
+   
+" t"
+Í
+v
+"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            R!%mindexidx_run_idtest_resultsCREATE INDEX idx_run_id ON test_results (run_id)U#%qindexidx_test_idtest_resultsCREATE INDEX idx_test_id ON test_results (test_id)‚R %%„gtabletest_resultstest_resultsCREATE TABLE test_results (
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          run_id INTEGER,
+          test_id TEXT,
+          status TEXT,
+          duration INTEGER, -- store duration as raw ms
+          error_message TEXT,
+          FOREIGN KEY (run_id) REFERENCES test_runs (id)
+        )P++Ytablesqlite_sequencesqlite_sequenceCREATE TABLE sqlite_sequence(name,seq)	 atabletest_runstest_runsCREATE TABLE test_runs (
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          run_date TEXT
+        )
+   
+e ãÆ©ŒoR5ûÞÁ¤‡jM0
+ö
+Ù
+¼
+Ÿ
+‚
+e                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                =2025-12-04T08:20:41.496Z =2025-12-04T07:14:18.267Z =2025-12-04T07:00:54.463Z =2025-12-04T06:02:24.714Z =2025-12-04T04:56:35.448Z =2025-12-03T07:13:26.116Z =2025-12-03T07:11:04.566Z =2025-12-03T07:01:09.845Z =2025-12-03T04:46:19.176Z =2025-12-03T04:19:50.091Z
+ =2025-12-02T16:02:04.086Z =2025-12-02T15:54:26.913Z =2025-12-02T15:37:20.940Z
+ =2025-12-02T06:49:43.809Z	 =2025-11-29T16:31:47.690Z =2025-11-29T16:30:05.372Z  =2025-11-29T16:27:04.225Z =2025-11-29T15:58:38.416Z =2025-11-29T15:55:14.030Z =2025-11-28T06:23:48.186Z =2025-11-28T06:15:08.790Z =2025-11-28T06:11:15.571Z =2025-11-28T06:04:53.546Z
+à Ñ Ñí                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+test_runs   
+test_res%test_results Ì   ›    ûöñìçâÝØÓÎÉÄ¿¹³­§¡›                                                                                                                                                                                                                                                                                                                                                                                 ‰a	 	G‘oAllyAddUser.test.ts:chromium:Verify that an Ally can create a Basic Auth + API Key Ally user.timedOutu <span style="color:#A00">Test timeout of 30000ms exceeded.<span style="color:var(--snippet-color)"></span></span>
+Error: expect(<span style="font-weight:normal;text-decoration:none;font-style:normal"><span style="color:#A00">locator<span style="color:var(--snippet-color)">).<span style="font-weight:normal;text-decoration:none;font-style:normal">toBeVisible(<span style="font-weight:normal;text-decoration:none;font-style:normal">)<span style="font-weight:normal;text-decoration:none;font-style:normal"> failed
+
+Locator: getByRole(&#039;alert&#039;, { name: &#039;User added successfully, Please continue to activate user.&#039; })
+Expected: visible
+Error: element(s) not found
+
+Call log:
+  - Expect &quot;toBeVisible&quot; with timeout 15000ms<span style="font-weight:normal;text-decoration:none;font-style:normal">
+  - waiting for getByRole(&#039;alert&#039;, { name: &#039;User added successfully, Please continue to activate user.&#039; })<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at D:\allyPortal\tests\allyUsers\AllyAddUser.test.ts:111:44</span></span></span></span></span></span></span></span>‰ 	 	3‘AllyAddUser.test.ts:chromium:Verify that an Ally can create a Basic Auth Ally user.timedOutuí<span style="color:#A00">Test timeout of 30000ms exceeded.<span style="color:var(--snippet-color)"></span></span>
+Error: expect(<span style="font-weight:normal;text-decoration:none;font-style:normal"><span style="color:#A00">locator<span style="color:var(--snippet-color)">).<span style="font-weight:normal;text-decoration:none;font-style:normal">toBeVisible(<span style="font-weight:normal;text-decoration:none;font-style:normal">)<span style="font-weight:normal;text-decoration:none;font-style:normal"> failed
+
+Locator: locator(&#039;.toast-message&#039;).filter({ hasText: /User added successfully/i })
+Expected: visible
+Error: element(s) not found
+
+Call log:
+  - Expect &quot;toBeVisible&quot; with timeout 15000ms<span style="font-weight:normal;text-decoration:none;font-style:normal">
+  - waiting for locator(&#039;.toast-message&#039;).filter({ hasText: /User added successfully/i })<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at D:\allyPortal\tests\allyUsers\AllyAddUser.test.ts:52:30</span></span></span></span></span></span></span></span>‰S	 	-‘mAllyAddUser.test.ts:chromium:Verify that an Ally can create a API Key Ally user.timedOutuæ<span style="color:#A00">Test timeout of 30000ms exceeded.<span style="color:var(--snippet-color)"></span></span>
+Error: expect(<span style="font-weight:normal;text-decoration:none;font-style:normal"><span style="color:#A00">locator<span style="color:var(--snippet-color)">).<span style="font-weight:normal;text-decoration:none;font-style:normal">toBeVisible(<span style="font-weight:normal;text-decoration:none;font-style:normal">)<span style="font-weight:normal;text-decoration:none;font-style:normal"> failed
+
+Locator: getByRole(&#039;alert&#039;, { name: &#039;User added successfully, Please continue to activate user.&#039; })
+Expected: visible
+Error: element(s) not found
+
+Call log:
+  - Expect &quot;toBeVisible&quot; with timeout 15000ms<span style="font-weight:normal;text-decoration:none;font-style:normal">
+  - waiting for getByRole(&#039;alert&#039;, { name: &#039;User added successfully, Please continue to activate user.&#039; })<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at D:\allyPor   D   A   3   (   %      {   v   n   i   [   M   F   <   4   
+)   	       k |     Í|ï	)ÐR
+[ v
+´&	ÂU{è<ïè +C¤Y Ã~î‰
+ cª©ð+
+½æ
+4›œO  ¡o            LaddWebhook.test.ts:Microsoft Edge:Validate duplicate module + URL error1P#payments.test.ts:Microsoft Edge:Validate sorting for Payments Table columns0Dpayments.test.ts:Microsoft Edge:Validate Items Per Page Options/Jpayments.test.ts:Microsoft Edge:Validate Transaction Count is Visible.Ipayments.test.ts:Microsoft Edge:Validate Payments Table Header Names-‚payments.test.ts:Microsoft Edge:Validate that the Ally is able to see all refund transactions associated with the original transaction ID,Q%payments.test.ts:Microsoft Edge:Validate teh invalid search shows no results+bGAllyAddUser.test.ts:chromium:Verify that an Ally can create a Basic Auth + API Key Ally user.*U-AllyAddUser.test.ts:chromium:Verify that an Ally can create a API Key Ally user.)@payments.test.ts:Microsoft Edge:Verify Search Functionality(xsAllyAddUser.test.ts:chromium:Verify that a validation error appears when creating a user with an existing username.'Kpayments.test.ts:Microsoft Edge:Validate Payments Page Loads Correctly&X3AllyAddUser.test.ts:chromium:Verify that an Ally can create a Basic Auth Ally user.%=login.test.ts:Microsoft Edge:Login with valid credentials$T+addWebhook.test.ts:chromium:Add new webhook with dynamic URL and select modules#FaddWebhook.test.ts:chromium:Validate duplicate module + URL error"KaddWebhook.test.ts:chromium:Add webhook with multiple modules selected!@login.test.ts:Microsoft Edge:Login with invalid credentials Kpayments.test.ts:chromium:Validate teh invalid search shows no resultsJpayments.test.ts:chromium:Validate sorting for Payments Table columnsDpayments.test.ts:chromium:Validate Transaction Count is Visible7slogin.test.ts:chromium:Login with valid credentials=payments.test.ts:chromium:Validate Items Per Page Options‚payments.test.ts:chromium:Validate that the Ally is able to see all refund transactions associated with the original transaction IDC	payments.test.ts:chromium:Validate Payments Table Header Names9wpayments.test.ts:chromium:Verify Search FunctionalityE
+payments.test.ts:chromium:Validate Payments Page Loads Correctly9wlogin.test.ts:chromium:Login with invalid credentialsbGAllyAddUser.test.ts:chromium:Verify that an Ally can create a Basic Auth + API Key Ally user.U-AllyAddUser.test.ts:chromium:Verify that an Ally can create a API Key Ally user.xsAllyAddUser.test.ts:chromium:Verify that a validation error appears when creating a user with an existing username.X3AllyAddUser.test.ts:chromium:Verify that an Ally can create a Basic Auth Ally user.T+addWebhook.test.ts:chromium:Add new webhook with dynamic URL and select modulesKaddWebhook.test.ts:chromium:Add webhook with multiple modules selectedFaddWebhook.test.ts:chromium:Validate duplicate module + URL errorKpayments.test.ts:chromium:Validate teh invalid search shows no results7slogin.test.ts:chromium:Login with valid credentials
+‚payments.test.ts:chromium:Validate that the Ally is able to see all refund transactions associated with the original transaction IDE
+payments.test.ts:chromium:Validate Payments Page Loads CorrectlyC	payments.test.ts:chromium:Validate Payments Table Header Names
+Jpayments.test.ts:chromium:Validate sorting for Payments Table columns	=payments.test.ts:chromium:Validate Items Per Page OptionsDpayments.test.ts:chromium:Validate Transaction Count is Visible 9wpayments.test.ts:chromium:Verify Search Functionality9wlogin.test.ts:chromium:Login with invalid credentialsxsA   Lpayments.test.ts:Allly_chromium:Validate Payments Page Loads Correctly ‚   
+DallyUser.test.ts:chromium:Verify the users page loads correctlyO   P!payments.test.ts:Ally_chromium:Validate sorting for Payments Table columns ±   57s   
+7slogin.test.ts:chromium:Login with val   [7addWebhook.test.ts:Allly_chromium:Add new webhook with dynamic URL and select modules •
+   Ì
+ð ü÷òíçáÛÕÏÉÃ½·±«¥Ÿ™“‡{uoic]WQKE?93-'!	ý÷ñëåßÙÓÍÇÁ»µ¯©£—‘‹…ysmga[UOIC=71+%
+ 
+û
+õ
+ï
+é
+ã
+Ý
+×
+Ñ
+Ë
+Å
+¿
+¹
+³
+­
+§
+¡
+›
+•
+
+‰
+ƒ
+}
+w
+q
+k
+e
+_
+Y
+S
+M
+G
+A
+;
+5
+/
+)
+#
+
+
+
+
+ýöïèáÚÓÌÅ¾·°©¢›”†xqjc\UNG@92+$úóìåÞ×ÐÉÂ»´­¦Ÿ˜‘Šƒ|ung`YRKD=6/(!
+þ
+÷
+ð                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 Ì Ë Ê É È Ç Æ Å Ä Ã Â Á À ¿ ¾ ½ ¼ » º ¹ ¸ · ¶ µ ´ ³ ² ± ° ¯ ® ­ ¬ « ª © ¨ § ¦ ¥ ¤ £ ¢
+ ¡
+  
+ Ÿ
+ ž
+ 
+ œ
+ ›
+ š
+ ™
+ ˜ — – • ” “ ’ ‘   Ž  Œ ‹ Š ‰ ˆ ‡ † … „ ƒ ‚  €~}|{zyxwvutsrqponmlkjih
+g
+f
+e
+d
+c
+b
+a
+`
+_
+^
+]
+\
+[
+Z
+Y
+X
+W
+V
+U
+T
+S	R	QPO N MLKJIHGFEDCBA@?>=<;:9876543210/.-,+*)('&%$#"! 
+
+	 					
+   £ *‡£                                                                                                                                                                                                                                                                                                                                                                                                                     ‰a	 	G‘oAllyAddUser.test.ts:chromium:Verify that an Ally can create a Basic Auth + API Key Ally user.timedOutu <span style="color:#A00">Test timeout of 30000ms exceeded.<span style="color:var(--snippet-color)"></span></span>
+Error: expect(<span style="font-weight:normal;text-decoration:none;font-style:normal"><span style="color:#A00">locator<span style="color:var(--snippet-color)">).<span style="font-weight:normal;text-decoration:none;font-style:normal">toBeVisible(<span style="font-weight:normal;text-decoration:none;font-style:normal">)<span style="font-weight:normal;text-decoration:none;font-style:normal"> failed
+
+Locator: getByRole(&#039;alert&#039;, { name: &#039;User added successfully, Please continue to activate user.&#039; })
+Expected: visible
+Error: element(s) not found
+
+Call log:
+  - Expect &quot;toBeVisible&quot; with timeout 15000ms<span style="font-weight:normal;text-decoration:none;font-style:normal">
+  - waiting for getByRole(&#039;alert&#039;, { name: &#039;User added successfully, Please continue to activate user.&#039; })<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at D:\allyPortal\tests\allyUsers\AllyAddUser.test.ts:111:44</span></span></span></span></span></span></span></span>‰ 	 	3‘AllyAddUser.test.ts:chromium:Verify that an Ally can create a Basic Auth Ally user.timedOutuí<span style="color:#A00">Test timeout of 30000ms exceeded.<span style="color:var(--snippet-color)"></span></span>
+Error: expect(<span style="font-weight:normal;text-decoration:none;font-style:normal"><span style="color:#A00">locator<span style="color:var(--snippet-color)">).<span style="font-weight:normal;text-decoration:none;font-style:normal">toBeVisible(<span style="font-weight:normal;text-decoration:none;font-style:normal">)<span style="font-weight:normal;text-decoration:none;font-style:normal"> failed
+
+Locator: locator(&#039;.toast-message&#039;).filter({ hasText: /User added successfully/i })
+Expected: visible
+Error: element(s) not found
+
+Call log:
+  - Expect &quot;toBeVisible&quot; with timeout 15000ms<span style="font-weight:normal;text-decoration:none;font-style:normal">
+  - waiting for locator(&#039;.toast-message&#039;).filter({ hasText: /User added successfully/i })<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at D:\allyPortal\tests\allyUsers\AllyAddUser.test.ts:52:30</span></span></span></span></span></span></span></span>‰S	 	-‘mAllyAddUser.test.ts:chromium:Verify that an Ally can create a API Key Ally user.timedOutuæ<span style="color:#A00">Test timeout of 30000ms exceeded.<span style="color:var(--snippet-color)"></span></span>
+Error: expect(<span style="font-weight:normal;text-decoration:none;font-style:normal"><span style="color:#A00">locator<span style="color:var(--snippet-color)">).<span style="font-weight:normal;text-decoration:none;font-style:normal">toBeVisible(<span style="font-weight:normal;text-decoration:none;font-style:normal">)<span style="font-weight:normal;text-decoration:none;font-style:normal"> failed
+
+Locator: getByRole(&#039;alert&#039;, { name: &#039;User added successfully, Please continue to activate user.&#039; })
+Expected: visible
+Error: element(s) not found
+
+Call log:
+  - Expect &quot;toBeVisible&quot; with timeout 15000ms<span style="font-weight:normal;text-decoration:none;font-style:normal">
+  - waiting for getByRole(&#039;alert&#039;, { name: &#039;User added successfully, Please continue to activate user.&#039; })<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at D:\allyPortal\tests\allyUsers\AllyAddUser.test.ts:91:44</span></span></span></span></span></span></span></span>
+   á F
+ÿ
+­
+b
+
+	¹	fÏŠ1 Ý „ "á                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ˆ>	 3?AllyAddUser.test.ts:chromium:Verify that an Ally can create a Basic Auth Ally user.failedq)Error: expect(<span style="font-weight:normal;text-decoration:none;font-style:normal"><span style="color:#A00">locator<span style="color:var(--snippet-color)">).<span style="font-weight:normal;text-decoration:none;font-style:normal">toBeVisible(<span style="font-weight:normal;text-decoration:none;font-style:normal">)<span style="font-weight:normal;text-decoration:none;font-style:normal"> failed
+
+Locator: locator(&#039;.toast-message&#039;).filter({ hasText: /User added successfully/i })
+Expected: visible
+Timeout: 15000ms
+Error: element(s) not found
+
+Call log:
+  - Expect &quot;toBeVisible&quot; with timeout 15000ms<span style="font-weight:normal;text-decoration:none;font-style:normal">
+  - waiting for locator(&#039;.toast-message&#039;).filter({ hasText: /User added successfully/i })<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at D:\allyPortal\tests\allyUsers\AllyAddUser.test.ts:52:30</span></span></span></span></span></span></span></span>` +
+addWebhook.test.ts:chromium:Add new webhook with dynamic URL and select modulespassedO5W 
+addWebhook.test.ts:chromium:Add webhook with multiple modules selectedpassedD¬R 
+addWebhook.test.ts:chromium:Validate duplicate module + URL errorpassedEW 
+payments.test.ts:chromium:Validate teh invalid search shows no resultspassedR<C
+  s
+login.test.ts:chromium:Login with valid credentialspassedVÐ ‚
+payments.test.ts:chromium:Validate that the Ally is able to see all refund transactions associated with the original transaction IDpassedO½Q 
+
+payments.test.ts:chromium:Validate Payments Page Loads CorrectlypassedMNO
+ 	
+payments.test.ts:chromium:Validate Payments Table Header NamespassedM³V	 
+payments.test.ts:chromium:Validate sorting for Payments Table columnspassedMãI  
+payments.test.ts:chromium:Validate Items Per Page OptionspassedJ^P  
+payments.test.ts:chromium:Validate Transaction Count is VisiblepassedD7E  w
+payments.test.ts:chromium:Verify Search Functionalitypassed<ŸE  w
+login.test.ts:chromium:Login with invalid credentialspassed.zˆp	 	seAllyAddUser.test.ts:chromium:Verify that a validation error appears when creating a user with an existing username.failedqÉError: expect(<span style="font-weight:normal;text-decoration:none;font-style:normal"><span style="color:#A00">locator<span style="color:var(--snippet-color)">).<span style="font-weight:normal;text-decoration:none;font-style:normal">toBeVisible(<span style="font-weight:normal;text-decoration:none;font-style:normal">)<span style="font-weight:normal;text-decoration:none;font-style:normal"> failed
+
+Locator: locator(&#039;.toast-message&#039;).filter({ hasText: &#039;User name already exists&#039; })
+Expected: visible
+Timeout: 5000ms
+Error: element(s) not found
+
+Call log:
+  - Expect &quot;toBeVisible&quot; with timeout 5000ms<span style="font-weight:normal;text-decoration:none;font-style:normal">
+  - waiting for locator(&#039;.toast-message&#039;).filter({ hasText: &#039;User name already exists&#039; })<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at D:\allyPortal\tests\allyUsers\AllyAddUser.test.ts:129:38</span></span></span></span></span></span></span></span>
+     ž ŒµÐ‰6 ï ž                                                                                                                                        O 	
+payments.test.ts:chromium:Validate Payments Table Header NamespassedGçE  w
+payments.test.ts:chromium:Verify Search Functionalitypassed<kQ 
+
+payments.test.ts:chromium:Validate Payments Page Loads Correctlypassed:sE  w
+login.test.ts:chromium:Login with invalid credentialspassed$õ‰b	 G‘oAllyAddUser.test.ts:chromium:Verify that an Ally can create a Basic Auth + API Key Ally user.timedOutvN<span style="color:#A00">Test timeout of 30000ms exceeded.<span style="color:var(--snippet-color)"></span></span>
+Error: expect(<span style="font-weight:normal;text-decoration:none;font-style:normal"><span style="color:#A00">locator<span style="color:var(--snippet-color)">).<span style="font-weight:normal;text-decoration:none;font-style:normal">toBeVisible(<span style="font-weight:normal;text-decoration:none;font-style:normal">)<span style="font-weight:normal;text-decoration:none;font-style:normal"> failed
+
+Locator: getByRole(&#039;alert&#039;, { name: &#039;User added successfully, Please continue to activate user.&#039; })
+Expected: visible
+Error: element(s) not found
+
+Call log:
+  - Expect &quot;toBeVisible&quot; with timeout 15000ms<span style="font-weight:normal;text-decoration:none;font-style:normal">
+  - waiting for getByRole(&#039;alert&#039;, { name: &#039;User added successfully, Please continue to activate user.&#039; })<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at D:\allyPortal\tests\allyUsers\AllyAddUser.test.ts:111:44</span></span></span></span></span></span></span></span>‰T	 -‘mAllyAddUser.test.ts:chromium:Verify that an Ally can create a API Key Ally user.timedOutv2<span style="color:#A00">Test timeout of 30000ms exceeded.<span style="color:var(--snippet-color)"></span></span>
+Error: expect(<span style="font-weight:normal;text-decoration:none;font-style:normal"><span style="color:#A00">locator<span style="color:var(--snippet-color)">).<span style="font-weight:normal;text-decoration:none;font-style:normal">toBeVisible(<span style="font-weight:normal;text-decoration:none;font-style:normal">)<span style="font-weight:normal;text-decoration:none;font-style:normal"> failed
+
+Locator: getByRole(&#039;alert&#039;, { name: &#039;User added successfully, Please continue to activate user.&#039; })
+Expected: visible
+Error: element(s) not found
+
+Call log:
+  - Expect &quot;toBeVisible&quot; with timeout 15000ms<span style="font-weight:normal;text-decoration:none;font-style:normal">
+  - waiting for getByRole(&#039;alert&#039;, { name: &#039;User added successfully, Please continue to activate user.&#039; })<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at D:\allyPortal\tests\allyUsers\AllyAddUser.test.ts:91:44</span></span></span></span></span></span></span></span>ˆq	 seAllyAddUser.test.ts:chromium:Verify that a validation error appears when creating a user with an existing username.failed]ˆError: expect(<span style="font-weight:normal;text-decoration:none;font-style:normal"><span style="color:#A00">locator<span style="color:var(--snippet-color)">).<span style="font-weight:normal;text-decoration:none;font-style:normal">toBeVisible(<span style="font-weight:normal;text-decoration:none;font-style:normal">)<span style="font-weight:normal;text-decoration:none;font-style:normal"> failed
+
+Locator: locator(&#039;.toast-message&#039;).filter({ hasText: &#039;User name already exists&#039; })
+Expected: visible
+Timeout: 5000ms
+Error: element(s) not found
+
+Call log:
+  - Expect &quot;toBeVisible&quot; with timeout 5000ms<span style="font-weight:normal;text-decoration:none;font-style:normal">
+  - waiting for locator(&#039;.toast-message&#039;).filter({ hasText: &#039;User name already exists&#039; })<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at D:\allyPortal\tests\allyUsers\AllyAddUser.test.ts:129:38</span></span></span></span></span></span></span></span>
+   } iÙ‡/
+Ö
+ˆ
+/Ûy. í ” Ò}                                                                                                                                                                                                                                                                                                                                                     ‚R)	 -ƒiAllyAddUser.test.ts:chromium:Verify that an Ally can create a API Key Ally user.timedOutv#<span style="color:#A00">Test timeout of 30000ms exceeded.<span style="color:var(--snippet-color)"></span></span>
+Error: page.waitForTimeout: Test timeout of 30000ms exceeded.
+    at D:\allyPortal\tests\allyUsers\AllyAddUser.test.ts:89:16L( 
+payments.test.ts:Microsoft Edge:Verify Search Functionalitypassed'±ˆq'	 seAllyAddUser.test.ts:chromium:Verify that a validation error appears when creating a user with an existing username.failedZEError: expect(<span style="font-weight:normal;text-decoration:none;font-style:normal"><span style="color:#A00">locator<span style="color:var(--snippet-color)">).<span style="font-weight:normal;text-decoration:none;font-style:normal">toBeVisible(<span style="font-weight:normal;text-decoration:none;font-style:normal">)<span style="font-weight:normal;text-decoration:none;font-style:normal"> failed
+
+Locator: locator(&#039;.toast-message&#039;).filter({ hasText: &#039;User name already exists&#039; })
+Expected: visible
+Timeout: 5000ms
+Error: element(s) not found
+
+Call log:
+  - Expect &quot;toBeVisible&quot; with timeout 5000ms<span style="font-weight:normal;text-decoration:none;font-style:normal">
+  - waiting for locator(&#039;.toast-message&#039;).filter({ hasText: &#039;User name already exists&#039; })<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at D:\allyPortal\tests\allyUsers\AllyAddUser.test.ts:129:38</span></span></span></span></span></span></span></span>W& 
+payments.test.ts:Microsoft Edge:Validate Payments Page Loads Correctlypassed'&ˆ>%	 3?AllyAddUser.test.ts:chromium:Verify that an Ally can create a Basic Auth Ally user.failedp‹Error: expect(<span style="font-weight:normal;text-decoration:none;font-style:normal"><span style="color:#A00">locator<span style="color:var(--snippet-color)">).<span style="font-weight:normal;text-decoration:none;font-style:normal">toBeVisible(<span style="font-weight:normal;text-decoration:none;font-style:normal">)<span style="font-weight:normal;text-decoration:none;font-style:normal"> failed
+
+Locator: locator(&#039;.toast-message&#039;).filter({ hasText: /User added successfully/i })
+Expected: visible
+Timeout: 15000ms
+Error: element(s) not found
+
+Call log:
+  - Expect &quot;toBeVisible&quot; with timeout 15000ms<span style="font-weight:normal;text-decoration:none;font-style:normal">
+  - waiting for locator(&#039;.toast-message&#039;).filter({ hasText: /User added successfully/i })<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at D:\allyPortal\tests\allyUsers\AllyAddUser.test.ts:52:30</span></span></span></span></span></span></span></span>I$  
+login.test.ts:Microsoft Edge:Login with valid credentialspassed-á`# +
+addWebhook.test.ts:chromium:Add new webhook with dynamic URL and select modulespassedDIR" 
+addWebhook.test.ts:chromium:Validate duplicate module + URL errorpassed>¦W! 
+addWebhook.test.ts:chromium:Add webhook with multiple modules selectedpassed<ÝL  
+login.test.ts:Microsoft Edge:Login with invalid credentialspassedÙW 
+payments.test.ts:chromium:Validate teh invalid search shows no resultspassedUV 
+payments.test.ts:chromium:Validate sorting for Payments Table columnspassedOðP 
+payments.test.ts:chromium:Validate Transaction Count is VisiblepassedK›C  s
+login.test.ts:chromium:Login with valid credentialspassedQI  
+payments.test.ts:chromium:Validate Items Per Page OptionspassedP	 ‚
+payments.test.ts:chromium:Validate that the Ally is able to see all refund transactions associated with the original transaction IDpassedJr
+   Â 
+¼
+	È	p	Àf þ!Â                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ]4 %
+addWebhook.test.ts:Microsoft Edge:Add webhook with multiple modules selectedpassedGs‰Z3	 9‘mAllyAddUser.test.ts:Microsoft Edge:Verify that an Ally can create a API Key Ally user.timedOutxP<span style="color:#A00">Test timeout of 30000ms exceeded.<span style="color:var(--snippet-color)"></span></span>
+Error: expect(<span style="font-weight:normal;text-decoration:none;font-style:normal"><span style="color:#A00">locator<span style="color:var(--snippet-color)">).<span style="font-weight:normal;text-decoration:none;font-style:normal">toBeVisible(<span style="font-weight:normal;text-decoration:none;font-style:normal">)<span style="font-weight:normal;text-decoration:none;font-style:normal"> failed
+
+Locator: getByRole(&#039;alert&#039;, { name: &#039;User added successfully, Please continue to activate user.&#039; })
+Expected: visible
+Error: element(s) not found
+
+Call log:
+  - Expect &quot;toBeVisible&quot; with timeout 15000ms<span style="font-weight:normal;text-decoration:none;font-style:normal">
+  - waiting for getByRole(&#039;alert&#039;, { name: &#039;User added successfully, Please continue to activate user.&#039; })<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at D:\allyPortal\tests\allyUsers\AllyAddUser.test.ts:91:44</span></span></span></span></span></span></span></span>f2 7
+addWebhook.test.ts:Microsoft Edge:Add new webhook with dynamic URL and select modulespassedK°X1 
+addWebhook.test.ts:Microsoft Edge:Validate duplicate module + URL errorpassedGœ\0 #
+payments.test.ts:Microsoft Edge:Validate sorting for Payments Table columnspassed8bP/ 
+payments.test.ts:Microsoft Edge:Validate Items Per Page Optionspassed*ˆV. 
+payments.test.ts:Microsoft Edge:Validate Transaction Count is Visiblepassed.|U- 
+payments.test.ts:Microsoft Edge:Validate Payments Table Header Namespassed/y, ‚
+payments.test.ts:Microsoft Edge:Validate that the Ally is able to see all refund transactions associated with the original transaction IDpassed8õ]+ %
+payments.test.ts:Microsoft Edge:Validate teh invalid search shows no resultspassed?‰b*	 G‘oAllyAddUser.test.ts:chromium:Verify that an Ally can create a Basic Auth + API Key Ally user.timedOutvÞ<span style="color:#A00">Test timeout of 30000ms exceeded.<span style="color:var(--snippet-color)"></span></span>
+Error: expect(<span style="font-weight:normal;text-decoration:none;font-style:normal"><span style="color:#A00">locator<span style="color:var(--snippet-color)">).<span style="font-weight:normal;text-decoration:none;font-style:normal">toBeVisible(<span style="font-weight:normal;text-decoration:none;font-style:normal">)<span style="font-weight:normal;text-decoration:none;font-style:normal"> failed
+
+Locator: getByRole(&#039;alert&#039;, { name: &#039;User added successfully, Please continue to activate user.&#039; })
+Expected: visible
+Error: element(s) not found
+
+Call log:
+  - Expect &quot;toBeVisible&quot; with timeout 15000ms<span style="font-weight:normal;text-decoration:none;font-style:normal">
+  - waiting for getByRole(&#039;alert&#039;, { name: &#039;User added successfully, Please continue to activate user.&#039; })<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at D:\allyPortal\tests\allyUsers\AllyAddUser.test.ts:111:44</span></span></span></span></span></span></span></span>
+ ¹ & ] ¥H
+ß
+u
+¶ ç ]:Ñ£7Ûr
+š
+!	¨	/¶a µ _ 	¦Cà}Áh¶]´f ¹ƒ [7AllyAddUser.test.ts:Ally_chromium:Verify that an Ally can create a API Key Ally user. ¹f .addWebhook.test.ts:Microsoft Edge:Add web~}AllyAddUser.test.ts:Ally_chromium:Verify that a validation error appears when creating a user with an existing username. º   kaddWebhook.test.ts:Allly_chromium:Validate duplicate module + URL error –LaddWebhook.test.ts:AlllyhQAllyAddUser.test.ts:Ally_chromium:Verify that an Ally can create a Basic Auth + API Key Ally user. ÌhQAllyAddUser.test.ts:Ally_chromium:Verify that an Ally can create a Basic Auth + API Key Ally user. ½^=AllyAddUser.test.ts:Ally_chromium:Verify that an Ally can create a Basic Auth Ally user. ¼Z7addWebhook.test.ts:Allly_chromium:Add new webhook with dynamic URL and select modules}X3AllyAddUser.test.ts:chromium:Verify that an Ally can create a Basic Auth Ally user._X3AllyAddUser.test.ts:chromium:Verify that an Ally can create a Basic Auth Ally user.EX3AllyAddUser.test.ts:chromium:Verify that an Ally can create a Basic Auth Ally user.%X3AllyAddUser.test.ts:chromium:Verify that an Ally can create a Basic Auth Ally user.X3AllyAddUser.test.ts:chromium:Verify that an Ally can create a Basic Auth Ally user.bGAllyAddUser.test.ts:chromium:Verify that an Ally can create a Basic Auth + API Key Ally user.dbGAllyAddUser.test.ts:chromium:Verify that an Ally can create a Basic Auth + API Key Ally user.HbGAllyAddUser.test.ts:chromium:Verify that an Ally can create a Basic Auth + API Key Ally user.*bGAllyAddUser.test.ts:chromium:Verify that an Ally can create a Basic Auth + API Key Ally user.bGAllyAddUser.test.ts:chromium:Verify that an Ally can create a Basic Auth + API Key Ally user.U-AllyAddUser.test.ts:chromium:Verify that an Ally can create a API Key Ally user.cU-AllyAddUser.test.ts:chromium:Verify that an Ally can create a API Key Ally user.GU-AllyAddUser.test.ts:chromium:Verify that an Ally can create a API Key Ally user.)U-AllyAddUser.test.ts:chromium:Verify that an Ally can create a API Key Ally user.T-	AllyAddUser.test.ts:chromium:Verify that an Ally can create a API Key Ally user.xsAllyAddUser.test.ts:chromium:Verify that a validation error appears when creating a user with an existing username.bxsAllyAddUser.test.ts:chromium:Verify that a validation error appears when creating a user with an existing username.FxsAllyAddUser.test.ts:chromium:Verify that a validation error appears when creating a user with an existing username.'xsAllyAddUser.test.ts:chromium:Verify that a validation error appears when creating a user with an existing username.xsAllyAddUser.test.ts:chromium:Verify that a validation error appears when creating a user with an existing username.^?AllyAddUser.test.ts:Microsoft Edge:Verify that an Ally can create a Basic Auth Ally user.6hSAllyAddUser.test.ts:Microsoft Edge:Verify that an Ally can create a Basic Auth + API Key Ally user.7[9AllyAddUser.test.ts:Microsoft Edge:Verify that an Ally can create a API Key Ally user.3~AllyAddUser.test.ts:Microsoft Edge:Verify that a validation error appears when creating a user with an existing username.5_?AllyAddUser.test.ts:Allly_chromium:Verify that an Ally can create a Basic Auth Ally user. Ž^?AllyAddUser.test.ts:Allly_chromium:Verify that an Ally can create a Basic Auth Ally user.ziSAllyAddUser.test.ts:Allly_chromium:Verify that an Ally can create a Basic Auth + API Key Ally user. ’hSAllyAddUser.test.ts:Allly_chromium:Verify that an Ally can create a Basic Auth + API Key Ally user.{\9AllyAddUser.test.ts:Allly_chromium:Verify that an Ally can create a API Key Ally user. ‘[9AllyAddUser.test.ts:Allly_chromium:Verify that an Ally can create a API Key Ally user.yAllyAddUser.test.ts:Allly_chromium:Verify that a validation error appears when creating a user with an existing username. ~AllyAddUser.test.ts:Allly_chromium:Verify that a validation error appears when creating a user with an existing username.|
+   / È Lù¬^ Èp#®a·b
+
+Á
+u
+)Ý–OÁm
+½
+a
+	Ê		H	¾Âj¯ ´9 i ­<Ë}(ãž•[! ç ­ s9wlogin.test.ts:chromium:Login with invalid credentialsK9wlogin.test.ts:chromium:Z5addWebhook.test.ts:Ally_chromium:Add new webhook with dynamic URL and select modules ÂLaddWebhook.test.ts:Ally_chromium:Validate duplicate module + URL error ÁQ#addWebhook.test.ts:Ally_chromium:Add webhook with multiple modules selected ÀvmallyUser.test.ts:Ally_chromium:Validate that an Ally can successfully deactivat an actective Ally users account. ¿ukallyUser.test.ts:Ally_chromium:Verify that an Ally user can successfully activate an inactive ally user account ¾S'allyUser.test.ts:Ally_chromium:Verify that an Ally can clear the search field »Z7addWebhook.test.ts:Microsoft Edge:Add new webhook with dynamic URL and select modules2MaddWebhook.test.ts:Allly_chromium:Validate duplicate module + URL error –LaddWebhook.test.ts:Allly_chromium:Validate duplicate module + URL error~R%addWebhook.test.ts:Allly_chromium:Add webhook with multiple modules selected —Q%addWebhook.test.ts:Allly_chromium:Add webhook with multiple modules selectedDallyUser.test.ts:chromium:Verify the users page loads correctlyMDallyUser.test.ts:chromium:Verify the Users page loads correctly`T+allyUser.test.ts:chromium:Verify that an Ally can search for a user by username^MallyUser.test.ts:chromium:Verify that an Ally can clear the search fieldapcallyUser.test.ts:chromium:Search under filter-container shows single matching record in 2nd table-containerRpcallyUser.test.ts:chromium:Search under filter-container shows single matching record in 2nd table-containerPpcallyUser.test.ts:chromium:Search under filter-container shows single matching record in 2nd table-containerNJallyUser.test.ts:Ally_chromium:Verify the Users page loads correctly µJallyUser.test.ts:Ally_chromium:Verify the Users page loads correctly ¢Z5allyUser.test.ts:Ally_chromium:Verify that an Ally can search for a user by username ¶Z5allyUser.test.ts:Ally_chromium:Verify that an Ally can search for a user by username ¤S'allyUser.test.ts:Ally_chromium:Verify that an Ally can clear the search field ¥D	allyUser.test.ts:Ally_chromium:Validate Items Per Page Options ·D	allyUser.test.ts:Ally_chromium:Validate Items Per Page Options §D	allyUser.test.ts:Ally_chromium:Validate Items Per Page Options £<{allyUser.test.ts:Ally_chromium:Activate/Deactivate User ¦KallyUser.test.ts:Allly_chromium:Verify the Users page loads correctly JallyUser.test.ts:Allly_chromium:Verify the Users page loads correctlyx[7allyUser.test.ts:Allly_chromium:Verify that an Ally can search for a user by username Z7allyUser.test.ts:Allly_chromium:Verify that an Ally can search for a user by usernamewT)allyUser.test.ts:Allly_chromium:Verify that an Ally can clear the search field ”S)allyUser.test.ts:Allly_chromium:Verify that an Ally can clear the search fieldvFaddWebhook.test.ts:chromium:Validate duplicate module + URL errorgFaddWebhook.test.ts:chromium:Validate duplicate module + URL errorDFaddWebhook.test.ts:chromium:Validate duplicate module + URL error"FaddWebhook.test.ts:chromium:Validate duplicate module + URL errorKaddWebhook.test.ts:chromium:Add webhook with multiple modules selectedfKaddWebhook.test.ts:chromium:Add webhook with multiple modules selectedBKaddWebhook.test.ts:chromium:Add webhook with multiple modules selected!KaddWebhook.test.ts:chromium:Add webhook with multiple modules selectedT+addWebhook.test.ts:chromium:Add new webhook with dynamic URL and select moduleseT+addWebhook.test.ts:chromium:Add new webhook with dynamic URL and select modulesCT+addWebhook.test.ts:chromium:Add new webhook with dynamic URL and select modules#T+addWebhook.test.ts:chromium:Add new webhook with dynamic URL and select modulesLaddWebhook.test.ts:Microsoft Edge:Validate duplicate module + URL error1Q%addWebhook.test.ts:Microsoft Edge:Add webhook with multiple modules selected4
+    g †ÜñªW ¿ g                                                                               V< 
+payments.test.ts:chromium:Validate sorting for Payments Table columnspassedXO; 	
+payments.test.ts:chromium:Validate Payments Table Header NamespassedOtE:  w
+payments.test.ts:chromium:Verify Search FunctionalitypassedLfQ9 
+
+payments.test.ts:chromium:Validate Payments Page Loads CorrectlypassedFzE8  w
+login.test.ts:chromium:Login with invalid credentialspassed8Â‰h7	 S‘oAllyAddUser.test.ts:Microsoft Edge:Verify that an Ally can create a Basic Auth + API Key Ally user.timedOutv<span style="color:#A00">Test timeout of 30000ms exceeded.<span style="color:var(--snippet-color)"></span></span>
+Error: expect(<span style="font-weight:normal;text-decoration:none;font-style:normal"><span style="color:#A00">locator<span style="color:var(--snippet-color)">).<span style="font-weight:normal;text-decoration:none;font-style:normal">toBeVisible(<span style="font-weight:normal;text-decoration:none;font-style:normal">)<span style="font-weight:normal;text-decoration:none;font-style:normal"> failed
+
+Locator: getByRole(&#039;alert&#039;, { name: &#039;User added successfully, Please continue to activate user.&#039; })
+Expected: visible
+Error: element(s) not found
+
+Call log:
+  - Expect &quot;toBeVisible&quot; with timeout 15000ms<span style="font-weight:normal;text-decoration:none;font-style:normal">
+  - waiting for getByRole(&#039;alert&#039;, { name: &#039;User added successfully, Please continue to activate user.&#039; })<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at D:\allyPortal\tests\allyUsers\AllyAddUser.test.ts:111:44</span></span></span></span></span></span></span></span>‰'6	 ?‘AllyAddUser.test.ts:Microsoft Edge:Verify that an Ally can create a Basic Auth Ally user.timedOutwÂ<span style="color:#A00">Test timeout of 30000ms exceeded.<span style="color:var(--snippet-color)"></span></span>
+Error: expect(<span style="font-weight:normal;text-decoration:none;font-style:normal"><span style="color:#A00">locator<span style="color:var(--snippet-color)">).<span style="font-weight:normal;text-decoration:none;font-style:normal">toBeVisible(<span style="font-weight:normal;text-decoration:none;font-style:normal">)<span style="font-weight:normal;text-decoration:none;font-style:normal"> failed
+
+Locator: locator(&#039;.toast-message&#039;).filter({ hasText: /User added successfully/i })
+Expected: visible
+Error: element(s) not found
+
+Call log:
+  - Expect &quot;toBeVisible&quot; with timeout 15000ms<span style="font-weight:normal;text-decoration:none;font-style:normal">
+  - waiting for locator(&#039;.toast-message&#039;).filter({ hasText: /User added successfully/i })<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at D:\allyPortal\tests\allyUsers\AllyAddUser.test.ts:52:30</span></span></span></span></span></span></span></span>ˆw5	 eAllyAddUser.test.ts:Microsoft Edge:Verify that a validation error appears when creating a user with an existing username.failedZError: expect(<span style="font-weight:normal;text-decoration:none;font-style:normal"><span style="color:#A00">locator<span style="color:var(--snippet-color)">).<span style="font-weight:normal;text-decoration:none;font-style:normal">toBeVisible(<span style="font-weight:normal;text-decoration:none;font-style:normal">)<span style="font-weight:normal;text-decoration:none;font-style:normal"> failed
+
+Locator: locator(&#039;.toast-message&#039;).filter({ hasText: &#039;User name already exists&#039; })
+Expected: visible
+Timeout: 5000ms
+Error: element(s) not found
+
+Call log:
+  - Expect &quot;toBeVisible&quot; with timeout 5000ms<span style="font-weight:normal;text-decoration:none;font-style:normal">
+  - waiting for locator(&#039;.toast-message&#039;).filter({ hasText: &#039;User name already exists&#039; })<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at D:\allyPortal\tests\allyUsers\AllyAddUser.test.ts:129:38</span></span></span></span></span></span></span></span>
+   
+j ®Ì‡.
+Õ
+s
+Þj                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ˆqF	 seAllyAddUser.test.ts:chromium:Verify that a validation error appears when creating a user with an existing username.failedhôError: expect(<span style="font-weight:normal;text-decoration:none;font-style:normal"><span style="color:#A00">locator<span style="color:var(--snippet-color)">).<span style="font-weight:normal;text-decoration:none;font-style:normal">toBeVisible(<span style="font-weight:normal;text-decoration:none;font-style:normal">)<span style="font-weight:normal;text-decoration:none;font-style:normal"> failed
+
+Locator: locator(&#039;.toast-message&#039;).filter({ hasText: &#039;User name already exists&#039; })
+Expected: visible
+Timeout: 5000ms
+Error: element(s) not found
+
+Call log:
+  - Expect &quot;toBeVisible&quot; with timeout 5000ms<span style="font-weight:normal;text-decoration:none;font-style:normal">
+  - waiting for locator(&#039;.toast-message&#039;).filter({ hasText: &#039;User name already exists&#039; })<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at D:\allyPortal\tests\allyUsers\AllyAddUser.test.ts:129:38</span></span></span></span></span></span></span></span>ˆ>E	 3?AllyAddUser.test.ts:chromium:Verify that an Ally can create a Basic Auth Ally user.failedqError: expect(<span style="font-weight:normal;text-decoration:none;font-style:normal"><span style="color:#A00">locator<span style="color:var(--snippet-color)">).<span style="font-weight:normal;text-decoration:none;font-style:normal">toBeVisible(<span style="font-weight:normal;text-decoration:none;font-style:normal">)<span style="font-weight:normal;text-decoration:none;font-style:normal"> failed
+
+Locator: locator(&#039;.toast-message&#039;).filter({ hasText: /User added successfully/i })
+Expected: visible
+Timeout: 15000ms
+Error: element(s) not found
+
+Call log:
+  - Expect &quot;toBeVisible&quot; with timeout 15000ms<span style="font-weight:normal;text-decoration:none;font-style:normal">
+  - waiting for locator(&#039;.toast-message&#039;).filter({ hasText: /User added successfully/i })<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at D:\allyPortal\tests\allyUsers\AllyAddUser.test.ts:52:30</span></span></span></span></span></span></span></span>RD 
+addWebhook.test.ts:chromium:Validate duplicate module + URL errorpassedG#`C +
+addWebhook.test.ts:chromium:Add new webhook with dynamic URL and select modulespassedEØWB 
+addWebhook.test.ts:chromium:Add webhook with multiple modules selectedpassedCµWA 
+payments.test.ts:chromium:Validate teh invalid search shows no resultspassedmúC@  s
+login.test.ts:chromium:Login with valid credentialspassedZ)I?  
+payments.test.ts:chromium:Validate Items Per Page OptionspassedV£> ‚
+payments.test.ts:chromium:Validate that the Ally is able to see all refund transactions associated with the original transaction IDpassedY«P= 
+payments.test.ts:chromium:Validate Transaction Count is VisiblepassedXü
+    Ç )	)âî§bÇ                                                                                                                                                                                                                                                                                                                                                                                                                                                 …M	 ‰ allyUser.test.ts:chromium:Verify the users page loads correctlytimedOutu<span style="color:#A00">Test timeout of 30000ms exceeded.<span style="color:var(--snippet-color)"></span></span>
+Error: locator.waitFor: Test timeout of 30000ms exceeded.
+Call log:
+  - waiting for locator(&#039;//h3[normalize-space()=\&#039;Users\&#039;]&#039;) to be visible<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at CommonUtils.waitForVisible (D:\allyPortal\utils\commonUtils.ts:48:19)
+    at UsersPage.validateUsersPageLoaded (D:\allyPortal\pages\users\usersPage.ts:69:26)
+    at D:\allyPortal\tests\allyUsers\allyUser.test.ts:31:21</span>CL  s
+login.test.ts:chromium:Login with valid credentialspassed4ÇEK  w
+login.test.ts:chromium:Login with invalid credentialspassed$s‡qJ sŽglogin.test.ts:chromium:Login with valid credentialsfailed^xError: expect(<span style="font-weight:normal;text-decoration:none;font-style:normal"><span style="color:#A00">locator<span style="color:var(--snippet-color)">).<span style="font-weight:normal;text-decoration:none;font-style:normal">toBeVisible(<span style="font-weight:normal;text-decoration:none;font-style:normal">)<span style="font-weight:normal;text-decoration:none;font-style:normal"> failed
+
+Locator: locator(&#039;//h3[normalize-space()=\&#039;Users\&#039;]&#039;)
+Expected: visible
+Timeout: 15000ms
+Error: element(s) not found
+
+Call log:
+  - Expect &quot;toBeVisible&quot; with timeout 15000ms<span style="font-weight:normal;text-decoration:none;font-style:normal">
+  - waiting for locator(&#039;//h3[normalize-space()=\&#039;Users\&#039;]&#039;)<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at D:\allyPortal\tests\allyLogin\login.test.ts:18:31</span></span></span></span></span></span></span></span>EI  w
+login.test.ts:chromium:Login with invalid credentialspassed>×ƒ}H	 G†%AllyAddUser.test.ts:chromium:Verify that an Ally can create a Basic Auth + API Key Ally user.timedOutu›<span style="color:#A00">Test timeout of 30000ms exceeded.<span style="color:var(--snippet-color)"></span></span>
+Error: page.waitForSelector: Test timeout of 30000ms exceeded.
+Call log:
+  - waiting for locator(&#039;.toast-message&#039;) to be visible<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at D:\allyPortal\tests\allyUsers\AllyAddUser.test.ts:110:16</span>‰TG	 -‘mAllyAddUser.test.ts:chromium:Verify that an Ally can create a API Key Ally user.timedOutvf<span style="color:#A00">Test timeout of 30000ms exceeded.<span style="color:var(--snippet-color)"></span></span>
+Error: expect(<span style="font-weight:normal;text-decoration:none;font-style:normal"><span style="color:#A00">locator<span style="color:var(--snippet-color)">).<span style="font-weight:normal;text-decoration:none;font-style:normal">toBeVisible(<span style="font-weight:normal;text-decoration:none;font-style:normal">)<span style="font-weight:normal;text-decoration:none;font-style:normal"> failed
+
+Locator: getByRole(&#039;alert&#039;, { name: &#039;User added successfully, Please continue to activate user.&#039; })
+Expected: visible
+Error: element(s) not found
+
+Call log:
+  - Expect &quot;toBeVisible&quot; with timeout 15000ms<span style="font-weight:normal;text-decoration:none;font-style:normal">
+  - waiting for getByRole(&#039;alert&#039;, { name: &#039;User added successfully, Please continue to activate user.&#039; })<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at D:\allyPortal\tests\allyUsers\AllyAddUser.test.ts:91:44</span></span></span></span></span></span></span></span>
+   " 
+uOÄrç¢[	¾m&Ó{"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              W[ 
+payments.test.ts:chromium:Validate teh invalid search shows no resultspassedaÐVZ 
+payments.test.ts:chromium:Validate sorting for Payments Table columnspassedZñQY 
+
+payments.test.ts:chromium:Validate Payments Page Loads CorrectlypassedTŸEX  w
+payments.test.ts:chromium:Verify Search FunctionalitypassedJpOW 	
+payments.test.ts:chromium:Validate Payments Table Header NamespassedJMIV  
+payments.test.ts:chromium:Validate Items Per Page OptionspassedF²PU 
+payments.test.ts:chromium:Validate Transaction Count is VisiblepassedCJET  w
+login.test.ts:chromium:Login with invalid credentialspassed5tCS  s
+login.test.ts:chromium:Login with valid credentialspassed35…R	 cˆ	allyUser.test.ts:chromium:Search under filter-container shows single matching record in 2nd table-containertimedOut »<span style="color:#A00">Test timeout of 30000ms exceeded.<span style="color:var(--snippet-color)"></span></span>
+TimeoutError: locator.waitFor: Timeout 20000ms exceeded.
+Call log:
+  - waiting for locator(&#039;div.table-container&#039;).nth(1).locator(&#039;table tbody tr&#039;).first() to be visible<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at UsersPage.searchInFilter (D:\allyPortal\pages\users\usersPage.ts:89:38)
+    at D:\allyPortal\tests\allyUsers\allyUser.test.ts:43:5</span>PQ 
+	allyUser.test.ts:chromium:Verify the users page loads correctlypassed1…P	 cˆallyUser.test.ts:chromium:Search under filter-container shows single matching record in 2nd table-containertimedOutuý<span style="color:#A00">Test timeout of 30000ms exceeded.<span style="color:var(--snippet-color)"></span></span>
+Error: locator.waitFor: Test timeout of 30000ms exceeded.
+Call log:
+  - waiting for locator(&#039;div.table-container&#039;).nth(1).locator(&#039;table tbody tr&#039;).first() to be visible<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at UsersPage.searchInFilter (D:\allyPortal\pages\users\usersPage.ts:89:38)
+    at D:\allyPortal\tests\allyUsers\allyUser.test.ts:43:5</span>„#O	 ‡1allyUser.test.ts:chromium:Verify the users page loads correctlyfailedd#TimeoutError: locator.waitFor: Timeout 15000ms exceeded.
+Call log:
+  - waiting for locator(&#039;//h3[normalize-space()=\&#039;Users\&#039;]&#039;) to be visible<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at CommonUtils.waitForVisible (D:\allyPortal\utils\commonUtils.ts:48:19)
+    at UsersPage.validateUsersPageLoaded (D:\allyPortal\pages\users\usersPage.ts:69:26)
+    at D:\allyPortal\tests\allyUsers\allyUser.test.ts:31:21</span>…N	 cˆ allyUser.test.ts:chromium:Search under filter-container shows single matching record in 2nd table-containertimedOutu<span style="color:#A00">Test timeout of 30000ms exceeded.<span style="color:var(--snippet-color)"></span></span>
+Error: locator.waitFor: Test timeout of 30000ms exceeded.
+Call log:
+  - waiting for locator(&#039;div.table-container&#039;).nth(1).locator(&#039;table tbody tr&#039;).first() to be visible<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at UsersPage.searchInFilter (D:\allyPortal\pages\users\usersPage.ts:89:38)
+    at D:\allyPortal\tests\allyUsers\allyUser.test.ts:43:5</span>
+    Š	¢	@Úˆ- ¦ CÓqÄî                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        …_i	 Špayments.test.ts:Allly_chromium:Validate Transaction Count is VisibletimedOutv«<span style="color:#A00">Test timeout of 30000ms exceeded while running &quot;beforeEach&quot; hook.<span style="color:var(--snippet-color)">
+    at D:\allyPortal\tests\allyPayments\payments.test.ts:21:11</span></span>
+Error: locator.click: Test timeout of 30000ms exceeded.
+Call log:
+  - waiting for getByRole(&#039;link&#039;, { name: &#039;Payments&#039; })<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at CommonUtils.click (D:\allyPortal\utils\commonUtils.ts:38:19)
+    at SideMenuPage.openPayments (D:\allyPortal\pages\SideMenuPage.ts:37:5)
+    at D:\allyPortal\tests\allyPayments\payments.test.ts:30:5</span>Sh	 ‚login.test.ts:Allly_chromium:Login with invalid credentialsfailedGTypeError: Cannot read properties of undefined (reading &#039;username&#039;)
+    at D:\allyPortal\tests\allyLogin\login.test.ts:33:40Rg 
+addWebhook.test.ts:chromium:Validate duplicate module + URL errorpassed[<Wf 
+addWebhook.test.ts:chromium:Add webhook with multiple modules selectedpassedD`e +
+addWebhook.test.ts:chromium:Add new webhook with dynamic URL and select modulespassedIñnd G
+AllyAddUser.test.ts:chromium:Verify that an Ally can create a Basic Auth + API Key Ally user.passedYÆac -
+AllyAddUser.test.ts:chromium:Verify that an Ally can create a API Key Ally user.passedYˆb s
+AllyAddUser.test.ts:chromium:Verify that a validation error appears when creating a user with an existing username.passedKYYa 
+allyUser.test.ts:chromium:Verify that an Ally can clear the search fieldpassed;…P` 
+allyUser.test.ts:chromium:Verify the Users page loads correctlypassedFÉd_ 3
+AllyAddUser.test.ts:chromium:Verify that an Ally can create a Basic Auth Ally user.passedZí`^ +
+allyUser.test.ts:chromium:Verify that an Ally can search for a user by usernamepassed@+ƒe]	 ‚…)
+payments.test.ts:chromium:Validate that the Ally is able to see all refund transactions associated with the original transaction IDtimedOutuú<span style="color:#A00">Test timeout of 30000ms exceeded.<span style="color:var(--snippet-color)"></span></span>
+Error: locator.count: Test timeout of 30000ms exceeded.
+    at PaymentsPage.validateSearchResultsContain (D:\allyPortal\pages\payments\paymentsPage.ts:95:43)
+    at D:\allyPortal\tests\allyPayments\payments.test.ts:154:5ˆs\	 #9
+paymentWidget.test.ts:chromium:Create Payment Token â†’ Open Payment Widgetfailed.­Error: expect(<span style="font-weight:normal;text-decoration:none;font-style:normal"><span style="color:#A00">locator<span style="color:var(--snippet-color)">).<span style="font-weight:normal;text-decoration:none;font-style:normal">toBeVisible(<span style="font-weight:normal;text-decoration:none;font-style:normal">)<span style="font-weight:normal;text-decoration:none;font-style:normal"> failed
+
+Locator: locator(&#039;span:has-text(&quot;Payment Method&quot;)&#039;)
+Expected: visible
+Timeout: 5000ms
+Error: element(s) not found
+
+Call log:
+  - Expect &quot;toBeVisible&quot; with timeout 5000ms<span style="font-weight:normal;text-decoration:none;font-style:normal">
+  - waiting for locator(&#039;span:has-text(&quot;Payment Method&quot;)&#039;)<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at PaymentWidgetPage.verifyPageLoaded (D:\allyPortal\pages\payments\PaymentWidgetPage.ts:44:44)
+    at D:\allyPortal\tests\allyPayments\paymentWidget.test.ts:42:27</span></span></span></span></span></span></span></span>
+   1 È 7 ö ´ r 4õ¶u7ö¸~D
+Ð–\ÈX è°J
+ã
+~
+«=ß€‘`ú”. È
+µ÷
+H$	êÆ	™	T	È|                                        IJpayments.test.ts:Ally_chromium:Validate TransaeKpaymentWidget.test.ts:Ally_chromium:Verify Create Payment Token â†’ Open Payment Widget for ACH ËeKpaymentWidget.test.ts:Ally_chromium:Verify Create Payment Token â†’ Open Payment Widget for ACH ÊeKpaymentWidget.test.ts:Ally_chromium:Verify Create Payment Token â†’ Open Payment Widget for ACH ÉeKpaymentWidget.test.ts:Ally_chromium:Verify Create Payment Token â†’ Open Payment Widget for ACH ÈeKpaymentWidget.test.ts:Ally_chromium:Verify Create Payment Token â†’ Open Payment Widget for ACH Ç];paymentWidget.test.ts:Ally_chromium:Verify the validation for alredy used payment token ÆlYpaymentWidget.test.ts:Ally_chromium:Verify Create Payment Token â†’ Open Payment Widget for debit card ÅeKpaymentWidget.test.ts:Ally_chromium:Verify Create Payment Token â†’ Open Payment Widget for ACH ÄdIpaymentWidget.test.ts:Ally_chromium:Verify Create Payment Token â†’ Open Payment Widget for CC Ã9wlogin.test.ts:chromium:Login with invalid credentialsT9wlogin.test.ts:chromium:Login with invalid credentialsK9wlogin.test.ts:chromium:Login with invalid credentialsI9wlogin.test.ts:chromium:Login with invalid credentials89wlogin.test.ts:chromium:Login with invalid credentials9wlogin.test.ts:chromium:Login with invalid credentials=login.test.ts:Microsoft Edge:Login with valid credentials$@login.test.ts:Microsoft Edge:Login with invalid credentials =}login.test.ts:Ally_chromium:Login with valid credentials °@login.test.ts:Ally_chromium:Login with invalid credentials ¨>login.test.ts:Allly_chromium:Login with valid credentials Ÿ>login.test.ts:Allly_chromium:Login with valid credentials „=login.test.ts:Allly_chromium:Login with valid credentialsoAlogin.test.ts:Allly_chromium:Login with invalid credentials ˜Alogin.test.ts:Allly_chromium:Login with invalid credentials €@login.test.ts:Allly_chromium:Login with invalid credentialshDallyUser.test.ts:chromium:Verify the users page loads correctlyQKpayments.test.ts:Allly_chromium:Validate Payments Page Loads CorrectlylEpayments.test.ts:Allly_chromium:Validate Items Per Page Options ™Epayments.test.ts:Allly_chromium:Validate Items Per Page Options Dpayments.test.ts:Allly_chromium:Validate Items Per Page OptionsqP#paymentWidget.test.ts:chromium:Create Payment Token â†’ Open Payment Widget\];paymentWidget.test.ts:Ally_chromium:Verify the validation for alredy used payment token ¸lYpaymentWidget.test.ts:Ally_chromium:Verify Create Payment Token â†’ Open Payment Widget for debit card ®dIpaymentWidget.test.ts:Ally_chromium:Verify Create Payment Token â†’ Open Payment Widget for CC «eKpaymentWidget.test.ts:Ally_chromium:Verify Create Payment Token â†’ Open Payment Widget for ACH ©^=paymentWidget.test.ts:Allly_chromium:Verify the validation for alredy used payment token ‹]=paymentWidget.test.ts:Allly_chromium:Verify the validation for alredy used payment tokensm[paymentWidget.test.ts:Allly_chromium:Verify Create Payment Token â†’ Open Payment Widget for debit card Œl[paymentWidget.test.ts:Allly_chromium:Verify Create Payment Token â†’ Open Payment Widget for debit cardteKpaymentWidget.test.ts:Allly_chromium:Verify Create Payment Token â†’ Open Payment Widget for CC “dKpaymentWidget.test.ts:Allly_chromium:Verify Create Payment Token â†’ Open Payment Widget for CCufMpaymentWidget.test.ts:Allly_chromium:Verify Create Payment Token â†’ Open Payment Widget for ACH ŠeMpaymentWidget.test.ts:Allly_chromium:Verify Create Payment Token â†’ Open Payment Widget for ACHr7slogin.test.ts:chromium:Login with valid credentialsS7slogin.test.ts:chromium:Login with valid credentialsL7slogin.test.ts:chromium:Login with valid credentialsJ7slogin.test.ts:chromium:Login with valid credentials@7slogin.test.ts:chromium:Login with valid credentials7slogin.test.ts:chromium:Login with valid credentials
+
+   U 
+	ñ -U                                                                                                                                                                                                                                                                                                                                   …Un	 Špayments.test.ts:Allly_chromium:Verify Search FunctionalitytimedOutvÕ<span style="color:#A00">Test timeout of 30000ms exceeded while running &quot;beforeEach&quot; hook.<span style="color:var(--snippet-color)">
+    at D:\allyPortal\tests\allyPayments\payments.test.ts:21:11</span></span>
+Error: locator.click: Test timeout of 30000ms exceeded.
+Call log:
+  - waiting for getByRole(&#039;link&#039;, { name: &#039;Payments&#039; })<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at CommonUtils.click (D:\allyPortal\utils\commonUtils.ts:38:19)
+    at SideMenuPage.openPayments (D:\allyPortal\pages\SideMenuPage.ts:37:5)
+    at D:\allyPortal\tests\allyPayments\payments.test.ts:30:5</span>…^m	 Špayments.test.ts:Allly_chromium:Validate Payments Table Header NamestimedOutwP<span style="color:#A00">Test timeout of 30000ms exceeded while running &quot;beforeEach&quot; hook.<span style="color:var(--snippet-color)">
+    at D:\allyPortal\tests\allyPayments\payments.test.ts:21:11</span></span>
+Error: locator.click: Test timeout of 30000ms exceeded.
+Call log:
+  - waiting for getByRole(&#039;link&#039;, { name: &#039;Payments&#039; })<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at CommonUtils.click (D:\allyPortal\utils\commonUtils.ts:38:19)
+    at SideMenuPage.openPayments (D:\allyPortal\pages\SideMenuPage.ts:37:5)
+    at D:\allyPortal\tests\allyPayments\payments.test.ts:30:5</span>…`l	 Špayments.test.ts:Allly_chromium:Validate Payments Page Loads CorrectlytimedOutw<span style="color:#A00">Test timeout of 30000ms exceeded while running &quot;beforeEach&quot; hook.<span style="color:var(--snippet-color)">
+    at D:\allyPortal\tests\allyPayments\payments.test.ts:21:11</span></span>
+Error: locator.click: Test timeout of 30000ms exceeded.
+Call log:
+  - waiting for getByRole(&#039;link&#039;, { name: &#039;Payments&#039; })<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at CommonUtils.click (D:\allyPortal\utils\commonUtils.ts:38:19)
+    at SideMenuPage.openPayments (D:\allyPortal\pages\SideMenuPage.ts:37:5)
+    at D:\allyPortal\tests\allyPayments\payments.test.ts:30:5</span>†#k	 ‚Špayments.test.ts:Allly_chromium:Validate that the Ally is able to see all refund transactions associated with the original transaction IDtimedOutwo<span style="color:#A00">Test timeout of 30000ms exceeded while running &quot;beforeEach&quot; hook.<span style="color:var(--snippet-color)">
+    at D:\allyPortal\tests\allyPayments\payments.test.ts:21:11</span></span>
+Error: locator.click: Test timeout of 30000ms exceeded.
+Call log:
+  - waiting for getByRole(&#039;link&#039;, { name: &#039;Payments&#039; })<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at CommonUtils.click (D:\allyPortal\utils\commonUtils.ts:38:19)
+    at SideMenuPage.openPayments (D:\allyPortal\pages\SideMenuPage.ts:37:5)
+    at D:\allyPortal\tests\allyPayments\payments.test.ts:30:5</span>…fj	 %Špayments.test.ts:Allly_chromium:Validate teh invalid search shows no resultstimedOutvn<span style="color:#A00">Test timeout of 30000ms exceeded while running &quot;beforeEach&quot; hook.<span style="color:var(--snippet-color)">
+    at D:\allyPortal\tests\allyPayments\payments.test.ts:21:11</span></span>
+Error: locator.click: Test timeout of 30000ms exceeded.
+Call log:
+  - waiting for getByRole(&#039;link&#039;, { name: &#039;Payments&#039; })<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at CommonUtils.click (D:\allyPortal\utils\commonUtils.ts:38:19)
+    at SideMenuPage.openPayments (D:\allyPortal\pages\SideMenuPage.ts:37:5)
+    at D:\allyPortal\tests\allyPayments\payments.test.ts:30:5</span>
+    £»ßl‡                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         „v	 )†OallyUser.test.ts:Allly_chromium:Verify that an Ally can clear the search fieldfailedt3TimeoutError: locator.click: Timeout 15000ms exceeded.
+Call log:
+  - waiting for getByRole(&#039;link&#039;, { name: &#039;Users&#039; })<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at CommonUtils.click (D:\allyPortal\utils\commonUtils.ts:38:19)
+    at SideMenuPage.openUsers (D:\allyPortal\pages\SideMenuPage.ts:32:5)
+    at D:\allyPortal\tests\allyUsers\allyUser.test.ts:23:5</span>pu K
+paymentWidget.test.ts:Allly_chromium:Verify Create Payment Token â†’ Open Payment Widget for CCpassedgxt [
+paymentWidget.test.ts:Allly_chromium:Verify Create Payment Token â†’ Open Payment Widget for debit cardpassedQ/is =
+paymentWidget.test.ts:Allly_chromium:Verify the validation for alredy used payment tokenpassed4µqr M
+paymentWidget.test.ts:Allly_chromium:Verify Create Payment Token â†’ Open Payment Widget for ACHpassedGP…Yq	 Špayments.test.ts:Allly_chromium:Validate Items Per Page OptionstimedOutw<span style="color:#A00">Test timeout of 30000ms exceeded while running &quot;beforeEach&quot; hook.<span style="color:var(--snippet-color)">
+    at D:\allyPortal\tests\allyPayments\payments.test.ts:21:11</span></span>
+Error: locator.click: Test timeout of 30000ms exceeded.
+Call log:
+  - waiting for getByRole(&#039;link&#039;, { name: &#039;Payments&#039; })<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at CommonUtils.click (D:\allyPortal\utils\commonUtils.ts:38:19)
+    at SideMenuPage.openPayments (D:\allyPortal\pages\SideMenuPage.ts:37:5)
+    at D:\allyPortal\tests\allyPayments\payments.test.ts:30:5</span>…ep	 #Špayments.test.ts:Allly_chromium:Validate sorting for Payments Table columnstimedOutwR<span style="color:#A00">Test timeout of 30000ms exceeded while running &quot;beforeEach&quot; hook.<span style="color:var(--snippet-color)">
+    at D:\allyPortal\tests\allyPayments\payments.test.ts:21:11</span></span>
+Error: locator.click: Test timeout of 30000ms exceeded.
+Call log:
+  - waiting for getByRole(&#039;link&#039;, { name: &#039;Payments&#039; })<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at CommonUtils.click (D:\allyPortal\utils\commonUtils.ts:38:19)
+    at SideMenuPage.openPayments (D:\allyPortal\pages\SideMenuPage.ts:37:5)
+    at D:\allyPortal\tests\allyPayments\payments.test.ts:30:5</span>ˆZo )login.test.ts:Allly_chromium:Login with valid credentialstimedOutvÔ<span style="color:#A00">Test timeout of 30000ms exceeded.<span style="color:var(--snippet-color)"></span></span>
+Error: expect(<span style="font-weight:normal;text-decoration:none;font-style:normal"><span style="color:#A00">locator<span style="color:var(--snippet-color)">).<span style="font-weight:normal;text-decoration:none;font-style:normal">toBeVisible(<span style="font-weight:normal;text-decoration:none;font-style:normal">)<span style="font-weight:normal;text-decoration:none;font-style:normal"> failed
+
+Locator: locator(&#039;//h3[normalize-space()=\&#039;Users\&#039;]&#039;)
+Expected: visible
+Error: element(s) not found
+
+Call log:
+  - Expect &quot;toBeVisible&quot; with timeout 15000ms<span style="font-weight:normal;text-decoration:none;font-style:normal">
+  - waiting for locator(&#039;//h3[normalize-space()=\&#039;Users\&#039;]&#039;)<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at D:\allyPortal\tests\allyLogin\login.test.ts:18:31</span></span></span></span></span></span></span></span>
+   r 
+
+F Zkr                                                                                                                                                                                                                                                                                                                                                                …v{	 SŠAllyAddUser.test.ts:Allly_chromium:Verify that an Ally can create a Basic Auth + API Key Ally user.timedOutyË<span style="color:#A00">Test timeout of 30000ms exceeded while running &quot;beforeEach&quot; hook.<span style="color:var(--snippet-color)">
+    at D:\allyPortal\tests\allyUsers\AllyAddUser.test.ts:18:8</span></span>
+Error: locator.click: Test timeout of 30000ms exceeded.
+Call log:
+  - waiting for getByRole(&#039;link&#039;, { name: &#039;Users&#039; })<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at CommonUtils.click (D:\allyPortal\utils\commonUtils.ts:38:19)
+    at SideMenuPage.openUsers (D:\allyPortal\pages\SideMenuPage.ts:32:5)
+    at D:\allyPortal\tests\allyUsers\AllyAddUser.test.ts:26:5</span>…lz	 ?ŠAllyAddUser.test.ts:Allly_chromium:Verify that an Ally can create a Basic Auth Ally user.timedOutyÒ<span style="color:#A00">Test timeout of 30000ms exceeded while running &quot;beforeEach&quot; hook.<span style="color:var(--snippet-color)">
+    at D:\allyPortal\tests\allyUsers\AllyAddUser.test.ts:18:8</span></span>
+Error: locator.click: Test timeout of 30000ms exceeded.
+Call log:
+  - waiting for getByRole(&#039;link&#039;, { name: &#039;Users&#039; })<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at CommonUtils.click (D:\allyPortal\utils\commonUtils.ts:38:19)
+    at SideMenuPage.openUsers (D:\allyPortal\pages\SideMenuPage.ts:32:5)
+    at D:\allyPortal\tests\allyUsers\AllyAddUser.test.ts:26:5</span>…iy	 9ŠAllyAddUser.test.ts:Allly_chromium:Verify that an Ally can create a API Key Ally user.timedOutyÉ<span style="color:#A00">Test timeout of 30000ms exceeded while running &quot;beforeEach&quot; hook.<span style="color:var(--snippet-color)">
+    at D:\allyPortal\tests\allyUsers\AllyAddUser.test.ts:18:8</span></span>
+Error: locator.click: Test timeout of 30000ms exceeded.
+Call log:
+  - waiting for getByRole(&#039;link&#039;, { name: &#039;Users&#039; })<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at CommonUtils.click (D:\allyPortal\utils\commonUtils.ts:38:19)
+    at SideMenuPage.openUsers (D:\allyPortal\pages\SideMenuPage.ts:32:5)
+    at D:\allyPortal\tests\allyUsers\AllyAddUser.test.ts:26:5</span>…Rx	 ‰allyUser.test.ts:Allly_chromium:Verify the Users page loads correctlytimedOuty‘<span style="color:#A00">Test timeout of 30000ms exceeded while running &quot;beforeEach&quot; hook.<span style="color:var(--snippet-color)">
+    at D:\allyPortal\tests\allyUsers\allyUser.test.ts:14:8</span></span>
+Error: locator.click: Test timeout of 30000ms exceeded.
+Call log:
+  - waiting for getByRole(&#039;link&#039;, { name: &#039;Users&#039; })<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at CommonUtils.click (D:\allyPortal\utils\commonUtils.ts:38:19)
+    at SideMenuPage.openUsers (D:\allyPortal\pages\SideMenuPage.ts:32:5)
+    at D:\allyPortal\tests\allyUsers\allyUser.test.ts:23:5</span>…bw	 7‰allyUser.test.ts:Allly_chromium:Verify that an Ally can search for a user by usernametimedOutyÐ<span style="color:#A00">Test timeout of 30000ms exceeded while running &quot;beforeEach&quot; hook.<span style="color:var(--snippet-color)">
+    at D:\allyPortal\tests\allyUsers\allyUser.test.ts:14:8</span></span>
+Error: locator.click: Test timeout of 30000ms exceeded.
+Call log:
+  - waiting for getByRole(&#039;link&#039;, { name: &#039;Users&#039; })<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at CommonUtils.click (D:\allyPortal\utils\commonUtils.ts:38:19)
+    at SideMenuPage.openUsers (D:\allyPortal\pages\SideMenuPage.ts:32:5)
+    at D:\allyPortal\tests\allyUsers\allyUser.test.ts:23:5</span>
+    š ñ
+ÜÕÉz'Ín"Ê{"Â$°DÉp š                                                                                                          f 7
+allyUser.test.ts:Allly_chromium:Verify that an Ally can search for a user by usernamepassed4‹j ?
+AllyAddUser.test.ts:Allly_chromium:Verify that an Ally can create a Basic Auth Ally user.passedBÙV
+ 
+allyUser.test.ts:Allly_chromium:Verify the Users page loads correctlypassed5Ax [
+paymentWidget.test.ts:Allly_chromium:Verify Create Payment Token â†’ Open Payment Widget for debit cardpassed@²i =
+paymentWidget.test.ts:Allly_chromium:Verify the validation for alredy used payment tokenpassed*vq
+ M
+paymentWidget.test.ts:Allly_chromium:Verify Create Payment Token â†’ Open Payment Widget for ACHpassed<À	 ‚
+payments.test.ts:Allly_chromium:Validate that the Ally is able to see all refund transactions associated with the original transaction IDpassedg] %
+payments.test.ts:Allly_chromium:Validate teh invalid search shows no resultspassedbV  
+payments.test.ts:Allly_chromium:Validate Transaction Count is Visiblepassed^ùL 
+payments.test.ts:Allly_chromium:Verify Search FunctionalitypassedZ†U 
+payments.test.ts:Allly_chromium:Validate Payments Table Header NamespassedY³I  
+login.test.ts:Allly_chromium:Login with valid credentialspassedVv\ #
+payments.test.ts:Allly_chromium:Validate sorting for Payments Table columnspassedPKW 
+payments.test.ts:Allly_chromium:Validate Payments Page Loads CorrectlypassedN&P 
+payments.test.ts:Allly_chromium:Validate Items Per Page OptionspassedEÐL  
+login.test.ts:Allly_chromium:Login with invalid credentialspassed5„		 %†caddWebhook.test.ts:Allly_chromium:Add webhook with multiple modules selectedfailedr9TimeoutError: locator.click: Timeout 15000ms exceeded.
+Call log:
+  - waiting for getByRole(&#039;link&#039;, { name: &#039;Webhooks&#039; })<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at CommonUtils.click (D:\allyPortal\utils\commonUtils.ts:38:19)
+    at SideMenuPage.openWebhooks (D:\allyPortal\pages\SideMenuPage.ts:43:5)
+    at D:\allyPortal\tests\allyWebhook\addWebhook.test.ts:21:5</span>„~	 †caddWebhook.test.ts:Allly_chromium:Validate duplicate module + URL errorfailedr½TimeoutError: locator.click: Timeout 15000ms exceeded.
+Call log:
+  - waiting for getByRole(&#039;link&#039;, { name: &#039;Webhooks&#039; })<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at CommonUtils.click (D:\allyPortal\utils\commonUtils.ts:38:19)
+    at SideMenuPage.openWebhooks (D:\allyPortal\pages\SideMenuPage.ts:43:5)
+    at D:\allyPortal\tests\allyWebhook\addWebhook.test.ts:21:5</span>„}	 7†caddWebhook.test.ts:Allly_chromium:Add new webhook with dynamic URL and select modulesfaileds‡TimeoutError: locator.click: Timeout 15000ms exceeded.
+Call log:
+  - waiting for getByRole(&#039;link&#039;, { name: &#039;Webhooks&#039; })<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at CommonUtils.click (D:\allyPortal\utils\commonUtils.ts:38:19)
+    at SideMenuPage.openWebhooks (D:\allyPortal\pages\SideMenuPage.ts:43:5)
+    at D:\allyPortal\tests\allyWebhook\addWebhook.test.ts:21:5</span>†|	 ŠAllyAddUser.test.ts:Allly_chromium:Verify that a validation error appears when creating a user with an existing username.timedOutyÇ<span style="color:#A00">Test timeout of 30000ms exceeded while running &quot;beforeEach&quot; hook.<span style="color:var(--snippet-color)">
+    at D:\allyPortal\tests\allyUsers\AllyAddUser.test.ts:18:8</span></span>
+Error: locator.click: Test timeout of 30000ms exceeded.
+Call log:
+  - waiting for getByRole(&#039;link&#039;, { name: &#039;Users&#039; })<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at CommonUtils.click (D:\allyPortal\utils\commonUtils.ts:38:19)
+    at SideMenuPage.openUsers (D:\allyPortal\pages\SideMenuPage.ts:32:5)
+    at D:\allyPortal\tests\allyUsers\AllyAddUser.test.ts:26:5</span>
+    Š r‘
+¼
+Sø˜Jø¡I
+û
+^	ÿ	´	[ý¥S ë Š                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      ^% '
+allyUser.test.ts:Ally_chromium:Verify that an Ally can clear the search fieldpassedpÈe$ 5
+allyUser.test.ts:Ally_chromium:Verify that an Ally can search for a user by usernamepassedl6O# 	
+allyUser.test.ts:Ally_chromium:Validate Items Per Page OptionspassedgVU" 
+allyUser.test.ts:Ally_chromium:Verify the Users page loads correctlypassedc[! #
+
+payments.test.ts:Allly_chromium:Validate sorting for Payments Table columnsskippedV  
+
+payments.test.ts:Allly_chromium:Validate Payments Page Loads CorrectlyskippedH  
+
+login.test.ts:Allly_chromium:Login with valid credentialsskipped\ %
+
+payments.test.ts:Allly_chromium:Validate teh invalid search shows no resultsskipped ‚
+
+payments.test.ts:Allly_chromium:Validate that the Ally is able to see all refund transactions associated with the original transaction IDskippedK 
+
+payments.test.ts:Allly_chromium:Verify Search FunctionalityskippedU 
+
+payments.test.ts:Allly_chromium:Validate Transaction Count is VisibleskippedT 
+
+payments.test.ts:Allly_chromium:Validate Payments Table Header NamesskippedO 
+
+payments.test.ts:Allly_chromium:Validate Items Per Page OptionsskippedK 
+
+login.test.ts:Allly_chromium:Login with invalid credentialsskipped] %
+addWebhook.test.ts:Allly_chromium:Add webhook with multiple modules selectedpassedO#X 
+addWebhook.test.ts:Allly_chromium:Validate duplicate module + URL errorpassedMYf 7
+addWebhook.test.ts:Allly_chromium:Add new webhook with dynamic URL and select modulespassedFb_ )
+allyUser.test.ts:Allly_chromium:Verify that an Ally can clear the search fieldpassed=Cp K
+paymentWidget.test.ts:Allly_chromium:Verify Create Payment Token â†’ Open Payment Widget for CCpasseddQt S
+AllyAddUser.test.ts:Allly_chromium:Verify that an Ally can create a Basic Auth + API Key Ally user.passedL÷g 9
+AllyAddUser.test.ts:Allly_chromium:Verify that an Ally can create a API Key Ally user.passedLŒ
+ 
+AllyAddUser.test.ts:Allly_chromium:Verify that a validation error appears when creating a user with an existing username.passedGØ
+   +£ £O3
+¾t% Ô ‚ò±s5÷¹s-ç¡¼x4ð«f!
+Ü
+‘
+Fû°dÌ€
+ö
+l	â	X	äªp                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ‚payments.test.ts:Ally_chromium:Validate that the Ally is able to see all refund transactions associated with the original transaction ID ´@payments.test.ts:Ally_chromium:Verify Search Functionality ²Ipayments.test.ts:Microsoft Edge:Validate Payments Table Header Names-Kpayments.test.ts:Microsoft Edge:Validate Payments Page Loads Correctly&Dpayments.test.ts:Microsoft Edge:Validate Items Per Page Options/Q#payments.test.ts:Ally_chromium:Validate the invalid search shows no results ¬E
+payments.test.ts:chromium:Validate Payments Page Loads CorrectlyYE
+payments.test.ts:chromium:Validate Payments Page Loads Correctly9E
+payments.test.ts:chromium:Validate Payments Page Loads CorrectlyE
+payments.test.ts:chromium:Validate Payments Page Loads Correctly=payments.test.ts:chromium:Validate Items Per Page OptionsV=payments.test.ts:chromium:Validate Items Per Page Options?=payments.test.ts:chromium:Validate Items Per Page Options=payments.test.ts:chromium:Validate Items Per Page Options@payments.test.ts:Microsoft Edge:Verify Search Functionality(‚payments.test.ts:Microsoft Edge:Validate that the Ally is able to see all refund transactions associated with the original transaction ID,Q%payments.test.ts:Microsoft Edge:Validate teh invalid search shows no results+P#payments.test.ts:Microsoft Edge:Validate sorting for Payments Table columns0Jpayments.test.ts:Microsoft Edge:Validate Transaction Count is Visible.9wpayments.test.ts:chromium:Verify Search FunctionalityX9wpayments.test.ts:chromium:Verify Search Functionality:9wpayments.test.ts:chromium:Verify Search Functionality9wpayments.test.ts:chromium:Verify Search Functionality‚payments.test.ts:chromium:Validate that the Ally is able to see all refund transactions associated with the original transaction ID]‚payments.test.ts:chromium:Validate that the Ally is able to see all refund transactions associated with the original transaction ID>‚payments.test.ts:chromium:Validate that the Ally is able to see all refund transactions associated with the original transaction ID‚payments.test.ts:chromium:Validate that the Ally is able to see all refund transactions associated with the original transaction IDKpayments.test.ts:chromium:Validate teh invalid search shows no results[Kpayments.test.ts:chromium:Validate teh invalid search shows no resultsAKpayments.test.ts:chromium:Validate teh invalid search shows no resultsKpayments.test.ts:chromium:Validate teh invalid search shows no resultsJpayments.test.ts:chromium:Validate sorting for Payments Table columnsZJpayments.test.ts:chromium:Validate sorting for Payments Table columns<Jpayments.test.ts:chromium:Validate sorting for Payments Table columnsJpayments.test.ts:chromium:Validate sorting for Payments Table columns	Dpayments.test.ts:chromium:Validate Transaction Count is VisibleUDpayments.test.ts:chromium:Validate Transaction Count is Visible=Dpayments.test.ts:chromium:Validate Transaction Count is VisibleDpayments.test.ts:chromium:Validate Transaction Count is Visible C	payments.test.ts:chromium:Validate Payments Table Header NamesWC	payments.test.ts:chromium:Validate Payments Table Header Names;C	payments.test.ts:chromium:Validate Payments Table Header NamesC	payments.test.ts:chromium:Validate Payments Table Header Names
+
+    ‰ ) × ‰                                                                                                                           K( 
+login.test.ts:Ally_chromium:Login with invalid credentialspassedFwO' 	
+allyUser.test.ts:Ally_chromium:Validate Items Per Page Optionspassed`›S& {º#allyUser.test.ts:Ally_chromium:Activate/Deactivate UserfailedPÁError: expect(<span style="font-weight:normal;text-decoration:none;font-style:normal"><span style="color:#A00">locator<span style="color:var(--snippet-color)">).<span style="font-weight:normal;text-decoration:none;font-style:normal">toBeVisible(<span style="font-weight:normal;text-decoration:none;font-style:normal">)<span style="font-weight:normal;text-decoration:none;font-style:normal"> failed
+
+Locator: locator(&#039;text=Activate&#039;)
+Expected: visible
+Error: strict mode violation: locator(&#039;text=Activate&#039;) resolved to 10 elements:
+    1) &lt;li tabindex=&quot;0&quot; title=&quot;Activate&quot; ngbdropdownitem=&quot;&quot; _ngcontent-ng-c904143651=&quot;&quot; class=&quot;dropdown-item ng-star-inserted&quot;>Activate&lt;/li> aka getByRole(&#039;listitem&#039;, { name: &#039;Activate&#039; })
+    2) &lt;li tabindex=&quot;0&quot; title=&quot;Activate&quot; ngbdropdownitem=&quot;&quot; _ngcontent-ng-c904143651=&quot;&quot; class=&quot;dropdown-item ng-star-inserted&quot;>Activate&lt;/li> aka getByText(&#039;Activate&#039;).nth(1)
+    3) &lt;li tabindex=&quot;0&quot; title=&quot;Activate&quot; ngbdropdownitem=&quot;&quot; _ngcontent-ng-c904143651=&quot;&quot; class=&quot;dropdown-item ng-star-inserted&quot;>Activate&lt;/li> aka getByText(&#039;Activate&#039;).nth(2)
+    4) &lt;li tabindex=&quot;0&quot; title=&quot;Activate&quot; ngbdropdownitem=&quot;&quot; _ngcontent-ng-c904143651=&quot;&quot; class=&quot;dropdown-item ng-star-inserted&quot;>Activate&lt;/li> aka getByText(&#039;Activate&#039;).nth(3)
+    5) &lt;li tabindex=&quot;0&quot; title=&quot;Activate&quot; ngbdropdownitem=&quot;&quot; _ngcontent-ng-c904143651=&quot;&quot; class=&quot;dropdown-item ng-star-inserted&quot;>Activate&lt;/li> aka getByText(&#039;Activate&#039;).nth(4)
+    6) &lt;li tabindex=&quot;0&quot; title=&quot;Activate&quot; ngbdropdownitem=&quot;&quot; _ngcontent-ng-c904143651=&quot;&quot; class=&quot;dropdown-item ng-star-inserted&quot;>Activate&lt;/li> aka getByText(&#039;Activate&#039;).nth(5)
+    7) &lt;li tabindex=&quot;0&quot; title=&quot;Activate&quot; ngbdropdownitem=&quot;&quot; _ngcontent-ng-c904143651=&quot;&quot; class=&quot;dropdown-item ng-star-inserted&quot;>Activate&lt;/li> aka locator(&#039;tr:nth-child(7) > .actions > .ng-star-inserted.dropdown > .dropdown-menu > .dropdown-item&#039;)
+    8) &lt;li tabindex=&quot;0&quot; title=&quot;Activate&quot; ngbdropdownitem=&quot;&quot; _ngcontent-ng-c904143651=&quot;&quot; class=&quot;dropdown-item ng-star-inserted&quot;>Activate&lt;/li> aka locator(&#039;tr:nth-child(8) > .actions > .ng-star-inserted.dropdown > .dropdown-menu > .dropdown-item&#039;)
+    9) &lt;li tabindex=&quot;0&quot; title=&quot;Activate&quot; ngbdropdownitem=&quot;&quot; _ngcontent-ng-c904143651=&quot;&quot; class=&quot;dropdown-item ng-star-inserted&quot;>Activate&lt;/li> aka locator(&#039;tr:nth-child(9) > .actions > .ng-star-inserted.dropdown > .dropdown-menu > .dropdown-item&#039;)
+    10) &lt;li tabindex=&quot;0&quot; title=&quot;Activate&quot; ngbdropdownitem=&quot;&quot; _ngcontent-ng-c904143651=&quot;&quot; class=&quot;dropdown-item ng-star-inserted&quot;>Activate&lt;/li> aka locator(&#039;tr:nth-child(10) > .actions > .ng-star-inserted.dropdown > .dropdown-menu > .dropdown-item&#039;)
+
+Call log:
+  - Expect &quot;toBeVisible&quot; with timeout 5000ms<span style="font-weight:normal;text-decoration:none;font-style:normal">
+  - waiting for locator(&#039;text=Activate&#039;)<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at UsersPage.verifyActionMenu (D:\allyPortal\pages\users\usersPage.ts:73:56)
+    at D:\allyPortal\tests\allyUsers\allyUser.test.ts:75:5</span></span></span></span></span></span></span></span>
+    r “D®W®`                                                                                                                                                                                                                                          U3 
+payments.test.ts:Ally_chromium:Validate Transaction Count is Visiblepassed~:K2 
+payments.test.ts:Ally_chromium:Verify Search Functionalitypassed|g[1 !
+payments.test.ts:Ally_chromium:Validate sorting for Payments Table columnspassedvH0  }
+login.test.ts:Ally_chromium:Login with valid credentialspassed|ÜT/ 
+payments.test.ts:Ally_chromium:Validate Payments Table Header Namespassedyõ‡.	 YŒApaymentWidget.test.ts:Ally_chromium:Verify Create Payment Token â†’ Open Payment Widget for debit cardfailed›Error: expect(<span style="font-weight:normal;text-decoration:none;font-style:normal"><span style="color:#A00">received<span style="color:var(--snippet-color)">).<span style="font-weight:normal;text-decoration:none;font-style:normal">toBe(<span style="font-weight:normal;text-decoration:none;font-style:normal"><span style="color:#0A0">expected<span style="color:var(--snippet-color)">) // Object.is equality<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+Expected: <span style="color:#0A0">201<span style="color:var(--snippet-color)">
+Received: <span style="color:#A00">500<span style="color:var(--snippet-color)">
+    at D:\allyPortal\tests\allyPayments\paymentWidget.test.ts:138:29</span></span></span></span></span></span></span></span></span></span></span></span>V- 
+payments.test.ts:Ally_chromium:Validate Payments Page Loads Correctlypassedsëƒr,	 #†3payments.test.ts:Ally_chromium:Validate the invalid search shows no resultstimedOutuš<span style="color:#A00">Test timeout of 30000ms exceeded.<span style="color:var(--snippet-color)"></span></span>
+Error: locator.click: Target page, context or browser has been closed
+    at CommonUtils.click (D:\allyPortal\utils\commonUtils.ts:38:19)
+    at PaymentsPage.searchTransaction (D:\allyPortal\pages\payments\paymentsPage.ts:84:5)
+    at D:\allyPortal\tests\allyPayments\payments.test.ts:85:5‡	+	 IŒ?paymentWidget.test.ts:Ally_chromium:Verify Create Payment Token â†’ Open Payment Widget for CCfailed­Error: expect(<span style="font-weight:normal;text-decoration:none;font-style:normal"><span style="color:#A00">received<span style="color:var(--snippet-color)">).<span style="font-weight:normal;text-decoration:none;font-style:normal">toBe(<span style="font-weight:normal;text-decoration:none;font-style:normal"><span style="color:#0A0">expected<span style="color:var(--snippet-color)">) // Object.is equality<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+Expected: <span style="color:#0A0">201<span style="color:var(--snippet-color)">
+Received: <span style="color:#A00">500<span style="color:var(--snippet-color)">
+    at D:\allyPortal\tests\allyPayments\paymentWidget.test.ts:78:29</span></span></span></span></span></span></span></span></span></span></span></span>O* 	
+payments.test.ts:Ally_chromium:Validate Items Per Page Optionspassednh‡
+)	 KŒ?paymentWidget.test.ts:Ally_chromium:Verify Create Payment Token â†’ Open Payment Widget for ACHfailed	GError: expect(<span style="font-weight:normal;text-decoration:none;font-style:normal"><span style="color:#A00">received<span style="color:var(--snippet-color)">).<span style="font-weight:normal;text-decoration:none;font-style:normal">toBe(<span style="font-weight:normal;text-decoration:none;font-style:normal"><span style="color:#0A0">expected<span style="color:var(--snippet-color)">) // Object.is equality<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+Expected: <span style="color:#0A0">201<span style="color:var(--snippet-color)">
+Received: <span style="color:#A00">500<span style="color:var(--snippet-color)">
+    at D:\allyPortal\tests\allyPayments\paymentWidget.test.ts:30:29</span></span></span></span></span></span></span></span></span></span></span></span>
+   S 
+Ë
+s
+¹NåX
+÷
+‹
+	‘	­S                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               WA 
+addWebhook.test.ts:Ally_chromium:Validate duplicate module + URL errorpassedF±\@ #
+addWebhook.test.ts:Ally_chromium:Add webhook with multiple modules selectedpassedDå? m
+allyUser.test.ts:Ally_chromium:Validate that an Ally can successfully deactivat an actective Ally users account.passedPÿ > k
+allyUser.test.ts:Ally_chromium:Verify that an Ally user can successfully activate an inactive ally user accountpassedK“s= Q
+AllyAddUser.test.ts:Ally_chromium:Verify that an Ally can create a Basic Auth + API Key Ally user.passedN&i< =
+AllyAddUser.test.ts:Ally_chromium:Verify that an Ally can create a Basic Auth Ally user.passedD­^; '
+allyUser.test.ts:Ally_chromium:Verify that an Ally can clear the search fieldpassedKÚ	: }
+AllyAddUser.test.ts:Ally_chromium:Verify that a validation error appears when creating a user with an existing username.passedJâf9 7
+AllyAddUser.test.ts:Ally_chromium:Verify that an Ally can create a API Key Ally user.passedNÅh8 ;
+paymentWidget.test.ts:Ally_chromium:Verify the validation for alredy used payment tokenpassed6dO7 	
+allyUser.test.ts:Ally_chromium:Validate Items Per Page Optionspassed:e6 5
+allyUser.test.ts:Ally_chromium:Verify that an Ally can search for a user by usernamepassed9ÍU5 
+allyUser.test.ts:Ally_chromium:Verify the Users page loads correctlypassed2)„14	 ‚†5payments.test.ts:Ally_chromium:Validate that the Ally is able to see all refund transactions associated with the original transaction IDtimedOut ‚¨<span style="color:#A00">Test timeout of 30000ms exceeded.<span style="color:var(--snippet-color)"></span></span>
+Error: locator.click: Target page, context or browser has been closed
+    at CommonUtils.click (D:\allyPortal\utils\commonUtils.ts:38:19)
+    at PaymentsPage.searchTransaction (D:\allyPortal\pages\payments\paymentsPage.ts:84:5)
+    at D:\allyPortal\tests\allyPayments\payments.test.ts:136:5
+   f ³iÓˆ<
+ð
+Ÿ
+Mû©Vs
+â
+Q
+	Î	Œ	Gû±f                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                Jpayments.test.ts:Ally_chromium:Validate Transaction Count is Visible ³Ipayments.test.ts:Ally_chromium:Validate Payments Table Header Names ¯Kpayments.test.ts:Ally_chromium:Validate Payments Page Loads Correctly ­D	payments.test.ts:Ally_chromium:Validate Items Per Page Options ªApayments.test.ts:Allly_chromium:Verify Search Functionality œApayments.test.ts:Allly_chromium:Verify Search Functionality †@payments.test.ts:Allly_chromium:Verify Search Functionalityn‚payments.test.ts:Allly_chromium:Validate that the Ally is able to see all refund transactions associated with the original transaction ID ‚payments.test.ts:Allly_chromium:Validate that the Ally is able to see all refund transactions associated with the original transaction ID ‰‚payments.test.ts:Allly_chromium:Validate that the Ally is able to see all refund transactions associated with the original transaction IDkR%payments.test.ts:Allly_chromium:Validate teh invalid search shows no results žR%payments.test.ts:Allly_chromium:Validate teh invalid search shows no results ˆQ%payments.test.ts:Allly_chromium:Validate teh invalid search shows no resultsjQ#payments.test.ts:Allly_chromium:Validate sorting for Payments Table columns ¡Q#payments.test.ts:Allly_chromium:Validate sorting for Payments Table columns ƒP#payments.test.ts:Allly_chromium:Validate sorting for Payments Table columnspKpayments.test.ts:Allly_chromium:Validate Transaction Count is Visible ›Kpayments.test.ts:Allly_chromium:Validate Transaction Count is Visible ‡Jpayments.test.ts:Allly_chromium:Validate Transaction Count is VisibleiJpayments.test.ts:Allly_chromium:Validate Payments Table Header Names šJpayments.test.ts:Allly_chromium:Validate Payments Table Header Names …Ipayments.test.ts:Allly_chromium:Validate Payments Table Header NamesmLpayments.test.ts:Allly_chromium:Validate Payments Page Loads Correctly  
+    +  F¹ +                             ‡
+D	 KŒ?paymentWidget.test.ts:Ally_chromium:Verify Create Payment Token â†’ Open Payment Widget for ACHfailed
+âError: expect(<span style="font-weight:normal;text-decoration:none;font-style:normal"><span style="color:#A00">received<span style="color:var(--snippet-color)">).<span style="font-weight:normal;text-decoration:none;font-style:normal">toBe(<span style="font-weight:normal;text-decoration:none;font-style:normal"><span style="color:#0A0">expected<span style="color:var(--snippet-color)">) // Object.is equality<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+Expected: <span style="color:#0A0">201<span style="color:var(--snippet-color)">
+Received: <span style="color:#A00">500<span style="color:var(--snippet-color)">
+    at D:\allyPortal\tests\allyPayments\paymentWidget.test.ts:30:29</span></span></span></span></span></span></span></span></span></span></span></span>‡	C	 IŒ?paymentWidget.test.ts:Ally_chromium:Verify Create Payment Token â†’ Open Payment Widget for CCfailedÜError: expect(<span style="font-weight:normal;text-decoration:none;font-style:normal"><span style="color:#A00">received<span style="color:var(--snippet-color)">).<span style="font-weight:normal;text-decoration:none;font-style:normal">toBe(<span style="font-weight:normal;text-decoration:none;font-style:normal"><span style="color:#0A0">expected<span style="color:var(--snippet-color)">) // Object.is equality<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+Expected: <span style="color:#0A0">201<span style="color:var(--snippet-color)">
+Received: <span style="color:#A00">500<span style="color:var(--snippet-color)">
+    at D:\allyPortal\tests\allyPayments\paymentWidget.test.ts:78:29</span></span></span></span></span></span></span></span></span></span></span></span>‘6B	 5¡)addWebhook.test.ts:Ally_chromium:Add new webhook with dynamic URL and select modulestimedOutw<span style="color:#A00">Test timeout of 30000ms exceeded.<span style="color:var(--snippet-color)"></span></span>
+Error: locator.selectOption: Test timeout of 30000ms exceeded.
+Call log:
+  - waiting for locator(&#039;#version&#039;)<span style="font-weight:normal;text-decoration:none;font-style:normal">
+    - locator resolved to &lt;select id=&quot;version&quot; formcontrolname=&quot;Version&quot; class=&quot;ng-untouched ng-pristine ng-invalid&quot;>â€¦&lt;/select><span style="font-weight:normal;text-decoration:none;font-style:normal">
+  - attempting select option action<span style="font-weight:normal;text-decoration:none;font-style:normal">
+    2 Ã— waiting for element to be visible and enabled<span style="font-weight:normal;text-decoration:none;font-style:normal">
+      - did not find some options<span style="font-weight:normal;text-decoration:none;font-style:normal">
+    - retrying select option action<span style="font-weight:normal;text-decoration:none;font-style:normal">
+    - waiting 20ms<span style="font-weight:normal;text-decoration:none;font-style:normal">
+    2 Ã— waiting for element to be visible and enabled<span style="font-weight:normal;text-decoration:none;font-style:normal">
+      - did not find some options<span style="font-weight:normal;text-decoration:none;font-style:normal">
+    - retrying select option action<span style="font-weight:normal;text-decoration:none;font-style:normal">
+      - waiting 100ms<span style="font-weight:normal;text-decoration:none;font-style:normal">
+    28 Ã— waiting for element to be visible and enabled<span style="font-weight:normal;text-decoration:none;font-style:normal">
+       - did not find some options<span style="font-weight:normal;text-decoration:none;font-style:normal">
+     - retrying select option action<span style="font-weight:normal;text-decoration:none;font-style:normal">
+       - waiting 500ms<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at D:\allyPortal\tests\allyWebhook\addWebhook.test.ts:37:39</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>
+   g jÿq þ ‹ Ýg                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               sL Q
+AllyAddUser.test.ts:Ally_chromium:Verify that an Ally can create a Basic Auth + API Key Ally user.passedNÚ„7K	 K#‡paymentWidget.test.ts:Ally_chromium:Verify Create Payment Token â†’ Open Payment Widget for ACHinterruptedøError: page.goto: net::ERR_ABORTED at https://paymentwidget.qat.anddone.com/?token=qx7j9WYv
+Call log:
+  - navigating to &quot;https://paymentwidget.qat.anddone.com/?token=qx7j9WYv&quot;, waiting until &quot;load&quot;<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+    at D:\AllyUIGit\Ally_UI\tests\allyPayments\paymentWidget.test.ts:36:14</span>
+Error: browserContext.close: Target page, context or browser has been closedpJ K
+paymentWidget.test.ts:Ally_chromium:Verify Create Payment Token â†’ Open Payment Widget for ACHpassed^ûpI K
+paymentWidget.test.ts:Ally_chromium:Verify Create Payment Token â†’ Open Payment Widget for ACHpassed>kpH K
+paymentWidget.test.ts:Ally_chromium:Verify Create Payment Token â†’ Open Payment Widget for ACHpasseden‡
+G	 KŒ?paymentWidget.test.ts:Ally_chromium:Verify Create Payment Token â†’ Open Payment Widget for ACHfailed
+KError: expect(<span style="font-weight:normal;text-decoration:none;font-style:normal"><span style="color:#A00">received<span style="color:var(--snippet-color)">).<span style="font-weight:normal;text-decoration:none;font-style:normal">toBe(<span style="font-weight:normal;text-decoration:none;font-style:normal"><span style="color:#0A0">expected<span style="color:var(--snippet-color)">) // Object.is equality<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+Expected: <span style="color:#0A0">201<span style="color:var(--snippet-color)">
+Received: <span style="color:#A00">500<span style="color:var(--snippet-color)">
+    at D:\allyPortal\tests\allyPayments\paymentWidget.test.ts:30:29</span></span></span></span></span></span></span></span></span></span></span></span>hF ;
+paymentWidget.test.ts:Ally_chromium:Verify the validation for alredy used payment tokenpassed8¨‡E	 YŒApaymentWidget.test.ts:Ally_chromium:Verify Create Payment Token â†’ Open Payment Widget for debit cardfailed
+´Error: expect(<span style="font-weight:normal;text-decoration:none;font-style:normal"><span style="color:#A00">received<span style="color:var(--snippet-color)">).<span style="font-weight:normal;text-decoration:none;font-style:normal">toBe(<span style="font-weight:normal;text-decoration:none;font-style:normal"><span style="color:#0A0">expected<span style="color:var(--snippet-color)">) // Object.is equality<span style="font-weight:normal;text-decoration:none;font-style:normal">
+
+Expected: <span style="color:#0A0">201<span style="color:var(--snippet-color)">
+Received: <span style="color:#A00">400<span style="color:var(--snippet-color)">
+    at D:\allyPortal\tests\allyPayments\paymentWidget.test.ts:138:29</span></span></span></span></span></span></span></span></span></span></span></span>
