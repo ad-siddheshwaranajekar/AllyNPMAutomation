@@ -28,7 +28,7 @@ export class WebhookPage extends BasePage {
         super(page);
 
         this.menuWebhooksBtn = page.getByRole('link', { name: 'Webhooks' });
-        this.addWebhookBtn = page.locator('div.button.button-green')
+        this.addWebhookBtn = page.locator('div.button.button-green');
         this.webhookUrlInput = page.locator('#inputUrl');
         this.modulesDropdown = page.getByText('* Select Modules', { exact: true });
         this.versionDropdown = page.locator('#version');

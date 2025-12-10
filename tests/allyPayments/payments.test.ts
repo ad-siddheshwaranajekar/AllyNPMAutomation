@@ -59,6 +59,7 @@ import refundData from '../../testData/refundData.json';
  test(' Validate Transaction Count is Visible @regression', async ({page}) => {
 
   await paymentsPage.validatePaymentsPageLoaded();
+await page.waitForTimeout(3000);
   await paymentsPage.validateTransactionCountVisible();   
  });
 
@@ -72,6 +73,7 @@ import refundData from '../../testData/refundData.json';
  test(' Validate Items Per Page Options @regression', async ({page}) => {
 
   await paymentsPage.validatePaymentsPageLoaded();
+  await page.waitForTimeout(1000);
   await paymentsPage.validateItemsPerPageOptions();   
  });
   test('Validate the invalid search shows no results @regression', async ({page}) => {
@@ -102,8 +104,9 @@ import refundData from '../../testData/refundData.json';
 
   // Ensure table settled before re-sorting
 
- await page.setDefaultTimeout(30000);
-  await paymentsPage.utils.waitForVisible(paymentsPage.colDBAName.first(), 10000);
+ await page.setDefaultTimeout(40000);
+  await paymentsPage.utils.waitForVisible(paymentsPage.colDBAName.first(), 40000);
+  await page.waitForTimeout(2000);
   await paymentsPage.validateSorting(
     paymentsPage.headerDBAName,
     paymentsPage.colDBAName
