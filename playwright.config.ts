@@ -47,18 +47,14 @@ export default defineConfig({
   outputDir: "test-results",
 
   //  Existing HTML report + Allure added
-  // reporter: [
-    
-  //  // ["ortoni-report", reportConfig],
-  //  ['html']   
-  //                   // existing
-        
-  // ],
   reporter: [
- // ["ortoni-report", reportConfig],
- ['html']  
-  //['html', { outputFolder: 'playwright-report', open: 'never' }]
-],
+    
+   // ["ortoni-report", reportConfig],
+   ['html']   
+                    // existing
+        
+  ],
+ 
 
   use: {
     trace: 'on-first-retry',

@@ -4,6 +4,7 @@ import { CURRENT_ENV } from '../../tests/config/env';
 import { CommonUtils } from '../../utils/commonUtils';
 import { SideMenuPage } from '../../pages/SideMenuPage';
 import { LoginPage } from '../../pages/login/loginPage';
+import { WebhookEventPage } from '../../pages/webhook/webhookEventPage';
 
 test.describe("Add ally webhook tests", () => {
   let sideMenuPage: SideMenuPage;
@@ -68,18 +69,20 @@ test.describe("Add ally webhook tests", () => {
   console.log('Duplicate error message:', errorText);
 }  )
 
-test('Add webhook with multiple modules selected', async ({ page }) => {
-
+  test("Add webhook with multiple modules selected", async ({ page }) => {
     const webhookPage = new WebhookPage(page);
 
-    await webhookPage.addWebhookBtn.waitFor({ state: 'visible', timeout: 90000 });
+    await webhookPage.addWebhookBtn.waitFor({
+      state: "visible",
+      timeout: 90000,
+    });
     await webhookPage.addWebhookBtn.click();
 
     // Auto-generate URL
     await webhookPage.setWebhookUrl();
 
     // Select multiple modules
-    await webhookPage.selectModules('Report','Transaction');
+    await webhookPage.selectModules("Report", "Transaction");
 
     // Select version 1
     // await webhookPage.versionDropdown.click();
@@ -89,12 +92,14 @@ test('Add webhook with multiple modules selected', async ({ page }) => {
     await webhookPage.saveButton.click();
 
     // Validate success message
-    await webhookPage.successMessage.waitFor({ state: 'visible', timeout: 15000 });
+    await webhookPage.successMessage.waitFor({
+      state: "visible",
+      timeout: 15000,
+    });
 
     const successText = await webhookPage.successMessage.textContent();
-    console.log('Webhook added:', successText);
-
-});
+    console.log("Webhook added:", successText);
+  });
 
   test("Verify that clicking on actions ellipsis opens menu on Webhooks page", async ({
     page,
@@ -131,5 +136,25 @@ test('Add webhook with multiple modules selected', async ({ page }) => {
     await expect(webhookPage.deleteOption).toBeVisible({ timeout: 20000 });
     await webhookPage.deleteOption.click({ delay: 1000 });
     await expect(webhookPage.deleteMessage).toBeVisible({ timeout: 15000 });
+  });
+
+  test.only("Verify that clicking on view logs option on Webhooks page", async ({
+    page,
+  }) => {
+    const webhookPage = new WebhookPage(page);
+    const webhookEventPage = new WebhookEventPage(page);
+
+    await webhookPage.webhooksHeader.waitFor({
+      state: "visible",
+      timeout: 15000,
+    });
+    await expect(webhookPage.webhooksHeader).toBeVisible({
+      timeout: 15000,
+    });
+    await webhookPage.ellipsisButton.click({ delay: 1000 });
+    await expect(webhookPage.actionsMenu).toBeVisible({ timeout: 15000 });
+    await expect(webhookPage.viewLogsOption).toBeVisible({ timeout: 20000 });
+    await webhookPage.viewLogsOption.click({ delay: 1000 });
+    await webhookEventPage.validateWebhookEventsPageLoaded();
   });
 });
