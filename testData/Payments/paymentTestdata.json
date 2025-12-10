@@ -14,7 +14,7 @@
   "requestBody": {
     "saveForFuture": false,
     "title": "PlaywrightAutoTitle",
-    "suppressTechnologyFee": false,
+    
     "shortDescription": "shortDescription",
     "enablePremiumFinance": false,
     "paymentDescription": "paymentDescription",

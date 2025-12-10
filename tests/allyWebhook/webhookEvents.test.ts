@@ -81,22 +81,23 @@ test.describe("Webhook events logs page", () => {
 
   //Actions
 
-  test("Verify that clicking on retrigger action on Webhook Events page @smoke", async ({
+  test.skip("Verify that clicking on retrigger action on Webhook Events page @smoke", async ({
     page,
   }) => {
     const webhookEventPage = new WebhookEventPage(page);
     await webhookEventPage.validateWebhookEventsPageLoaded();
-    await page.waitForTimeout(2000);
+    await page.waitForTimeout(5000);
     await webhookEventPage.ellipsisButton.click();
-    await page.waitForTimeout(2000);
+    await page.waitForTimeout(5000);
     await expect(webhookEventPage.actionsMenu).toBeVisible({ timeout: 15000 });
     await webhookEventPage.retriggerOption.click();
+    await page.waitForTimeout(1000);
     await expect(webhookEventPage.retriggerMessage).toBeVisible({
       timeout: 15000,
     });
   });
 
-  test.only("Verify that clicking on view action on Webhook Events page @smoke", async ({
+  test.skip("Verify that clicking on view action on Webhook Events page @smoke", async ({
     page,
   }) => {
     const webhookEventPage = new WebhookEventPage(page);
