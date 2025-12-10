@@ -2,6 +2,7 @@
 import { Page, Locator, expect} from '@playwright/test';
 import { CommonUtils } from '../utils/commonUtils';
 
+
 export class BasePage {
   readonly page: Page;
   readonly utils: CommonUtils;
