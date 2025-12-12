@@ -122,49 +122,51 @@ test.describe("Add ally webhook tests", () => {
   //   await expect(webhookPage.viewLogsOption).toBeVisible({ timeout: 15000 });
   // });
 
-  // test("Verify that clicking on delete option on Webhooks page", async ({
-  //   page,
-  // }) => {
-  //   const webhookPage = new WebhookPage(page);
+  test("Verify that clicking on delete option on Webhooks page @regression", async ({
+    page,
+  }) => {
+    const webhookPage = new WebhookPage(page);
 
-  //   await webhookPage.webhooksHeader.waitFor({
-  //     state: "visible",
-  //     timeout: 15000,
-  //   });
-  //   await expect(webhookPage.webhooksHeader).toBeVisible({
-  //     timeout: 15000,
-  //   });
-  //   await page.waitForTimeout(2000);
-  //   await webhookPage.ellipsisButton.click({ delay: 1000 });
-  //   await page.waitForTimeout(2000);
-  //   await expect(webhookPage.actionsMenu).toBeVisible({ timeout: 15000 });
-  //   await expect(webhookPage.deleteOption).toBeVisible({ timeout: 20000 });
-  //   await webhookPage.deleteOption.click({ delay: 1000 });
-  //   await page.waitForTimeout(2000);
-  //   await expect(webhookPage.deleteMessage).toBeVisible({ timeout: 15000 });
-  // });
+    await webhookPage.webhooksHeader.waitFor({
+      state: "visible",
+      timeout: 10000,
+    });
+    await expect(webhookPage.webhooksHeader).toBeVisible({
+      timeout: 10000,
+    });
+    await page.waitForTimeout(2000);
+    await webhookPage.ellipsisButton.click({ delay: 1000 });
+    await page.waitForTimeout(2000);
+    await expect(webhookPage.actionsMenu).toBeVisible({ timeout: 15000 });
+    await expect(webhookPage.deleteOption).toBeVisible({ timeout: 20000 });
+    await webhookPage.deleteOption.click({ delay: 1000 });
+    await page.waitForTimeout(2000);
+    await expect(webhookPage.deleteMessage).toBeVisible({ timeout: 15000 });
+  });
 
-  // test("Verify that clicking on view logs option on Webhooks page", async ({
-  //   page,
-  // }) => {
-  //   const webhookPage = new WebhookPage(page);
-  //   const webhookEventPage = new WebhookEventPage(page);
+  test("Verify that clicking on view logs option on Webhooks page @regression", async ({
+    page,
+  }) => {
+    const webhookPage = new WebhookPage(page);
+    const webhookEventPage = new WebhookEventPage(page);
 
-  //   await webhookPage.webhooksHeader.waitFor({
-  //     state: "visible",
-  //     timeout: 15000,
-  //   });
-  //   await expect(webhookPage.webhooksHeader).toBeVisible({
-  //     timeout: 15000,
-  //   });
-  //   await page.waitForTimeout(2000);
-  //   await webhookPage.ellipsisButton.click({ delay: 1000 });
-  //   await page.waitForTimeout(1000);
-  //   await expect(webhookPage.actionsMenu).toBeVisible({ timeout: 15000 });
-  //   await page.waitForTimeout(1000);
-  //   await expect(webhookPage.viewLogsOption).toBeVisible({ timeout: 20000 });
-  //   await webhookPage.viewLogsOption.click({ delay: 1000 });
-  //   await page.waitForTimeout(1000);
-  //   await webhookEventPage.validateWebhookEventsPageLoaded();
-  // });
+    
+     
+    await webhookPage.webhooksHeader.waitFor({
+      state: "visible",
+      timeout: 10000,
+    });
+    await expect(webhookPage.webhooksHeader).toBeVisible({
+      timeout: 10000,
+    });
+    await page.waitForTimeout(2000);
+    await webhookPage.ellipsisButton.click({ delay: 1000 });
+    await page.waitForTimeout(1000);
+    await expect(webhookPage.actionsMenu).toBeVisible({ timeout: 15000 });
+    await page.waitForTimeout(1000);
+    await expect(webhookPage.viewLogsOption).toBeVisible({ timeout: 20000 });
+    await webhookPage.viewLogsOption.click();
+    await page.waitForTimeout(1000);
+    await webhookEventPage.validateWebhookEventsPageLoaded();
+  });
 });

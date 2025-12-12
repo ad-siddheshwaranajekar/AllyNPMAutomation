@@ -118,8 +118,9 @@ await page.waitForTimeout(3000);
   
    //await paymentsPage.validateSearchResultStatus(searchResult);
  test('Validate that the Ally is able to see all refund transactions associated with the original transaction ID @regression', async ({ page }) => {
-    const Tid = 'c39140e1-fc9c-4177-8b60-4b0332a79348';
+    //const Tid = 'c39140e1-fc9c-4177-8b60-4b0332a79348';
 
+ const Tid = '3440c6f2-68ee-4e99-95d1-10aaa471509c';
     // Navigate to login and sign in with provided credentials
     // await loginPage.navigateTo(CURRENT_ENV);
 
