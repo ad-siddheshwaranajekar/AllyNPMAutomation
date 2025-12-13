@@ -4,7 +4,7 @@ import * as os from "os";
 const reportConfig: OrtoniReportConfig = {
   open: process.env.CI ? "never" : "always",
   folderPath: "my-report",
-  filename: "Ally Portal.html",
+  filename: "Ally_Portal.html",
   title: "Ally Portal UI Test Report",
   showProject: false,
   projectName: "Ally Portal",
