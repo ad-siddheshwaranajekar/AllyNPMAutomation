@@ -44,6 +44,7 @@ export class SideMenuPage {
     }
   async openWebhookEventLogs() {
     await this.utils.click(this.webhookEventLogsMenu);
+    await this.page.waitForTimeout(3000); 
   }
   async openProfile() {
     await this.utils.click(this.profileMenu);
