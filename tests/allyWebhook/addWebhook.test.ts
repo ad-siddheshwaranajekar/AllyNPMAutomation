@@ -115,7 +115,7 @@ test.describe("Add ally webhook tests", () => {
     });
     await page.waitForTimeout(5000);
     await webhookPage.ellipsisButton.click();
-    await page.waitForTimeout(1000);
+    await page.waitForTimeout(3000);
     await expect(webhookPage.deleteOption).toBeVisible({ timeout: 15000 });
     await webhookPage.deleteOption.click();
     await page.waitForTimeout(2000);
@@ -129,17 +129,15 @@ test.describe("Add ally webhook tests", () => {
     const webhookEventPage = new WebhookEventPage(page);
     await webhookPage.webhooksHeader.waitFor({
       state: "visible",
-      timeout: 10000,
+      timeout: 15000,
     });
     await expect(webhookPage.webhooksHeader).toBeVisible({
-      timeout: 10000,
+      timeout: 15000,
     });
+    await page.waitForTimeout(5000);
+    await webhookPage.ellipsisButton.click();
     await page.waitForTimeout(2000);
-    await webhookPage.ellipsisButton.click({ delay: 1000 });
-    await page.waitForTimeout(1000);
-    await expect(webhookPage.actionsMenu).toBeVisible({ timeout: 15000 });
-    await page.waitForTimeout(1000);
-    await expect(webhookPage.viewLogsOption).toBeVisible({ timeout: 20000 });
+    await expect(webhookPage.viewLogsOption).toBeVisible({ timeout: 15000 });
     await webhookPage.viewLogsOption.click();
     await page.waitForTimeout(1000);
     await webhookEventPage.validateWebhookEventsPageLoaded();

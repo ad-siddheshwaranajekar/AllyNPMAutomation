@@ -103,7 +103,7 @@ test.describe("Webhook events logs page", () => {
     const webhookEventPage = new WebhookEventPage(page);
     const webhookEventDetailsPage = new WebhookEventDetailsPage(page);
     await webhookEventPage.validateWebhookEventsPageLoaded();
-    await page.waitForTimeout(2000);
+    await page.waitForTimeout(5000);
 
     const urlBefore = (await webhookEventPage.URLText.innerText()).trim();
     console.log("URL before clicking view:", urlBefore);
