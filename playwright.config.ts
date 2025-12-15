@@ -4,7 +4,7 @@ import * as os from "os";
 const reportConfig: OrtoniReportConfig = {
   open: process.env.CI ? "never" : "always",
   folderPath: "my-report",
-  filename: "Ally Portal.html",
+  filename: "Ally_Portal.html",
   title: "Ally Portal UI Test Report",
   showProject: false,
   projectName: "Ally Portal",
@@ -25,7 +25,7 @@ logo: "./assets/AllyLogoDark.svg",
 
   meta: {
     "Test Cycle": "AN_ALMGMT_V12",
-    Environment: process.env.NODE_ENV || "Local",
+   // Environment: process.env.NODE_ENV || "QAT",
     "Executed On": new Date().toLocaleString(), 
     version: "1",
     release: "V12",
@@ -49,8 +49,8 @@ export default defineConfig({
   //  Existing HTML report + Allure added
   reporter: [
     
-   ["ortoni-report", reportConfig],
-   //['html']   
+  ["ortoni-report", reportConfig],
+  // ['html']   
                     // existing
         
   ],

@@ -27,7 +27,7 @@ jobs:
           echo "Sending Slack notification..."
 
           if [ -n "$folder_name" ]; then
-            REPORT_URL="https://$bucket_name.s3.amazonaws.com/AllyReports/$folder_name/ALLY_Smoke_Suite_Report_QAT_$folder_name.html"
+            REPORT_URL="https://$bucket_name.s3.amazonaws.com/AllyReports/AllyUIReports/$folder_name/Ally_Portal.html"
           else
             REPORT_URL="Report URL not available"
           fi
@@ -40,7 +40,7 @@ jobs:
                 "type": "section",
                 "text": {
                   "type": "mrkdwn",
-                  "text": "*AllyAPI Automation Report* :tada:"
+                  "text": "*AllyUI Automation Report* :tada:"
                 }
               },
               {
