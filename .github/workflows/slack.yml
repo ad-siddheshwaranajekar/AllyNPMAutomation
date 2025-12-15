@@ -40,7 +40,7 @@ jobs:
                 "type": "section",
                 "text": {
                   "type": "mrkdwn",
-                  "text": "*AllyAPI Automation Report* :tada:"
+                  "text": "*AllyUI Automation Report* :tada:"
                 }
               },
               {
