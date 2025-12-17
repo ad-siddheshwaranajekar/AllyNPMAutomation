@@ -34,7 +34,7 @@ test.only('Validate payment details from payments table', async ({ page }) => {
 
  
   const rowData = await paymentsPage.getRowDataByIndex(0);
-  await page.waitForTimeout(3000);
+  await page.waitForTimeout(5000);
   await paymentsPage.clickRowByIndex(0);
  await page.waitForTimeout(5000);
   await paymentsDetailsPage.verifyPaymentDetails(rowData);
