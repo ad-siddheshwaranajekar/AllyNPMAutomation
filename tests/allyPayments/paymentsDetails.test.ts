@@ -29,7 +29,7 @@ test.describe('Payments Module', () => {
 
 
 
-test.only('Validate payment details from payments table', async ({ page }) => {
+test('Validate payment details from payments table', async ({ page }) => {
 
 
  
@@ -39,5 +39,27 @@ test.only('Validate payment details from payments table', async ({ page }) => {
  await page.waitForTimeout(5000);
   await paymentsDetailsPage.verifyPaymentDetails(rowData);
 });
+ 
+
+test('Validate payment details header', async ({ page }) => {
+  await paymentsPage.validatePaymentsPageLoaded();
+   await page.waitForTimeout(5000);
+  await paymentsPage.clickRowByIndex(0);
+  await page.waitForTimeout(5000);
+  await paymentsDetailsPage.verifyPaymentDetailsHeader();
+  await paymentsDetailsPage.verifyAllCardsVisible();
+});
+
+test('Validate Authorized status is displayed in Timeline', async ({ page }) => {
+  
+  await page.waitForTimeout(5000);
+  await paymentsPage.clickRowByIndex(0);
+  await page.waitForTimeout(5000);
+ 
+  await paymentsDetailsPage.verifyPaymentDetailsHeader();
+  await page.waitForTimeout(5000);
+  await paymentsDetailsPage.verifyAuthorizedStatus();
+});
+
 
 });

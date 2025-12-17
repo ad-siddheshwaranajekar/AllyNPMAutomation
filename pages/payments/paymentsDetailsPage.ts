@@ -1,4 +1,11 @@
-import { Page,expect } from "@playwright/test";
+import { Locator, Page,expect } from "@playwright/test";
+
+
+
+
+
+
+
 
 
 
@@ -6,9 +13,37 @@ import { Page,expect } from "@playwright/test";
 export class PaymentsDetailsPage {
     readonly page: Page;
 
+    readonly paymentsDetailsHeader: Locator;  
+    
+    
+    readonly detailsContainer: string = '.details-container';
+    readonly cardLocator: string = '.details-card';
+    readonly authorizedStatus: Locator;
+
+    
+
     constructor(page: Page) {
         this.page = page;
+        this.paymentsDetailsHeader = page.getByRole('heading', { name: 'Payment Details' }).first();
+        this.authorizedStatus = page.getByText('Authorized', { exact: true });
+
     }
+
+
+
+
+
+     async verifyPaymentDetailsHeader() {
+    await expect(this.paymentsDetailsHeader).toBeVisible();
+  }
+
+  async verifyAuthorizedStatus() {
+  const authorized = this.page
+    .locator('.timeline-card')
+    .getByText('Authorized', { exact: true });
+
+  await expect(authorized).toBeVisible();
+}
 
 
 async verifyPaymentDetails(expectedData: any) {
@@ -51,8 +86,33 @@ async verifyPaymentDetails(expectedData: any) {
     // await expect(actualStatus).toBe(expectedData.status);
   }
 
+  // Verify that all detail cards are visible with correct headers
+  async verifyAllCardsVisible() {
+    const container = this.page.locator(this.detailsContainer);
+    await expect(container).toBeVisible();
 
+    const cards = container.locator(this.cardLocator);
+    const cardCount = await cards.count();
+    //console.log('Number of cards found:', cardCount);
+    await expect(cardCount).toBe(5);
+
+    const expectedHeaders = [
+      'Transaction Details',
+      'Shopper Details',
+      'Payment Details',
+      'Transaction Totals',
+      'Timeline'
+    ];
+
+    for (let i = 0; i < expectedHeaders.length; i++) {
+      const header = await cards.nth(i).locator('.details-header h5').innerText();
+      console.log(`Details Section ${i + 1} header:`, header);
+      await expect(header).toBe(expectedHeaders[i]);
+    }
+  }
 }
+
+
   
 
   
