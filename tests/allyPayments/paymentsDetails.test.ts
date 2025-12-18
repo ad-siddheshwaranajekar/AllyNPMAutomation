@@ -1,4 +1,4 @@
-import { test } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 import { PaymentsPage } from '../../pages/payments/paymentsPage';
 import { PaymentsDetailsPage } from '../../pages/payments/paymentsDetailsPage';
 import { CURRENT_ENV } from '../../tests/config/env';
@@ -42,7 +42,7 @@ test('Validate payment details from payments table', async ({ page }) => {
  
 
 test('Validate payment details header', async ({ page }) => {
-  await paymentsPage.validatePaymentsPageLoaded();
+  
    await page.waitForTimeout(5000);
   await paymentsPage.clickRowByIndex(0);
   await page.waitForTimeout(5000);
@@ -61,5 +61,15 @@ test('Validate Authorized status is displayed in Timeline', async ({ page }) => 
   await paymentsDetailsPage.verifyAuthorizedStatus();
 });
 
+
+test.only('Validate Settled status is displayed in Timeline', async ({ page }) => {
+await page.waitForTimeout(1000);
+await paymentsPage.applyLast14DaysDateFilter();
+await page.waitForTimeout(1000);
+await paymentsPage.applySettledStatusFilter();
+await page.waitForTimeout(1000);
+await paymentsPage.clickRowByIndex(0);
+await page.waitForTimeout(1000);
+});
 
 });

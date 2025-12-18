@@ -14,6 +14,22 @@ export class PaymentsPage extends BasePage {
   readonly searchInput: Locator;    
   readonly searchButton: Locator;
   readonly resultsRows: Locator;
+
+
+  //fiters
+  readonly filter: Locator;
+  readonly filterOptions: Locator;
+  readonly statusFilterOption: Locator;
+  readonly settledOption: Locator;
+  readonly date: Locator;
+  readonly dateFilterOption: Locator;
+  readonly dateSelectDropdown: Locator;
+  readonly clearButton: Locator;
+  readonly setfilterOption: Locator;
+  readonly settledCheckboxLabel: Locator;
+  readonly dateFilterPanel: Locator;
+
+
 //count
   readonly transactionCount: Locator;
 
@@ -69,6 +85,36 @@ export class PaymentsPage extends BasePage {
 
    // Table rows locator
     this.tableRows = page.locator('div.table-container table tbody tr');
+
+   // Filters
+    this.filter = page.locator('#filter');
+    this.filterOptions = page.locator('#filtersDropdown');
+    this.clearButton = page.locator('#clearFiltersBtn');
+    this.date =  page.locator('li.dropdown-item', { hasText: 'Date' });
+    this.statusFilterOption = page.locator('li.dropdown-item', { hasText: 'Status' });
+    this.setfilterOption = page.getByText('Set Filter', { exact: true });
+    this.settledOption = page.locator('li.dropdown-item', { hasText: 'Settled' });
+    this.dateFilterOption = page.locator('li.dropdown-item', { hasText: 'Date' });
+    this.dateSelectDropdown = page.locator('#filtersDropdown select');
+    this.dateFilterPanel = page
+  .locator('#filtersDropdown')
+  .locator('text=Date:')
+  .locator('..');
+
+// Date select inside Date panel ONLY
+this.dateSelectDropdown = this.dateFilterPanel.locator('select');
+
+
+    // Locator for the checkbox label
+this.settledCheckboxLabel = page.locator('label.custom-check-container', { hasText: 'Settled' });
+
+// Click the checkbox via label
+
+
+
+
+
+
   }
  async searchTransaction(text: string) {
   await this.utils.waitForVisible(this.searchInput, 10000);
@@ -258,4 +304,43 @@ async getRowDataByIndex(index =0){
 async clickRowByIndex(index =0){
 await this.tableRows.nth(index).click();
 }
+
+async applySettledStatusFilter() {
+  await this.utils.click(this.filter);               
+  await this.utils.click(this.filterOptions);        
+  await this.utils.click(this.statusFilterOption);   
+  await this.utils.click(this.settledCheckboxLabel); 
+ const statusFilterContainer = this.page.locator('div.filter-selection-container', { hasText: 'Status:' });
+const setFilterBtn = statusFilterContainer.getByText('Set Filter', { exact: true });
+await this.utils.click(setFilterBtn);
+
+  //await this.utils.click(this.setfilterOption); 
+}
+
+async applyLast14DaysDateFilter() {
+  // Open filters
+  await this.filter.click();
+  await this.filterOptions.click();
+
+  // Activate Date filter
+  await this.dateFilterOption.click();
+
+  // Locate container holding both Date <select> and "Set Filter" button
+  const dateContainer = this.page.locator('text=Date:').locator('..');
+
+  // Select last 14 days
+  const dateSelect = dateContainer.locator('select');
+  await dateSelect.selectOption('14');
+
+  // Click Set Filter button in the same container
+  const setFilterBtn = dateContainer.getByText('Set Filter', { exact: true });
+  await this.utils.click(setFilterBtn);
+
+  // Wait for table refresh
+  await this.page.waitForSelector('div.table-container table tbody tr');
+}
+
+
+
+
 }
