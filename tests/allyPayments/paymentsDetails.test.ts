@@ -68,8 +68,9 @@ await paymentsPage.applyLast14DaysDateFilter();
 await page.waitForTimeout(1000);
 await paymentsPage.applySettledStatusFilter();
 await page.waitForTimeout(1000);
-await paymentsPage.clickRowByIndex(0);
+await paymentsPage.clickLastFourRows();
 await page.waitForTimeout(1000);
+
 });
 
 });

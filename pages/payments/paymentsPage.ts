@@ -313,9 +313,29 @@ async applySettledStatusFilter() {
  const statusFilterContainer = this.page.locator('div.filter-selection-container', { hasText: 'Status:' });
 const setFilterBtn = statusFilterContainer.getByText('Set Filter', { exact: true });
 await this.utils.click(setFilterBtn);
-
-  //await this.utils.click(this.setfilterOption); 
+  
 }
+ async clickLastFourRows() {
+  // Wait for table rows to appear
+  const rows = this.page.locator('div.table-container table tbody tr');
+  await rows.first().waitFor({ state: 'visible', timeout: 10000 });
+
+  const rowCount = await rows.count();
+  if (rowCount === 0) return; // No rows available
+
+  // Define selectable row indexes (7th to 10th, 0-based)
+  const selectableIndexes = [6, 7, 8, 9].filter(i => i < rowCount);
+
+  // Pick a random index from available rows
+  const randomIndex = selectableIndexes[Math.floor(Math.random() * selectableIndexes.length)];
+
+  //console.log(`Clicking row ${randomIndex + 1}`);
+  await this.utils.click(rows.nth(randomIndex));
+}
+
+
+
+
 
 async applyLast14DaysDateFilter() {
   // Open filters
