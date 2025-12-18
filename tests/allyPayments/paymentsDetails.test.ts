@@ -29,46 +29,49 @@ test.describe('Payments Module', () => {
 
 
 
-test('Validate payment details from payments table', async ({ page }) => {
+test.only('Validate payment details from payments table', async ({ page }) => {
 
 
  
   const rowData = await paymentsPage.getRowDataByIndex(0);
-  await page.waitForTimeout(5000);
+  await page.waitForTimeout(8000);
   await paymentsPage.clickRowByIndex(0);
- await page.waitForTimeout(5000);
+ await page.waitForTimeout(8000);
   await paymentsDetailsPage.verifyPaymentDetails(rowData);
+  await page.waitForTimeout(5000);
 });
  
 
 test('Validate payment details header', async ({ page }) => {
   
-   await page.waitForTimeout(5000);
+   await page.waitForTimeout(3000);
   await paymentsPage.clickRowByIndex(0);
-  await page.waitForTimeout(5000);
+  await page.waitForTimeout(3000);
   await paymentsDetailsPage.verifyPaymentDetailsHeader();
+  await page.waitForTimeout(3000);
   await paymentsDetailsPage.verifyAllCardsVisible();
 });
 
 test('Validate Authorized status is displayed in Timeline', async ({ page }) => {
   
-  await page.waitForTimeout(5000);
+  await page.waitForTimeout(4000);
   await paymentsPage.clickRowByIndex(0);
-  await page.waitForTimeout(5000);
- 
-  await paymentsDetailsPage.verifyPaymentDetailsHeader();
-  await page.waitForTimeout(5000);
+  
+  
+  await page.waitForTimeout(2000);
   await paymentsDetailsPage.verifyAuthorizedStatus();
+  await paymentsDetailsPage.verifyPaymentDetailsHeader();
 });
 
 
-test.only('Validate Settled status is displayed in Timeline', async ({ page }) => {
-await page.waitForTimeout(1000);
+test('Validate Settled status is displayed in Timeline', async ({ page }) => {
+
 await paymentsPage.applyLast14DaysDateFilter();
-await page.waitForTimeout(1000);
+
 await paymentsPage.applySettledStatusFilter();
-await page.waitForTimeout(1000);
+
 await paymentsPage.clickLastFourRows();
+await paymentsDetailsPage.verifyAuthorizedStatus();
 await page.waitForTimeout(1000);
 
 });

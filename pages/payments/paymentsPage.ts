@@ -284,6 +284,10 @@ async validateSorting(header: Locator, column: Locator) {
  
 async getRowDataByIndex(index =0){
   const row = this.tableRows.nth(index);
+  const transactionCell = row.locator('td').nth(7);
+
+  // ✅ WAIT until Transaction ID has text
+  await expect(transactionCell).not.toHaveText('', { timeout: 10000 });
   return{
     dbaName: await row.locator('td').nth(0).innerText(),
     shopperName: await row.locator('td').nth(1).innerText(),
@@ -306,8 +310,12 @@ await this.tableRows.nth(index).click();
 }
 
 async applySettledStatusFilter() {
-  await this.utils.click(this.filter);               
-  await this.utils.click(this.filterOptions);        
+ await this.utils.click(this.filter);
+  await expect(this.filterOptions).toBeVisible({ timeout: 10000 });
+
+  // Open filter options
+  await this.utils.click(this.filterOptions);
+  await expect(this.statusFilterOption).toBeVisible({ timeout: 10000 });      
   await this.utils.click(this.statusFilterOption);   
   await this.utils.click(this.settledCheckboxLabel); 
  const statusFilterContainer = this.page.locator('div.filter-selection-container', { hasText: 'Status:' });

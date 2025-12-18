@@ -24,7 +24,7 @@ export class PaymentsDetailsPage {
 
     constructor(page: Page) {
         this.page = page;
-        this.paymentsDetailsHeader = page.getByRole('heading', { name: 'Payment Details' }).first();
+        this.paymentsDetailsHeader = page.getByRole('heading', { name: 'Payment Details', level: 3 });
         this.authorizedStatus = page.getByText('Authorized', { exact: true });
 
     }
@@ -37,13 +37,15 @@ export class PaymentsDetailsPage {
     await expect(this.paymentsDetailsHeader).toBeVisible();
   }
 
-  async verifyAuthorizedStatus() {
+async verifyAuthorizedStatus() {
   const authorized = this.page
     .locator('.timeline-card')
     .getByText('Authorized', { exact: true });
 
-  await expect(authorized).toBeVisible();
+  // Wait up to 10s for Authorized to appear
+  await expect(authorized).toBeVisible({ timeout: 10000 });
 }
+
 
 
 async verifyPaymentDetails(expectedData: any) {

@@ -26,7 +26,7 @@ export class SideMenuPage {
 
 
    private async delay() {
-  await this.page.waitForTimeout(3000); // 3 sec
+  await this.page.waitForTimeout(1000); // 3 sec
 }
   async openUsers() {
     await this.utils.click(this.usersMenu); 
@@ -35,12 +35,13 @@ export class SideMenuPage {
 
   async openPayments() {
     await this.utils.click(this.paymentsMenu);
-    await this.page.waitForTimeout(3000); 
+    await this.page.waitForTimeout(1000); 
     //await this.delay(); 
   } 
 
   async openWebhooks() {
     await this.utils.click(this.webhooksMenu);
+    await this.page.waitForTimeout(1000); 
     }
   async openWebhookEventLogs() {
     await this.utils.click(this.webhookEventLogsMenu);
