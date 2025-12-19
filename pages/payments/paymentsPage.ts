@@ -281,14 +281,11 @@ async validateSorting(header: Locator, column: Locator) {
 
  //AN-38254-Ally Portal Payments | Payment Details Page - Get Row Data and Click Row
 
+
  
 async getRowDataByIndex(index =0){
   const row = this.tableRows.nth(index);
-  const transactionCell = row.locator('td').nth(7);
-
-  // ✅ WAIT until Transaction ID has text
-  await expect(transactionCell).not.toHaveText('', { timeout: 10000 });
-  return{
+   return{
     dbaName: await row.locator('td').nth(0).innerText(),
     shopperName: await row.locator('td').nth(1).innerText(),
     method: await row.locator('td').nth(2).innerText(),
@@ -305,6 +302,8 @@ async getRowDataByIndex(index =0){
   };
 
 }
+
+
 async clickRowByIndex(index =0){
 await this.tableRows.nth(index).click();
 }

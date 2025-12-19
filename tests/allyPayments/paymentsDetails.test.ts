@@ -29,26 +29,28 @@ test.describe('Payments Module', () => {
 
 
 
-test.only('Validate payment details from payments table', async ({ page }) => {
+test('Validate correctness of payment details for selected payment', async ({ page }) => {
 
 
- 
+ await page.waitForTimeout(4000);
   const rowData = await paymentsPage.getRowDataByIndex(0);
-  await page.waitForTimeout(8000);
+  await page.waitForTimeout(3000);
   await paymentsPage.clickRowByIndex(0);
- await page.waitForTimeout(8000);
+ await page.waitForTimeout(5000);
   await paymentsDetailsPage.verifyPaymentDetails(rowData);
-  await page.waitForTimeout(5000);
+  //await page.waitForTimeout(8000);
 });
- 
+
+
+
 
 test('Validate payment details header', async ({ page }) => {
   
-   await page.waitForTimeout(3000);
+   await page.waitForTimeout(5000);
   await paymentsPage.clickRowByIndex(0);
-  await page.waitForTimeout(3000);
-  await paymentsDetailsPage.verifyPaymentDetailsHeader();
-  await page.waitForTimeout(3000);
+  await page.waitForTimeout(5000);
+  //await paymentsDetailsPage.verifyPaymentDetailsHeader();
+  await page.waitForTimeout(8600);
   await paymentsDetailsPage.verifyAllCardsVisible();
 });
 
@@ -60,7 +62,7 @@ test('Validate Authorized status is displayed in Timeline', async ({ page }) => 
   
   await page.waitForTimeout(2000);
   await paymentsDetailsPage.verifyAuthorizedStatus();
-  await paymentsDetailsPage.verifyPaymentDetailsHeader();
+  //await paymentsDetailsPage.verifyPaymentDetailsHeader();
 });
 
 

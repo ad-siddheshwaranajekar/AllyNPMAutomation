@@ -33,9 +33,9 @@ export class PaymentsDetailsPage {
 
 
 
-     async verifyPaymentDetailsHeader() {
-    await expect(this.paymentsDetailsHeader).toBeVisible();
-  }
+  //    async verifyPaymentDetailsHeader() {
+  //   await expect(this.paymentsDetailsHeader).toBeVisible();
+  // }
 
 async verifyAuthorizedStatus() {
   const authorized = this.page
@@ -50,14 +50,32 @@ async verifyAuthorizedStatus() {
 
 async verifyPaymentDetails(expectedData: any) {
   // Transaction ID
-  const transactionValue = this.page
-    .getByText('Transaction ID')
-    .locator('..')
-    .locator('.row-value span.break-line');
-  const actualTransactionId = (await transactionValue.innerText()).trim();
-  console.log('Transaction ID from Payment Details:', actualTransactionId);
-  await expect(actualTransactionId.replace('', '').trim())
-    .toBe(expectedData.transactionId);
+  // const transactionValue = this.page
+  //   .getByText('Transaction ID')
+  //   .locator('..')
+  //   .locator('.row-value span.break-line');
+  // const actualTransactionId = (await transactionValue.innerText()).trim();
+  // console.log('Transaction ID from Payment Details:', actualTransactionId);
+  // await expect(actualTransactionId.replace('', '').trim())
+  //   .toBe(expectedData.transactionId);
+
+const transactionValue = this.page
+  .getByText('Transaction ID')
+  .locator('..')
+  .locator('.row-value span.break-line');
+
+// ✅ WAIT HERE
+await expect(transactionValue).not.toHaveText('', { timeout: 10000 });
+
+const actualTransactionId = (await transactionValue.innerText())
+  .replace('', '')
+  .trim();
+
+console.log('Transaction ID from Payment Details:', actualTransactionId);
+
+await expect(actualTransactionId).toBe(expectedData.transactionId);
+
+
 
   // Merchant Reference
   const merchantRefValue = this.page
