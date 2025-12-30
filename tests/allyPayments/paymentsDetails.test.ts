@@ -66,15 +66,31 @@ test('Validate Authorized status is displayed in Timeline', async ({ page }) => 
 });
 
 
-test.only('Validate Settled status is displayed in Timeline', async ({ page }) => {
+test('Validate Settled status is displayed in Timeline', async ({ page }) => {
 
 await paymentsPage.applyLast14DaysDateFilter();
-
 await paymentsPage.applySettledStatusFilter();
-
 await paymentsPage.clickLastFourRows();
 await paymentsDetailsPage.verifyAuthorizedStatus();
-await page.waitForTimeout(1000);
+
+await paymentsDetailsPage.openRefundTransaction();
+await paymentsDetailsPage.confirmRefundFlow('Duplicate Purchase', 'Customer requested a refund due Duplicate Purchase.'); 
+//'Fraud', 'Duplicate Purchase', 'Product Returned',  'Shopper Request',  'Other'
+
+
+});
+test.only('Validate Subtotal Refund Balance', async ({ page }) => {
+
+await paymentsPage.applyLast14DaysDateFilter();
+await paymentsPage.applySettledStatusFilter();
+await paymentsPage.clickLastFourRows();
+await paymentsDetailsPage.verifyAuthorizedStatus();
+
+await paymentsDetailsPage.openRefundTransaction();
+await paymentsDetailsPage.validateSubtotalRefundBalances();
+await paymentsDetailsPage.confirmRefundFlow('Duplicate Purchase', 'Customer requested a refund due Duplicate Purchase.'); 
+//'Fraud', 'Duplicate Purchase', 'Product Returned',  'Shopper Request',  'Other'
+
 
 });
 
