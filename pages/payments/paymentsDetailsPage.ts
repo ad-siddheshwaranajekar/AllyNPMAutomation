@@ -22,6 +22,8 @@ export class PaymentsDetailsPage {
 
     
 
+    
+
     constructor(page: Page) {
         this.page = page;
         this.paymentsDetailsHeader = page.getByRole('heading', { name: 'Payment Details', level: 3 });

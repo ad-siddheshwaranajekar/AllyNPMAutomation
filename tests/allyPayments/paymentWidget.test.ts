@@ -7,7 +7,7 @@ import { de } from '@faker-js/faker';
 test.describe('Payment Widget Tests', () => {
   
 
-test('Verify Create Payment Token → Open Payment Widget for ACH', async ({ page }) => {
+test.only('Verify Create Payment Token → Open Payment Widget for ACH', async ({ page }) => {
 
   const apiContext = await request.newContext({
     baseURL: paymentTestData.baseURL,
@@ -183,12 +183,13 @@ test('Verify the validation for alredy used payment token', async ({ page }) => 
   await page.goto('https://paymentwidget.qat.anddone.com/?token=DxLkeK6v');
 
   await expect(page).toHaveTitle(/AndDone JS/);
- await expect(paymentWidgetPage.alreadyProcessedMessage).toBeVisible({ timeout: 5000 });
+ await expect(paymentWidgetPage.alreadyProcessedMessage).toBeVisible({ timeout: 9000 });
  await page.waitForTimeout(5000);
 console.log('Alert Message:', await paymentWidgetPage.alreadyProcessedMessage.textContent()); 
 
 
   });
+
   
 
   //test

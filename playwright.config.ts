@@ -49,8 +49,8 @@ export default defineConfig({
   //  Existing HTML report + Allure added
   reporter: [
     
-  //["ortoni-report", reportConfig],
-   ['html']   
+  ["ortoni-report", reportConfig],
+  // ['html']   
                     // existing
         
   ],
@@ -76,6 +76,19 @@ export default defineConfig({
         },
       },
     },
+
+  //    {
+  //     name: 'Mobile Safari',
+  //     use: {
+  //       ...devices['iPhone 13'],
+  //     },
+  //   }, 
+  {
+    name: 'Mobile Chrome (Pixel 5)',
+    use: {
+      ...devices['Pixel 5'], // Emulates a Pixel 5 with Chrome
+    },
+  },
 
     // Edge project kept commented as you had it
     // {
