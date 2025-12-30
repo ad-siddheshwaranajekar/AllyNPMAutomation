@@ -14,7 +14,7 @@ test.describe('Payments Module', () => {
   let paymentsDetailsPage: PaymentsDetailsPage;
   
 
-     test.beforeEach(async ({page}) => { 
+    test.beforeEach(async ({page}) => { 
     loginPage = new LoginPage(page);    
     sideMenuPage = new SideMenuPage(page);
     paymentsPage = new PaymentsPage(page);
@@ -66,7 +66,7 @@ test('Validate Authorized status is displayed in Timeline', async ({ page }) => 
 });
 
 
-test('Validate Settled status is displayed in Timeline', async ({ page }) => {
+test.only('Validate Settled status is displayed in Timeline', async ({ page }) => {
 
 await paymentsPage.applyLast14DaysDateFilter();
 
