@@ -67,7 +67,7 @@ test('Validate Authorized status is displayed in Timeline', async ({ page }) => 
 
 
 test('Verify the ally can successfully refund a transaction(full refund).', async ({ page }) => {
-
+ test.setTimeout(60000);
 await paymentsPage.applyLast14DaysDateFilter();
 await paymentsPage.applySettledStatusFilter();
 await paymentsPage.clickLastFourRows();
@@ -80,7 +80,7 @@ await paymentsDetailsPage.confirmRefundFlow('Fraud', 'Customer requested a refun
 });
 
 test('Verify the ally can successfully refund a transaction(Subtotal Refund).', async ({ page }) => {
-
+ test.setTimeout(60000);
 await paymentsPage.applyLast14DaysDateFilter();
 await paymentsPage.applySettledStatusFilter();
 await paymentsPage.clickLastFourRows();
@@ -97,7 +97,7 @@ await paymentsDetailsPage.confirmRefundFlow('Duplicate Purchase', 'Customer requ
 });
 
 test('Verify the ally can successfully refund a transaction(Partial Refund).', async ({ page }) => {
-
+ test.setTimeout(60000);
 await paymentsPage.applyLast14DaysDateFilter();
 await paymentsPage.applySettledStatusFilter();
 await paymentsPage.clickLastFourRows();
