@@ -32,11 +32,11 @@ test.describe('Payments Module', () => {
 test('Validate correctness of payment details for selected payment', async ({ page }) => {
 
 
- await page.waitForTimeout(4000);
+ await page.waitForTimeout(3000);
   const rowData = await paymentsPage.getRowDataByIndex(0);
   await page.waitForTimeout(3000);
   await paymentsPage.clickRowByIndex(0);
- await page.waitForTimeout(5000);
+ await page.waitForTimeout(3000);
   await paymentsDetailsPage.verifyPaymentDetails(rowData);
   //await page.waitForTimeout(8000);
 });
@@ -46,17 +46,17 @@ test('Validate correctness of payment details for selected payment', async ({ pa
 
 test('Validate payment details header', async ({ page }) => {
   
-   await page.waitForTimeout(5000);
+   await page.waitForTimeout(3000);
   await paymentsPage.clickRowByIndex(0);
-  await page.waitForTimeout(5000);
+  await page.waitForTimeout(3000);
   //await paymentsDetailsPage.verifyPaymentDetailsHeader();
-  await page.waitForTimeout(8600);
+  await page.waitForTimeout(2000);
   await paymentsDetailsPage.verifyAllCardsVisible();
 });
 
 test('Validate Authorized status is displayed in Timeline', async ({ page }) => {
   
-  await page.waitForTimeout(4000);
+  await page.waitForTimeout(2000);
   await paymentsPage.clickRowByIndex(0);
   
   
@@ -66,7 +66,7 @@ test('Validate Authorized status is displayed in Timeline', async ({ page }) => 
 });
 
 
-test('Validate Settled status is displayed in Timeline', async ({ page }) => {
+test('Verify the ally can successfully refund a transaction(full refund).', async ({ page }) => {
 
 await paymentsPage.applyLast14DaysDateFilter();
 await paymentsPage.applySettledStatusFilter();
@@ -74,24 +74,62 @@ await paymentsPage.clickLastFourRows();
 await paymentsDetailsPage.verifyAuthorizedStatus();
 
 await paymentsDetailsPage.openRefundTransaction();
+await paymentsDetailsPage.RefundTransaction();
+await paymentsDetailsPage.confirmRefundFlow('Duplicate Purchase', 'Customer requested a refund due Duplicate Purchase.'); 
+//'Fraud', 'Duplicate Purchase', 'Product Returned',  'Shopper Request',  'Other'
+});
+
+test('Verify the ally can successfully refund a transaction(Subtotal Refund).', async ({ page }) => {
+
+await paymentsPage.applyLast14DaysDateFilter();
+await paymentsPage.applySettledStatusFilter();
+await paymentsPage.clickLastFourRows();
+await paymentsDetailsPage.verifyAuthorizedStatus();
+await paymentsDetailsPage.openRefundTransaction();
+await paymentsDetailsPage.SubtotalRefund();
+await paymentsDetailsPage.RefundTransaction();
+await paymentsDetailsPage.validateSubtotalRefundBalances();
+
 await paymentsDetailsPage.confirmRefundFlow('Duplicate Purchase', 'Customer requested a refund due Duplicate Purchase.'); 
 //'Fraud', 'Duplicate Purchase', 'Product Returned',  'Shopper Request',  'Other'
 
 
 });
-test.only('Validate Subtotal Refund Balance', async ({ page }) => {
+
+test('Verify the ally can successfully refund a transaction(Partial Refund).', async ({ page }) => {
 
 await paymentsPage.applyLast14DaysDateFilter();
 await paymentsPage.applySettledStatusFilter();
 await paymentsPage.clickLastFourRows();
 await paymentsDetailsPage.verifyAuthorizedStatus();
-
 await paymentsDetailsPage.openRefundTransaction();
+await paymentsDetailsPage.enterPartialRefundAmount(5.00);
+await paymentsDetailsPage.RefundTransaction();
 await paymentsDetailsPage.validateSubtotalRefundBalances();
 await paymentsDetailsPage.confirmRefundFlow('Duplicate Purchase', 'Customer requested a refund due Duplicate Purchase.'); 
 //'Fraud', 'Duplicate Purchase', 'Product Returned',  'Shopper Request',  'Other'
 
+});
+test.only('Verify Partial Refund cannot exceed Total Refund amount', async ({ page }) => {
+ 
+  await paymentsPage.applyLast14DaysDateFilter();
+  await paymentsPage.applySettledStatusFilter();
+  await paymentsPage.clickLastFourRows();
+  await paymentsDetailsPage.verifyAuthorizedStatus();  
+  await paymentsDetailsPage.openRefundTransaction(); 
+
+  const totalRefund = Number((await paymentsDetailsPage.TotalRefundAmountCheck.innerText()).replace(/[^0-9.]/g, ''));
+  const excessiveAmount = totalRefund + 10;
+  console.log('Attempting to enter partial refund exceeding total:', excessiveAmount);
+
+  await paymentsDetailsPage.enterPartialRefundAmount(excessiveAmount);
+  const errorMessage = paymentsDetailsPage.page.locator('text=Amount exceeding');
+  await expect(errorMessage).toBeVisible();
 
 });
+
+
+
+
 
 });

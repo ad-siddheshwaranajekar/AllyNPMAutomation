@@ -7,7 +7,7 @@ import { de } from '@faker-js/faker';
 test.describe('Payment Widget Tests', () => {
   
 
-test.only('Verify Create Payment Token → Open Payment Widget for ACH', async ({ page }) => {
+test('Verify Create Payment Token → Open Payment Widget for ACH', async ({ page }) => {
 
   const apiContext = await request.newContext({
     baseURL: paymentTestData.baseURL,

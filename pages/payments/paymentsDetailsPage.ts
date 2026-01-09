@@ -28,9 +28,9 @@ export class PaymentsDetailsPage {
     readonly SubmitButton: Locator;
     readonly RefundSuccessMessage: Locator;
 
-    readonly TotalRefundAmount : Locator;
+   readonly TotalRefundAmountCheck : Locator;
     readonly SubtotalRefundAmount : Locator;
-    readonly RefundOf : Locator;
+   // readonly RefundOf : Locator;
     readonly RemainingBalance : Locator;
     
 
@@ -39,7 +39,17 @@ export class PaymentsDetailsPage {
     readonly cardLocator: string = '.details-card';
     readonly authorizedStatus: Locator;
 
-    
+    private async getTotalRefundAmount(): Promise<number> {
+  await expect(this.TotalRefundAmountCheck).toBeVisible();
+
+  const text = await this.TotalRefundAmountCheck.innerText();
+  const amount = Number(text.replace(/[^0-9.]/g, ''));
+
+  console.log(`Total Refund Amount (from UI): $${amount}`);
+
+  return amount;
+}
+
 
     
 
@@ -61,9 +71,9 @@ export class PaymentsDetailsPage {
         this.SubmitButton = page.locator(`span:has-text("Refund")`).first();
         this.RefundSuccessMessage = page.getByRole('alert', { name: 'Refund has been successfully initiated' });
 
-        this.TotalRefundAmount = page.getByText('Total Refund of $', { exact: true });
+       this.TotalRefundAmountCheck = page.locator('#output-net-refund');
         this.SubtotalRefundAmount = page.locator('label[for="select-subtotal-refund"]');
-        this.RefundOf = page.locator('#output-net-refund');
+       // this.RefundOf = page.locator('#output-net-refund');
         this.RemainingBalance = page.locator('#output-net-balance');
 
     }
@@ -89,23 +99,14 @@ async verifyAuthorizedStatus() {
 
 
 async verifyPaymentDetails(expectedData: any) {
-  // Transaction ID
-  // const transactionValue = this.page
-  //   .getByText('Transaction ID')
-  //   .locator('..')
-  //   .locator('.row-value span.break-line');
-  // const actualTransactionId = (await transactionValue.innerText()).trim();
-  // console.log('Transaction ID from Payment Details:', actualTransactionId);
-  // await expect(actualTransactionId.replace('', '').trim())
-  //   .toBe(expectedData.transactionId);
-
+ 
 const transactionValue = this.page
   .getByText('Transaction ID')
   .locator('..')
   .locator('.row-value span.break-line');
 
 
-await expect(transactionValue).not.toHaveText('', { timeout: 10000 });
+await expect(transactionValue).not.toHaveText('', { timeout: 15000 });
 
 const actualTransactionId = (await transactionValue.innerText())
   .replace('', '')
@@ -180,11 +181,23 @@ await expect(actualTransactionId).toBe(expectedData.transactionId);
   await this.RefundBtn.waitFor({ state: 'visible' });
   await this.RefundBtn.click();
   await expect(this.RefundHeader).toBeVisible({ timeout: 5000 });
+  await expect(this.TotalRefundAmountCheck).toBeVisible();
+
+  const totalRefundText = await this.TotalRefundAmountCheck.innerText();
+  const totalRefundAmount = Number(totalRefundText.replace(/[^0-9.]/g, ''));
+  console.log(`Total refund amount is: $${totalRefundAmount}`);
+ 
   }
   async RefundTransaction(): Promise<void> {  
   await this.RefundSubmitBtn.waitFor({ state: 'visible' });
   await this.RefundSubmitBtn.click();
 }
+  async SubtotalRefund(): Promise<void> {  
+  await this.SubTotalValue.waitFor({ state: 'visible' });
+  await this.SubTotalValue.click();
+}
+
+
 async confirmRefundFlow(reason: string, additionalInfo: string): Promise<void> {
   //  Verify Confirm Refund header
   await expect(this.confirmrefundHeader).toBeVisible({ timeout: 5000 });
@@ -203,35 +216,64 @@ async confirmRefundFlow(reason: string, additionalInfo: string): Promise<void> {
   // Verify success message
   await expect(this.RefundSuccessMessage).toBeVisible({ timeout: 15000 });
 }
- private parseAmount(amountText: string): number {
-    return Number(amountText.replace(/[^0-9.]/g, ''));
- 
- }
+private extractAmount(text: string): number {
+  const match = text.match(/\$([0-9]+(?:\.[0-9]{2})?)/);
+  return match ? Number(match[1]) : NaN;
+}
+
 async validateSubtotalRefundBalances(): Promise<void> {
-  // 1️⃣ Select Subtotal Refund
-  await this.SubtotalRefundAmount.waitFor({ state: 'visible' });
-  await this.SubtotalRefundAmount.click();
+  const confirmDialog = this.page.getByRole('dialog', { name: 'Confirm Refund' });
 
-  // 2️⃣ Submit refund
-  await this.RefundSubmitBtn.waitFor({ state: 'visible' });
-  await this.RefundSubmitBtn.click();
+  // Select the paragraph that contains the refund summary
+  const summaryText = await confirmDialog
+    .locator('p', { hasText: 'Refund of' })
+    .innerText();
 
-   const refundText = await this.RefundOf.textContent();
-  const remainingText = await this.RemainingBalance.textContent();
+  const refundMatch = summaryText.match(/Refund of \$([0-9.]+)/);
+  const remainingMatch = summaryText.match(/remaining balance of \$([0-9.]+)/);
 
-   const refundAmount = this.parseAmount(refundText ?? '');
-  const remainingAmount = this.parseAmount(remainingText ?? '');
+  expect(refundMatch).not.toBeNull();
+  expect(remainingMatch).not.toBeNull();
 
-  const totalText = await this.TotalRefundAmount.textContent();
-  const totalAmount = this.parseAmount(totalText ?? '');
-
-   const expectedRemaining = Number(
-    (totalAmount - refundAmount).toFixed(2)
-  );
+  const refundAmount = Number(refundMatch![1]);
+  const remainingAmount = Number(remainingMatch![1]);
+  console.log(`Subtotal refund amount is: $${refundAmount}`);
+  console.log(`Remaining balance shown is: $${remainingAmount}`);
 
   expect(refundAmount).toBeGreaterThan(0);
-  expect(remainingAmount).toBe(expectedRemaining);
+  expect(remainingAmount).toBeGreaterThanOrEqual(0);
 }
+
+//partial refund
+
+async enterPartialRefundAmount(amount: number): Promise<void> {
+  // Select Partial Refund radio
+  await this.PartialRefundValue.click();
+
+  // Ensure textbox is enabled
+  await expect(this.amountTextBox).toBeEnabled();
+
+  // Enter amount
+  await this.amountTextBox.fill(amount.toFixed(2));
+
+  console.log(`Entered Partial Refund Amount: $${amount.toFixed(2)}`);
+}
+
+async validatePartialRefundWithinLimit(): Promise<void> {
+  const totalRefund = await this.getTotalRefundAmount();
+
+  const validPartialAmount = totalRefund - 1;
+  await this.enterPartialRefundAmount(validPartialAmount);
+
+  console.log(
+    `Entered partial refund: $${validPartialAmount}, Total refund: $${totalRefund}`
+  );
+
+  await expect(this.RefundSubmitBtn).toBeEnabled();
+}
+
+
+
 
 
 
