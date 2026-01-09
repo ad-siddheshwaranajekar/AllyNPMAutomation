@@ -75,7 +75,7 @@ await paymentsDetailsPage.verifyAuthorizedStatus();
 
 await paymentsDetailsPage.openRefundTransaction();
 await paymentsDetailsPage.RefundTransaction();
-await paymentsDetailsPage.confirmRefundFlow('Duplicate Purchase', 'Customer requested a refund due Duplicate Purchase.'); 
+await paymentsDetailsPage.confirmRefundFlow('Fraud', 'Customer requested a refund due Duplicate Purchase.'); 
 //'Fraud', 'Duplicate Purchase', 'Product Returned',  'Shopper Request',  'Other'
 });
 
@@ -106,11 +106,11 @@ await paymentsDetailsPage.openRefundTransaction();
 await paymentsDetailsPage.enterPartialRefundAmount(5.00);
 await paymentsDetailsPage.RefundTransaction();
 await paymentsDetailsPage.validateSubtotalRefundBalances();
-await paymentsDetailsPage.confirmRefundFlow('Duplicate Purchase', 'Customer requested a refund due Duplicate Purchase.'); 
+await paymentsDetailsPage.confirmRefundFlow('Shopper Request', 'Customer requested a refund due Duplicate Purchase.'); 
 //'Fraud', 'Duplicate Purchase', 'Product Returned',  'Shopper Request',  'Other'
 
 });
-test.only('Verify Partial Refund cannot exceed Total Refund amount', async ({ page }) => {
+test('Verify Partial Refund cannot exceed Total Refund amount', async ({ page }) => {
  
   await paymentsPage.applyLast14DaysDateFilter();
   await paymentsPage.applySettledStatusFilter();
@@ -127,9 +127,5 @@ test.only('Verify Partial Refund cannot exceed Total Refund amount', async ({ pa
   await expect(errorMessage).toBeVisible();
 
 });
-
-
-
-
 
 });
