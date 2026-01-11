@@ -123,7 +123,6 @@ jobs:
     name: Publish Reports to S3
     needs: [setup, test]
     runs-on: ubuntu-latest
-    if: always()
 
     steps:
       - name: Configure AWS credentials
