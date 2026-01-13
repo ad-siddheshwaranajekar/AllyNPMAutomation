@@ -29,7 +29,7 @@ test.describe('Payments Module', () => {
 
 
 
-test('Validate correctness of payment details for selected payment', async ({ page }) => {
+test.only('Validate correctness of payment details for selected payment', async ({ page }) => {
 
 
  await page.waitForTimeout(3000);
@@ -79,8 +79,9 @@ await paymentsDetailsPage.confirmRefundFlow('Fraud', 'Customer requested a refun
 //'Fraud', 'Duplicate Purchase', 'Product Returned',  'Shopper Request',  'Other'
 });
 
-test('Verify the ally can successfully refund a transaction(Subtotal Refund).', async ({ page }) => {
+test.only('Verify the ally can successfully refund a transaction(Subtotal Refund).', async ({ page }) => {
  test.setTimeout(60000);
+await paymentsPage.validateItemsPerPageOptions();  
 await paymentsPage.applyLast14DaysDateFilter();
 await paymentsPage.applySettledStatusFilter();
 await paymentsPage.clickLastFourRows();

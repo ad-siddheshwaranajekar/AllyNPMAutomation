@@ -66,6 +66,7 @@ this.itemsPerPageOptions = page.locator('#maxPerPage option');
     const expected = ['10', '25', '50'];
     const actual = (await this.itemsPerPageOptions.allTextContents()).map(t => t.trim());
     expect(actual).toEqual(expected);
+     await this.itemsPerPageDropdown.selectOption({ label: '50' });
   }
 
 

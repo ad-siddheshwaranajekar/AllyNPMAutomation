@@ -322,23 +322,33 @@ const setFilterBtn = statusFilterContainer.getByText('Set Filter', { exact: true
 await this.utils.click(setFilterBtn);
   
 }
- async clickLastFourRows() {
+async clickLastFourRows() {
   // Wait for table rows to appear
   const rows = this.page.locator('div.table-container table tbody tr');
   await rows.first().waitFor({ state: 'visible', timeout: 10000 });
 
   const rowCount = await rows.count();
-  if (rowCount === 0) return; // No rows available
+  if (rowCount === 0) return;
 
-  // Define selectable row indexes (7th to 10th, 0-based)
-  const selectableIndexes = [6, 7, 8, 9].filter(i => i < rowCount);
+  // Number of rows from the bottom to consider
+  const lastN = 4;
 
-  // Pick a random index from available rows
-  const randomIndex = selectableIndexes[Math.floor(Math.random() * selectableIndexes.length)];
+  // Calculate start index safely
+  const startIndex = Math.max(0, rowCount - lastN);
 
-  //console.log(`Clicking row ${randomIndex + 1}`);
+  // Build selectable indexes dynamically
+  const selectableIndexes = Array.from(
+    { length: rowCount - startIndex },
+    (_, i) => startIndex + i
+  );
+
+  // Pick a random index from the last N rows
+  const randomIndex =
+    selectableIndexes[Math.floor(Math.random() * selectableIndexes.length)];
+
   await this.utils.click(rows.nth(randomIndex));
 }
+
 
 
 
