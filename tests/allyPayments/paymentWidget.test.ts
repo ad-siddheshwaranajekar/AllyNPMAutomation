@@ -1,5 +1,5 @@
 import { test, expect, request } from '@playwright/test';
-import paymentTestData from '../../testData/Payments/paymentTestdataU.json';
+import paymentTestData from '../../testData/Payments/paymentTestdata.json';
 import { PaymentWidgetPage } from '../../pages/payments/PaymentWidgetPage';
 import { de } from '@faker-js/faker';
 

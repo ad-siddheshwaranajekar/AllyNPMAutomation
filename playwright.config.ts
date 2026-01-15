@@ -13,7 +13,7 @@ const reportConfig: OrtoniReportConfig = {
   authorName: os.userInfo().username,
   base64Image: false,
 
-  // Branding
+  // Branding 
  // logo: "AndDone.png",
   headerText: "Ally Portal UI Automation Report",  // custom property
   //customCss: "custom.css",
@@ -21,14 +21,14 @@ logo: "./assets/AllyLogoDark.svg",
 
 
   // Enables clickable dashboard
-  stdIO: true,
+  stdIO: false,
 
   meta: {
-    "Test Cycle": "AN_ALMGMT_V12",
+    "Test Cycle": "AN_ALMGMT_V13",
    // Environment: process.env.NODE_ENV || "QAT",
     "Executed On": new Date().toLocaleString(), 
     version: "1",
-    release: "V12",
+    release: "V13",
     platform: os.type(),
   },
 } as any;  // <-- bypass TypeScript type checking for headerText
@@ -49,8 +49,8 @@ export default defineConfig({
   //  Existing HTML report + Allure added
   reporter: [
     
-  //["ortoni-report", reportConfig],
-   ['html']   
+  ["ortoni-report", reportConfig],
+  // ['html']   
                     // existing
         
   ],

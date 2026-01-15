@@ -299,6 +299,7 @@ async getRowDataByIndex(index =0){
    
     date: await row.locator('td').nth(8).innerText(),
     status: await row.locator('td').nth(9).innerText(),
+    amount: await row.locator('td').nth(10).innerText(),
   };
 
 }
@@ -367,7 +368,7 @@ async applyLast14DaysDateFilter() {
 
   // Select last 14 days
   const dateSelect = dateContainer.locator('select');
-  await dateSelect.selectOption('14');
+  await dateSelect.selectOption('30');
 
   // Click Set Filter button in the same container
   const setFilterBtn = dateContainer.getByText('Set Filter', { exact: true });

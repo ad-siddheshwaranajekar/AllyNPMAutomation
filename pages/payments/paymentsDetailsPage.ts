@@ -175,19 +175,40 @@ await expect(actualTransactionId).toBe(expectedData.transactionId);
  
 
   //refund action
+  // async openRefundTransaction(): Promise<void> {
+  // await this.ActionBtn.waitFor({ state: 'visible' });
+  // await this.ActionBtn.click();
+  // await this.RefundBtn.waitFor({ state: 'visible' });
+  // await this.RefundBtn.click();
+  // await expect(this.RefundHeader).toBeVisible({ timeout: 5000 });
+  // await expect(this.TotalRefundAmountCheck).toBeVisible();
+
+  // const totalRefundText = await this.TotalRefundAmountCheck.innerText();
+  // const totalRefundAmount = Number(totalRefundText.replace(/[^0-9.]/g, ''));
+  // console.log(`Total refund amount is: $${totalRefundAmount}`);
+ 
+  // }
   async openRefundTransaction(): Promise<void> {
-  await this.ActionBtn.waitFor({ state: 'visible' });
+  // Ensure no dropdown/overlay is open
+  await this.page.keyboard.press('Escape');
+
+  // Wait until no ng-bootstrap dropdown is visible
+  await expect(this.page.locator('.dropdown-menu.show'))
+    .toHaveCount(0, { timeout: 5000 });
+
+  // Open Actions menu
+  await expect(this.ActionBtn).toBeVisible();
   await this.ActionBtn.click();
-  await this.RefundBtn.waitFor({ state: 'visible' });
+
+  // Wait for Refund option and click
+  await expect(this.RefundBtn).toBeVisible();
   await this.RefundBtn.click();
+
+  // Confirm Refund dialog is open
   await expect(this.RefundHeader).toBeVisible({ timeout: 5000 });
   await expect(this.TotalRefundAmountCheck).toBeVisible();
+}
 
-  const totalRefundText = await this.TotalRefundAmountCheck.innerText();
-  const totalRefundAmount = Number(totalRefundText.replace(/[^0-9.]/g, ''));
-  console.log(`Total refund amount is: $${totalRefundAmount}`);
- 
-  }
   async RefundTransaction(): Promise<void> {  
   await this.RefundSubmitBtn.waitFor({ state: 'visible' });
   await this.RefundSubmitBtn.click();
