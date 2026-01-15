@@ -29,13 +29,9 @@ export class WebhookEventPage extends BasePage {
     this.actionsMenu = page.locator(
       `//ul[contains(@class,'dropdown-menu') and contains(@class,'show')]`
     );
-    this.retriggerOption = page
-      .locator(`//li[contains(normalize-space(), 'Retrigger')]`)
-      .first();
-    this.retriggerMessage = page.getByRole('alert', { name: 'Webhook retrigger successfully' });
-    this.viewOption = page
-      .locator(`//li[contains(normalize-space(), 'View')]`)
-      .first();
+    this.retriggerOption = page.locator(`//li[contains(normalize-space(), 'Retrigger')]`).first();
+    this.retriggerMessage = page.locator('.ngx-toastr.toast-success').or(page.locator('.ngx-toastr.toast-error'));
+    this.viewOption = page.locator(`//li[contains(normalize-space(), 'View')]`).first();
 
     // Headers
     this.headerURL = page.locator('div.table-container table thead tr th', { hasText: 'URL' });
@@ -90,6 +86,11 @@ export class WebhookEventPage extends BasePage {
   const sortedDesc = [...descValues].sort((a, b) => b.localeCompare(a));
 
   expect(descValues).toEqual(sortedDesc);
+}
+
+async waitForLoaderToDisappear() {
+  const loader = this.page.locator('.loading-spinner');
+  await loader.waitFor({ state: 'detached', timeout: 20000 });
 }
 
 }

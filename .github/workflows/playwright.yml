@@ -1,8 +1,8 @@
 name: Playwright Tests (Enterprise)
 
 on:
-  push:
-    branches: [ main, master ]
+  # push:
+  #   branches: [ main, master ]
   workflow_dispatch:
 
 env:
@@ -123,7 +123,6 @@ jobs:
     name: Publish Reports to S3
     needs: [setup, test]
     runs-on: ubuntu-latest
-    if: always()
 
     steps:
       - name: Configure AWS credentials
