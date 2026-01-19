@@ -1,14 +1,9 @@
 [
-
- 
     {
      "username": "Allytestuser01v12",
     "password": "123*Qwertyuiop"
    },
-   {
-    "username": "Zbook1201",
-    "password": "123#Qwertyuiop"
-  },
+  
   
   {
     "username": "invalidUser",
