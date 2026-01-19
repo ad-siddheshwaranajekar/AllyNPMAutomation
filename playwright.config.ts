@@ -50,7 +50,7 @@ export default defineConfig({
   reporter: [
     
   ["ortoni-report", reportConfig],
-  // ['html']   
+ // ['html']   
                     // existing
         
   ],
