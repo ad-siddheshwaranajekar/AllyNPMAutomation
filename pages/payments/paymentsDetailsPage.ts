@@ -194,7 +194,7 @@ await expect(actualTransactionId).toBe(expectedData.transactionId);
 
   // Wait until no ng-bootstrap dropdown is visible
   await expect(this.page.locator('.dropdown-menu.show'))
-    .toHaveCount(0, { timeout: 8000 });
+    .toHaveCount(0, { timeout: 5000 });
 
   // Open Actions menu
   await expect(this.ActionBtn).toBeVisible();

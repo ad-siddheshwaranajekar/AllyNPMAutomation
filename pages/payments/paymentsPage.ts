@@ -350,6 +350,11 @@ async clickLastFourRows() {
   await this.utils.click(rows.nth(randomIndex));
 }
 
+
+
+
+
+
 async applyLast14DaysDateFilter() {
   // Open filters
   await this.filter.click();
@@ -371,26 +376,6 @@ async applyLast14DaysDateFilter() {
 
   // Wait for table refresh
   await this.page.waitForSelector('div.table-container table tbody tr');
-}
-
-
-
-/** 17-01-2026
- * Save the first Transaction ID from Payments table
- */
-async saveFirstTransactionId(): Promise<string> {
-  // Wait until table has at least one row
-  await this.utils.waitForVisible(this.tableRows.first(), 30000);
-
-  // Reuse existing row reader
-  const firstRowData = await this.getRowDataByIndex(0);
-
-  expect(
-    firstRowData.transactionId,
-    'Transaction ID should not be empty'
-  ).not.toBe('');
-
-  return firstRowData.transactionId;
 }
 
 

@@ -93,34 +93,4 @@ async waitForLoaderToDisappear() {
   await loader.waitFor({ state: 'detached', timeout: 20000 });
 }
 
-
-/**17*01
- * Find and open webhook rows with Module=Transaction and Event=OnSuccess
- * Returns true if any matching row was clicked, false otherwise
- */
-async openNextTransactionSuccessWebhook(startIndex = 0): Promise<number | null> {
-  await this.utils.waitForVisible(this.tableRows.first(), 30000);
-
-  const rowCount = await this.tableRows.count();
-
-  for (let i = startIndex; i < rowCount; i++) {
-    const row = this.tableRows.nth(i);
-
-    const module = (await row.locator('td').nth(2).innerText()).trim();
-    const event = (await row.locator('td').nth(3).innerText()).trim();
-
-    if (module === 'Transaction' && event === 'OnAuthorized') {
-      await row.click();
-      return i; // return index of clicked row
-    }
-  }
-
-  return null; // no matching rows
-}
-
-async waitForTableReload() {
-  await this.tableRows.first().waitFor({ state: 'visible', timeout: 15000 });
-}
-
-
 }
