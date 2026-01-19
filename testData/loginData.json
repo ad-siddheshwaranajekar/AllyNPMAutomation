@@ -1,25 +1,24 @@
 [
-
- 
-    {
-     "username": "Allytestuser01v12",
-    "password": "123*Qwertyuiop"
-   },
-   {
+  {
     "username": "Zbook1201",
     "password": "123#Qwertyuiop"
   },
-  
+
+  {
+    "username": "Allytestuser01v12",
+    "password": "123*Qwertyuiop"
+  },
+  {
+    "username": "Zbook1201",
+    "password": "123#Qwertyuiop"
+  },
+
   {
     "username": "invalidUser",
     "password": "wrongPass"
-   
   },
   {
-  
-    "username": "TaylorVerma89", 
+    "username": "TaylorVerma89",
     "password": "123#Qwertyuiop"
-   
   }
-  
 ]
