@@ -19,25 +19,34 @@ export class WebhookEventPage extends BasePage {
     super(page);
 
     this.webhookEventsHeader = page.locator(
-      `//h3[normalize-space()='Webhook Event Logs']`
+      `//h3[normalize-space()='Webhook Event Logs']`,
     );
     this.uRLSortIcon = page.locator(
-      `//span[normalize-space()='URL']/following-sibling::div/img`
+      `//span[normalize-space()='URL']/following-sibling::div/img`,
     );
     this.webhooksHeader = page.locator(`//h3[normalize-space()='Webhooks']`);
     this.ellipsisButton = page.locator(`span:has-text("")`).first();
     this.actionsMenu = page.locator(
-      `//ul[contains(@class,'dropdown-menu') and contains(@class,'show')]`
+      `//ul[contains(@class,'dropdown-menu') and contains(@class,'show')]`,
     );
-    this.retriggerOption = page.locator(`//li[contains(normalize-space(), 'Retrigger')]`).first();
-    this.retriggerMessage = page.locator('.ngx-toastr.toast-success').or(page.locator('.ngx-toastr.toast-error'));
-    this.viewOption = page.locator(`//li[contains(normalize-space(), 'View')]`).first();
+    this.retriggerOption = page
+      .locator(`//li[contains(normalize-space(), 'Retrigger')]`)
+      .first();
+    this.retriggerMessage = page
+      .locator(".ngx-toastr.toast-success")
+      .or(page.locator(".ngx-toastr.toast-error"));
+    this.viewOption = page
+      .locator(`//li[contains(normalize-space(), 'View')]`)
+      .first();
 
     // Headers
-    this.headerURL = page.locator('div.table-container table thead tr th', { hasText: 'URL' });
-    this.colURL = page.locator('div.table-container table thead tr th', { hasText: 'URL' });
+    this.headerURL = page.locator("div.table-container table thead tr th", {
+      hasText: "URL",
+    });
+    this.colURL = page.locator("div.table-container table thead tr th", {
+      hasText: "URL",
+    });
     this.URLText = page.locator(`//tr//td[2]//span`).first();
-    
   }
 
   async validateWebhookEventsPageLoaded() {
@@ -61,7 +70,7 @@ export class WebhookEventPage extends BasePage {
     for (const headerName of expectedHeaderNames) {
       const headerLocator = this.page.locator(
         "div.table-container table thead tr th",
-        { hasText: headerName }
+        { hasText: headerName },
       );
       await this.utils.waitForVisible(headerLocator, 10000);
       await expect(headerLocator).toBeVisible();
@@ -69,28 +78,55 @@ export class WebhookEventPage extends BasePage {
   }
 
   async validateSorting(header: Locator, column: Locator) {
-  // Click to sort Asc
-  await header.click();
- 
+    // Click to sort Asc
+    await header.click();
 
-  const ascValues = await column.allInnerTexts();
-  const sortedAsc = [...ascValues].sort((a, b) => a.localeCompare(b));
+    const ascValues = await column.allInnerTexts();
+    const sortedAsc = [...ascValues].sort((a, b) => a.localeCompare(b));
 
-  expect(ascValues).toEqual(sortedAsc);
+    expect(ascValues).toEqual(sortedAsc);
 
-  // Click again to sort Desc
-  await header.click();
+    // Click again to sort Desc
+    await header.click();
 
+    const descValues = await column.allInnerTexts();
+    const sortedDesc = [...descValues].sort((a, b) => b.localeCompare(a));
 
-  const descValues = await column.allInnerTexts();
-  const sortedDesc = [...descValues].sort((a, b) => b.localeCompare(a));
+    expect(descValues).toEqual(sortedDesc);
+  }
 
-  expect(descValues).toEqual(sortedDesc);
-}
+  async waitForLoaderToDisappear() {
+    const loader = this.page.locator(".loading-spinner");
+    await loader.waitFor({ state: "detached", timeout: 20000 });
+  }
 
-async waitForLoaderToDisappear() {
-  const loader = this.page.locator('.loading-spinner');
-  await loader.waitFor({ state: 'detached', timeout: 20000 });
-}
+  /**17*01
+   * Find and open webhook rows with Module=Transaction and Event=OnSuccess
+   * Returns true if any matching row was clicked, false otherwise
+   */
+  async openNextTransactionSuccessWebhook(
+    startIndex = 0,
+  ): Promise<number | null> {
+    await this.utils.waitForVisible(this.tableRows.first(), 30000);
 
+    const rowCount = await this.tableRows.count();
+
+    for (let i = startIndex; i < rowCount; i++) {
+      const row = this.tableRows.nth(i);
+
+      const module = (await row.locator("td").nth(2).innerText()).trim();
+      const event = (await row.locator("td").nth(3).innerText()).trim();
+
+      if (module === "Transaction" && event === "OnAuthorized") {
+        await row.click();
+        return i; // return index of clicked row
+      }
+    }
+
+    return null; // no matching rows
+  }
+
+  async waitForTableReload() {
+    await this.tableRows.first().waitFor({ state: "visible", timeout: 15000 });
+  }
 }

@@ -1,91 +1,124 @@
 import { Page, Locator } from "@playwright/test";
 import { BasePage } from "../basePage";
-import { faker } from '@faker-js/faker';
+import { faker } from "@faker-js/faker";
 
 export class WebhookPage extends BasePage {
+  readonly menuWebhooksBtn: Locator;
+  readonly addWebhookBtn: Locator;
+  readonly webhookUrlInput: Locator;
+  readonly modulesDropdown: Locator;
+  readonly versionDropdown: Locator;
 
-    readonly menuWebhooksBtn: Locator;
-    readonly addWebhookBtn: Locator;
-    readonly webhookUrlInput: Locator;
-    readonly modulesDropdown: Locator;
-    readonly versionDropdown: Locator;
+  readonly saveButton: Locator;
+  readonly cancelButton: Locator;
 
-    readonly saveButton: Locator;
-    readonly cancelButton: Locator;
+  readonly successMessage: Locator;
+  readonly duplicateErrorMessage: Locator;
 
-    readonly successMessage: Locator;
-    readonly duplicateErrorMessage: Locator;    
+  //Actions
+  readonly ellipsisButton: Locator;
+  readonly actionsMenu: Locator;
+  readonly deleteOption: Locator;
+  readonly viewLogsOption: Locator;
+  readonly webhooksHeader: Locator;
+  readonly deleteMessage: Locator;
 
-    //Actions
-    readonly ellipsisButton: Locator;
-    readonly actionsMenu: Locator;
-    readonly deleteOption: Locator;
-    readonly viewLogsOption: Locator;
-    readonly webhooksHeader: Locator;
-    readonly deleteMessage: Locator;
+  constructor(page: Page) {
+    super(page);
 
-    constructor(page: Page) {
-        super(page);
+    this.menuWebhooksBtn = page.getByRole("link", { name: "Webhooks" });
+    this.addWebhookBtn = page.locator("div.button.button-green");
+    this.webhookUrlInput = page.locator("#inputUrl");
+    this.modulesDropdown = page.getByText("* Select Modules", { exact: true });
+    this.versionDropdown = page.locator("#version");
 
-        this.menuWebhooksBtn = page.getByRole('link', { name: 'Webhooks' });
-        this.addWebhookBtn = page.locator('div.button.button-green');
-        this.webhookUrlInput = page.locator('#inputUrl');
-        this.modulesDropdown = page.getByText('* Select Modules', { exact: true });
-        this.versionDropdown = page.locator('#version');
+    this.saveButton = page.getByText("Save", { exact: true });
+    this.cancelButton = page.getByRole("button", { name: "Cancel" });
 
-        this.saveButton = page.getByText('Save', { exact: true });
-        this.cancelButton = page.getByRole('button', { name: 'Cancel' });
+    this.successMessage = page.getByRole("alert", {
+      name: "Webhook added successfully.",
+    });
+    this.duplicateErrorMessage = page.getByText(
+      "Already  Subscribed  For  This  Module  With URL",
+      { exact: true },
+    );
 
-        this.successMessage = page.getByRole('alert', {
-            name: 'Webhook added successfully.',
-        });
-        this.duplicateErrorMessage =page.getByText('Already  Subscribed  For  This  Module  With URL', { exact: true });
+    this.webhooksHeader = page.locator(`//h3[normalize-space()='Webhooks']`);
+    this.ellipsisButton = page.locator(`span:has-text("")`).first();
+    this.actionsMenu = page.locator(
+      `//ul[contains(@class,'dropdown-menu') and contains(@class,'show')]`,
+    );
+    this.deleteOption = page
+      .locator(`//li[contains(normalize-space(), 'Delete')]`)
+      .first();
+    this.viewLogsOption = page
+      .locator(`//li[contains(normalize-space(), 'View Logs')]`)
+      .first();
+    this.deleteMessage = page.locator(
+      `//div[normalize-space()='Webhook deleted successfully.']`,
+    );
+  }
 
-        this.webhooksHeader = page.locator(`//h3[normalize-space()='Webhooks']`);
-        this.ellipsisButton = page.locator(`span:has-text("")`).first();
-        this.actionsMenu = page.locator(
-        `//ul[contains(@class,'dropdown-menu') and contains(@class,'show')]`
-        );
-        this.deleteOption = page.locator(
-        `//li[contains(normalize-space(), 'Delete')]`
-        ).first();
-        this.viewLogsOption = page.locator(
-        `//li[contains(normalize-space(), 'View Logs')]`
-        ).first();
-        this.deleteMessage = page.locator(`//div[normalize-space()='Webhook deleted successfully.']`);
+  // Generate dynamic webhook URL (no navigation)
+  private generateWebhookUrl(): string {
+    const randomNumber = faker.number.int({ min: 1000, max: 9999 });
+    return `https://webhook-test.com/${randomNumber}`;
+  }
+
+  async setWebhookUrl(url?: string) {
+    if (!url) {
+      url = this.generateWebhookUrl();
     }
+    await this.webhookUrlInput.fill(url);
+  }
 
-    // Generate dynamic webhook URL (no navigation)
-    private generateWebhookUrl(): string {
-        const randomNumber = faker.number.int({ min: 1000, max: 9999 });
-        return `https://webhook-test.com/${randomNumber}`;
-    }
-
-    async setWebhookUrl(url?: string) {
-        if (!url) {
-            url = this.generateWebhookUrl();
-        }
-        await this.webhookUrlInput.fill(url);
-    }
-
-    // Select modules from dropdown
-    async selectModules(...modules: string[]) {
+  // Select modules from dropdown
+  async selectModules(...modules: string[]) {
     await this.modulesDropdown.click();
 
     for (const moduleName of modules) {
-        const label = this.page.locator(
-            `.dropdown-menu label.custom-check-container:has(span.selectable-option:text-is("${moduleName}"))`
-        );
+      const label = this.page.locator(
+        `.dropdown-menu label.custom-check-container:has(span.selectable-option:text-is("${moduleName}"))`,
+      );
 
-        // Read current state from the hidden checkbox
-        const checkbox = label.locator('input[type="checkbox"]');
+      // Read current state from the hidden checkbox
+      const checkbox = label.locator('input[type="checkbox"]');
 
-        if (!(await checkbox.isChecked())) {
-            await label.click();  // ← Click visible label instead of hidden input
-        }
+      if (!(await checkbox.isChecked())) {
+        await label.click(); // ← Click visible label instead of hidden input
+      }
     }
 
-    await this.page.keyboard.press('Escape');
-}
+    await this.page.keyboard.press("Escape");
+  }
 
+  /**17*01
+   * Find and open webhook rows with Module=Transaction and Event=OnSuccess
+   * Returns true if any matching row was clicked, false otherwise
+   */
+  async openNextTransactionSuccessWebhook(
+    startIndex = 0,
+  ): Promise<number | null> {
+    await this.utils.waitForVisible(this.tableRows.first(), 30000);
+
+    const rowCount = await this.tableRows.count();
+
+    for (let i = startIndex; i < rowCount; i++) {
+      const row = this.tableRows.nth(i);
+
+      const module = (await row.locator("td").nth(2).innerText()).trim();
+      const event = (await row.locator("td").nth(3).innerText()).trim();
+
+      if (module === "Transaction" && event === "OnAuthorized") {
+        await row.click();
+        return i; // return index of clicked row
+      }
+    }
+
+    return null; // no matching rows
+  }
+
+  async waitForTableReload() {
+    await this.tableRows.first().waitFor({ state: "visible", timeout: 15000 });
+  }
 }
